@@ -183,27 +183,26 @@ const protoProjects = {
 // ==========================================================================
 const weeklyUpdates = [
   {
+   {
     week: 0,
     dates: "Jul 20 – Jul 24",
     status: "completed",
     title: "ProtoSem Orientation & Team Building",
 
-    summaryShort: "Participated in team-building activities, won the Marshmallow Tower Challenge, completed the 16 Personalities assessment, and attended the 5S workshop.",
+    summaryShort: "Participated in team-building activities, won the Marshmallow Tower Challenge, and completed the 16 Personalities assessment.",
 
-    summary: "Started the ProtoSem journey by participating in orientation and team-building activities. Worked with a team in the Marshmallow Tower Challenge, where we built the tallest tower using sticks and a marshmallow and won the activity. Completed the 16 Personalities assessment, identifying my personality type as ESFJ-T (Consul), and learned the principles of the 5S workplace organization methodology.",
+    summary: "Started the ProtoSem journey by participating in orientation and team-building activities. Worked with a team in the Marshmallow Tower Challenge, where we built the tallest tower using sticks and a marshmallow and won the activity. Completed the 16 Personalities assessment, identifying my personality type as ESFJ-T (Consul), and gained insights into my personal strengths and teamwork style.",
 
     goals: [
         "Build teamwork and collaboration skills",
         "Develop problem-solving and creative thinking",
-        "Understand personal strengths through personality assessment",
-        "Learn the fundamentals of 5S methodology"
+        "Understand personal strengths through personality assessment"
     ],
 
     completed: [
         "Participated in the Marshmallow Tower Challenge",
         "Won the Marshmallow Tower Challenge with my team",
-        "Completed the 16 Personalities assessment (ESFJ-T - Consul)",
-        "Participated in the 5S workshop"
+        "Completed the 16 Personalities assessment (ESFJ-T - Consul)"
     ],
 
     challenges: "Collaborating effectively within the team, designing a stable tower under time constraints, and balancing height with structural stability during the Marshmallow Tower Challenge.",
@@ -218,7 +217,6 @@ const weeklyUpdates = [
     ],
 
     tech: [
-        "5S Methodology",
         "16 Personalities Assessment",
         "Team Building"
     ],
@@ -226,8 +224,7 @@ const weeklyUpdates = [
     achievements: [
         "Won the Marshmallow Tower Challenge with my team",
         "Identified my personality type as ESFJ-T (Consul)",
-        "Strengthened teamwork and communication skills",
-        "Learned workplace organization through the 5S workshop"
+        "Strengthened teamwork and communication skills"
     ],
 
     images: [
