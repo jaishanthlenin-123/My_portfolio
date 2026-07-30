@@ -183,7 +183,6 @@ const protoProjects = {
 // ==========================================================================
 const weeklyUpdates = [
   {
-   {
     week: 0,
     dates: "Jul 20 – Jul 24",
     status: "completed",
