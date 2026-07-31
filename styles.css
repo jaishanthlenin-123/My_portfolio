@@ -489,7 +489,7 @@
     transition:opacity .3s ease, visibility 0s linear 0s;
   }
   .modal-dialog{
-    width:100%;max-width:680px;max-height:85vh;overflow-y:auto;
+    width:100%;max-width:900px;max-height:90vh;overflow-y:auto;
     background:#111114;border:1px solid rgba(255,255,255,0.1);
     border-radius:24px;position:relative;
     box-shadow:0 40px 80px rgba(0,0,0,0.55);
@@ -578,6 +578,8 @@
 
 .week-modal-images img{
     width:100%;
+    height:160px;
+    object-fit:cover;
     border-radius:12px;
     border:1px solid rgba(255,255,255,.12);
     cursor:pointer;
