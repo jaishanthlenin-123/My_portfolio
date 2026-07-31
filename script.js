@@ -182,29 +182,31 @@ const protoProjects = {
 // with a reusable detail modal and Previous/Next navigation.
 // ==========================================================================
 const weeklyUpdates = [
-  {
+    {
     week: 0,
     dates: "Jul 20 – Jul 24",
     status: "completed",
     title: "ProtoSem Orientation & Team Building",
 
-    summaryShort: "Participated in team-building activities, won the Marshmallow Tower Challenge, and completed the 16 Personalities assessment.",
+    summaryShort: "Participated in team-building activities, won the Marshmallow Tower Challenge, completed the 16 Personalities assessment, and presented a Zen Pencils comic.",
 
-    summary: "Started the ProtoSem journey by participating in orientation and team-building activities. Worked with a team in the Marshmallow Tower Challenge, where we built the tallest tower using sticks and a marshmallow and won the activity. Completed the 16 Personalities assessment, identifying my personality type as ESFJ-T (Consul), and gained insights into my personal strengths and teamwork style.",
+    summary: "Started the ProtoSem journey by participating in orientation and team-building activities. Worked with a team in the Marshmallow Tower Challenge, where we built the tallest tower using sticks and a marshmallow and won the activity. Completed the 16 Personalities assessment, identifying my personality type as ESFJ-T (Consul), and gained insights into my personal strengths and teamwork style. Also participated in a Zen Pencils comic activity, where I analyzed a comic, related its message to real-life experiences, and presented my interpretation to the group.",
 
     goals: [
         "Build teamwork and collaboration skills",
         "Develop problem-solving and creative thinking",
-        "Understand personal strengths through personality assessment"
+        "Understand personal strengths through personality assessment",
+        "Improve communication and presentation skills"
     ],
 
     completed: [
         "Participated in the Marshmallow Tower Challenge",
         "Won the Marshmallow Tower Challenge with my team",
-        "Completed the 16 Personalities assessment (ESFJ-T - Consul)"
+        "Completed the 16 Personalities assessment (ESFJ-T - Consul)",
+        "Analyzed and presented a Zen Pencils comic by relating its message to real-life experiences"
     ],
 
-    challenges: "Collaborating effectively within the team, designing a stable tower under time constraints, and balancing height with structural stability during the Marshmallow Tower Challenge.",
+    challenges: "Collaborating effectively within the team, designing a stable tower under time constraints, balancing height with structural stability during the Marshmallow Tower Challenge, and confidently presenting the message and real-life relevance of the assigned Zen Pencils comic.",
 
     skills: [
         "Teamwork",
@@ -212,24 +214,29 @@ const weeklyUpdates = [
         "Problem Solving",
         "Critical Thinking",
         "Creativity",
+        "Presentation",
+        "Storytelling",
         "Collaboration"
     ],
 
     tech: [
         "16 Personalities Assessment",
+        "Zen Pencils Comics",
         "Team Building"
     ],
 
     achievements: [
         "Won the Marshmallow Tower Challenge with my team",
         "Identified my personality type as ESFJ-T (Consul)",
-        "Strengthened teamwork and communication skills"
+        "Successfully presented and explained a Zen Pencils comic",
+        "Strengthened teamwork, communication, and presentation skills"
     ],
 
     images: [
         "images/week0/a.png",
         "images/week0/b.png",
-        "images/week0/c.png"
+        "images/week0/c.png",
+        "images/week0/d.png"
     ]
 },
   {
@@ -286,12 +293,13 @@ const weeklyUpdates = [
     images: [
         "images/week1/a.png",
         "images/week1/b.png",
-        "images/week1/c.png"
+        "images/week1/c.png",
+        "images/week1/d.png"
     ]
 },
   {
     week: 2,
-    dates: "Jul 15 – Jul 21",
+    dates: "Aug 3 – Aug 7",
     status: "upcoming",
     title: "Cleaning Mechanism",
     summaryShort: "Designed rotating brush and water spray system.",
@@ -302,11 +310,31 @@ const weeklyUpdates = [
     skills: ["Mechanical Systems", "Cleaning Automation"],
     tech: ["Robotics", "Embedded Systems"],
     achievements: ["Brush mechanism prototyped", "Cleaning workflow mapped end-to-end"],
-    image:"images/week2.jpg"
+    images: [
+        "images/week2/a.png",
+        "images/week2/b.png",
+        "images/week2/c.png",
+        "images/week2/d.png"
+    ]
   },
   {
     week: 3,
-    dates: "Jul 22 – Jul 28",
+    dates: "Aug 10 – Aug 14",
+    status: "upcoming",
+    title: "Prototype & Presentation",
+    summaryShort: "Prepared ProtoSem presentation and finalized prototype design.",
+    summary: "Completed prototype concept and prepared the ProtoSem presentation.",
+    goals: ["Final documentation", "Presentation", "Design review"],
+    completed: ["Finalized slides", "Prototype improvements", "Documentation"],
+    challenges: "Time management.",
+    skills: ["Presentation", "Project Management"],
+    tech: ["Documentation", "Presentation"],
+    achievements: ["Presentation deck finalized", "Prototype design locked in"],
+    image:"images/week3.jpg"
+  },
+  {
+    week: 4,
+    dates: "Aug 17 – Aug 21",
     status: "upcoming",
     title: "Prototype & Presentation",
     summaryShort: "Prepared ProtoSem presentation and finalized prototype design.",
