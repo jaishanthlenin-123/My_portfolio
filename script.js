@@ -450,3 +450,69 @@ if (imagesEl) {
   window.addEventListener('resize', updateProgressLine);
   updateProgressLine();
 })();
+
+// ==========================================================================
+// EmailJS — contact form
+// ==========================================================================
+
+// Replace YOUR_PUBLIC_KEY with your EmailJS public key
+// (EmailJS dashboard → Account → General → Public Key)
+emailjs.init("E9Yqa7Mg4iP67r-sh");
+
+(function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const statusEl = form.querySelector('.submit-status');
+  const submitBtn = form.querySelector('.btn-transmit');
+  const btnLabel = submitBtn.querySelector('.btn-label');
+
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function setStatus(message, type) {
+    statusEl.textContent = message;
+    statusEl.classList.remove('is-success', 'is-error');
+    if (type) statusEl.classList.add(type);
+    statusEl.classList.add('is-visible');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const messageInput = document.getElementById('contact-message');
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (!name || !email || !message) {
+      setStatus('Please fill in all fields.', 'is-error');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setStatus('Please enter a valid email address.', 'is-error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    btnLabel.textContent = 'Sending...';
+
+    // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID with your EmailJS service and template IDs
+    emailjs.sendForm('service_5ccwdw1', 'template_6zeaumx', form)
+      .then(function () {
+        setStatus('Message sent successfully.', 'is-success');
+        form.reset();
+      })
+      .catch(function () {
+        setStatus('Failed to send. Please try again.', 'is-error');
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Transmit Requirements';
+      });
+  });
+})();

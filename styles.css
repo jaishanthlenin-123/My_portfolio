@@ -377,14 +377,36 @@
   }
   .contact-info p{margin-top:20px;font-size:17px;line-height:1.6;color:var(--text-dim);max-width:420px;}
 
-  .contact-links{margin-top:36px;display:flex;flex-direction:column;gap:16px;}
-  .contact-link{
-    display:flex;align-items:center;gap:12px;
-    color:var(--text-dim);font-size:14.5px;
-    transition:color .2s ease;
-  }
-  .contact-link:hover{color:var(--text);}
-  .c-icon{width:18px;height:18px;color:var(--blue);flex-shrink:0;}
+  .contact-links{
+  margin-top:36px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.contact-link{
+  display:flex;align-items:center;gap:12px;
+  color:var(--text-dim);font-size:14.5px;
+  padding:13px 18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.02);
+  cursor:pointer;
+  transition:color .25s ease, transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.contact-link:hover{
+  color:var(--text);
+  transform:translateY(-3px);
+  border-color:rgba(41,151,255,0.4);
+  background:rgba(41,151,255,0.07);
+  box-shadow:0 14px 28px rgba(0,0,0,0.35);
+}
+.c-icon{
+  width:18px;height:18px;color:var(--blue);flex-shrink:0;
+  transition:transform .3s ease;
+}
+.contact-link:hover .c-icon{
+  transform:rotate(8deg) scale(1.1);
+}
 
   .contact-form{
     background:#111114;border:1px solid rgba(255,255,255,0.08);
@@ -421,7 +443,16 @@
     display:flex;align-items:center;justify-content:center;gap:7px;
     margin-top:18px;font-size:12.5px;color:#6e6e73;
   }
-  .submit-status{opacity:0;transition:opacity .3s ease;}
+  .submit-status{opacity:0;transition:opacity .3s ease;
+  margin-top:14px;
+  font-size:13.5px;
+  text-align:center;
+  font-weight:600;
+}
+.submit-status.is-visible{opacity:1;}
+.submit-status.is-success{color:#34c759;}
+.submit-status.is-error{color:#ff6b6b;}
+.btn-transmit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 
   footer{
     padding:32px 22px;text-align:center;font-size:12px;color:var(--text-dim);
