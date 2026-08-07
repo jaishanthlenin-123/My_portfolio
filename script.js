@@ -300,23 +300,65 @@ const weeklyUpdates = [
   {
     week: 2,
     dates: "Aug 3 – Aug 7",
-    status: "upcoming",
-    title: "Cleaning Mechanism",
-    summaryShort: "Designed rotating brush and water spray system.",
-    summary: "Designed the rotating brush and high-pressure cleaning system.",
-    goals: ["Efficient grease removal", "Water optimization", "Brush mechanism"],
-    completed: ["Brush concept", "Spray nozzle layout", "Cleaning workflow"],
-    challenges: "Heavy grease deposits.",
-    skills: ["Mechanical Systems", "Cleaning Automation"],
-    tech: ["Robotics", "Embedded Systems"],
-    achievements: ["Brush mechanism prototyped", "Cleaning workflow mapped end-to-end"],
+    status: "completed",
+    title: "Python, App Development & Design Thinking",
+
+    summaryShort: "Attended sessions on Frugal Innovation and Applied Design Thinking, solved coding problems, learned Python basics, and developed applications using MIT App Inventor and Scratch.",
+
+    summary: "During Week 2 of ProtoSem, I attended an interactive session on Frugal Innovation, where I learned how to develop cost-effective and impactful solutions using limited resources. I also participated in an Applied Design Thinking session that introduced a structured approach to understanding user needs and solving real-world problems. As part of the technical training, I covered Python programming fundamentals and solved five 'Think Like a Coder' programming challenges to strengthen my logical thinking. Additionally, I explored visual programming by developing applications using MIT App Inventor and creating interactive projects in Scratch.",
+
+    goals: [
+        "Learn the fundamentals of Python programming",
+        "Develop logical thinking through coding challenges",
+        "Understand the principles of Frugal Innovation",
+        "Apply Design Thinking to solve real-world problems",
+        "Build applications using visual programming tools"
+    ],
+
+    completed: [
+        "Attended the Frugal Innovation session",
+        "Participated in the Applied Design Thinking session",
+        "Covered Python programming basics",
+        "Solved five 'Think Like a Coder' programming problems",
+        "Developed applications using MIT App Inventor",
+        "Created interactive projects using Scratch"
+    ],
+
+    challenges: "Applying programming logic to solve coding problems, understanding new Python concepts, and designing functional applications using block-based programming tools.",
+
+    skills: [
+        "Python Programming",
+        "Problem Solving",
+        "Logical Thinking",
+        "App Development",
+        "Design Thinking",
+        "Creativity",
+        "Innovation"
+    ],
+
+    tech: [
+        "Python",
+        "MIT App Inventor",
+        "Scratch",
+        "Applied Design Thinking",
+        "Frugal Innovation"
+    ],
+
+    achievements: [
+        "Successfully completed five coding challenges",
+        "Built applications using MIT App Inventor",
+        "Developed interactive Scratch projects",
+        "Strengthened Python programming fundamentals",
+        "Learned practical approaches to innovation and design thinking"
+    ],
+
     images: [
         "images/week2/a.png",
-        "images/week2/b.png",
+        "images/week2/b.jpeg",
         "images/week2/c.png",
         "images/week2/d.png"
     ]
-  },
+},
   {
     week: 3,
     dates: "Aug 10 – Aug 14",
