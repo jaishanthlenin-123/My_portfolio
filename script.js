@@ -356,7 +356,8 @@ const weeklyUpdates = [
         "images/week2/a.png",
         "images/week2/b.jpeg",
         "images/week2/c.png",
-        "images/week2/d.png"
+        "images/week2/d.jpg",
+        "images/week2/e.jpg"
     ]
 },
   {
