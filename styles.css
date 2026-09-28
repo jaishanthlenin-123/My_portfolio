@@ -174,7 +174,7 @@
       color: #2997ff;
   }
 
-  .task-section { margin-bottom: 80px; padding-top: 80px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .task-section { margin-bottom: 80px; padding-top: 80px; border-top: 1px solid rgba(255,255,255,0.1); scroll-margin-top: 130px; }
   .task-section h2.task-title {
       font-size: 28px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 30px;
       color: var(--blue);
