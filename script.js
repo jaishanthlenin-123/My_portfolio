@@ -898,35 +898,3 @@ emailjs.init("E9Yqa7Mg4iP67r-sh");
 // ==========================================================================
 // Intersection Observer for Active Task highlighting
 // ==========================================================================
-document.addEventListener("DOMContentLoaded", () => {
-    const taskSections = document.querySelectorAll('.task-section');
-    const taskLinks = document.querySelectorAll('.task-tab');
-
-    if (taskSections.length === 0 || taskLinks.length === 0) return;
-
-    const taskObserverOptions = {
-        root: null,
-        rootMargin: '-10% 0px -70% 0px',
-        threshold: 0
-    };
-
-    const taskObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const activeId = entry.target.id;
-                taskLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + activeId) {
-                        link.classList.add('active');
-                        // Smooth scroll navigation horizontally on mobile to show the active item
-                        link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                    }
-                });
-            }
-        });
-    }, taskObserverOptions);
-
-    taskSections.forEach(section => {
-        taskObserver.observe(section);
-    });
-});
