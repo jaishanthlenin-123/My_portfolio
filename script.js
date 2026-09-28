@@ -363,33 +363,328 @@ const weeklyUpdates = [
   {
     week: 3,
     dates: "Aug 10 – Aug 14",
-    status: "upcoming",
-    title: "Prototype & Presentation",
-    summaryShort: "Prepared ProtoSem presentation and finalized prototype design.",
-    summary: "Completed prototype concept and prepared the ProtoSem presentation.",
-    goals: ["Final documentation", "Presentation", "Design review"],
-    completed: ["Finalized slides", "Prototype improvements", "Documentation"],
-    challenges: "Time management.",
-    skills: ["Presentation", "Project Management"],
-    tech: ["Documentation", "Presentation"],
-    achievements: ["Presentation deck finalized", "Prototype design locked in"],
-    image:"images/week3.jpg"
-  },
+    status: "completed",
+    title: "Computational Hardware & Fusion 360",
+
+    summaryShort: "Learned about computational hardware, explored Fusion 360, converted a clay model into a digital CAD model, participated in a paper plane race, and created a dimension-based part model.",
+
+    summary: "During Week 3 of ProtoSem, we were introduced to computational hardware and learned the basics of Fusion 360. We first created a physical clay model and then used it as a reference to recreate the design digitally in Fusion 360, helping us understand the connection between physical prototyping and CAD modelling. We also designed paper planes and raced them as part of a hands-on activity that explored how design affects performance. Finally, we created a part model in Fusion 360 using given dimensions, developing our understanding of accurate and dimension-based CAD modelling.",
+
+    goals: [
+        "Understand the fundamentals of computational hardware",
+        "Learn the basics of Fusion 360 and CAD modelling",
+        "Convert physical designs into digital CAD models",
+        "Understand how design affects performance",
+        "Develop accuracy in dimension-based modelling"
+    ],
+
+    completed: [
+        "Attended an introduction to computational hardware",
+        "Learned the fundamentals of Fusion 360",
+        "Created a clay model and recreated it digitally in Fusion 360",
+        "Designed and raced paper planes",
+        "Created a part model using given dimensions"
+    ],
+
+    challenges: "Translating the shape of the physical clay model into a digital CAD model and creating an accurate part model while following the given dimensions.",
+
+    skills: [
+        "CAD Modelling",
+        "Fusion 360",
+        "3D Design",
+        "Physical Prototyping",
+        "Problem Solving",
+        "Design Thinking",
+        "Dimensional Accuracy"
+    ],
+
+    tech: [
+        "Computational Hardware",
+        "Fusion 360",
+        "CAD Modelling",
+        "Physical Prototyping"
+    ],
+
+    achievements: [
+        "Successfully created a digital CAD model using a clay model as reference",
+        "Gained hands-on experience with Fusion 360",
+        "Participated in the paper plane design and racing activity",
+        "Successfully created a dimension-based part model",
+        "Developed a better understanding of the connection between physical and digital design"
+    ],
+
+    images: [
+        "images/week3/a.png",
+        "images/week3/b.png",
+        "images/week3/c.png",
+        "images/week3/d.png"
+    ]
+},
   {
     week: 4,
     dates: "Aug 17 – Aug 21",
-    status: "upcoming",
-    title: "Prototype & Presentation",
-    summaryShort: "Prepared ProtoSem presentation and finalized prototype design.",
-    summary: "Completed prototype concept and prepared the ProtoSem presentation.",
-    goals: ["Final documentation", "Presentation", "Design review"],
-    completed: ["Finalized slides", "Prototype improvements", "Documentation"],
-    challenges: "Time management.",
-    skills: ["Presentation", "Project Management"],
-    tech: ["Documentation", "Presentation"],
-    achievements: ["Presentation deck finalized", "Prototype design locked in"],
-    image:"images/week3.jpg"
-  }
+    status: "completed",
+    title: "Animation, Laser Cutting & 3D Printing",
+
+    summaryShort: "Explored animation in Fusion 360, prepared a fidget spinner for laser cutting using RDWorks, and learned the fundamentals of 3D printing with Bambu Lab.",
+
+    summary: "During Week 4 of ProtoSem, I explored animation, digital fabrication, and 3D printing. I created a water bottle animation in Fusion 360 to understand how motion can communicate the functionality and working of a product. I also created an assembly animation to demonstrate how different components come together and interact as part of a complete mechanical assembly. I was introduced to RDWorks for preparing designs for laser cutting and worked on a fidget spinner design, taking it from a digital file to a physical prototype. Alongside laser cutting, I learned the fundamentals of 3D printing using Bambu Lab, including the basic process of preparing a 3D model, slicing, and understanding print settings before printing. These activities helped me understand how digital designs can be communicated, fabricated, and transformed into physical products.",
+
+    goals: [
+        "Explore animation and motion in Fusion 360",
+        "Understand how assembly animations communicate product functionality",
+        "Learn the basics of laser cutting and RDWorks",
+        "Prepare digital designs for physical fabrication",
+        "Understand the fundamentals of 3D printing and slicing"
+    ],
+
+    completed: [
+        "Created a water bottle animation in Fusion 360",
+        "Created an assembly animation to demonstrate component interaction",
+        "Learned the basics of RDWorks for laser cutting",
+        "Prepared a fidget spinner design for laser cutting",
+        "Created a physical prototype using laser cutting",
+        "Learned the fundamentals of 3D printing using Bambu Lab",
+        "Explored slicing and basic 3D printing settings"
+    ],
+
+    challenges: "Understanding how to use animation to clearly communicate product functionality, preparing the fidget spinner design correctly for laser cutting, and understanding the basic slicing and print settings required for 3D printing.",
+
+    skills: [
+        "Fusion 360",
+        "CAD Modelling",
+        "Animation",
+        "Assembly Modelling",
+        "Laser Cutting",
+        "3D Printing",
+        "Digital Fabrication",
+        "Prototyping"
+    ],
+
+    tech: [
+        "Fusion 360",
+        "RDWorks",
+        "Bambu Lab",
+        "Laser Cutting",
+        "3D Printing"
+    ],
+
+    achievements: [
+        "Created a water bottle animation in Fusion 360",
+        "Developed an assembly animation showing component interaction",
+        "Prepared a fidget spinner design for laser cutting",
+        "Gained hands-on experience with digital fabrication",
+        "Learned the fundamentals of 3D printing and slicing using Bambu Lab"
+    ],
+
+    images: [
+        "images/week4/a.png",
+        "images/week4/b.png",
+        "images/week4/c.png",
+        "images/week4/d.png"
+    ]
+},
+{
+    week: 5,
+    dates: "Aug 24 – Aug 28",
+    status: "completed",
+    title: "UI/UX, Problem Statements & Market Exploration",
+
+    summaryShort: "Explored UI/UX fundamentals, participated in a marketplace session with clients and startups, and studied real-world problems to identify potential product opportunities.",
+
+    summary: "During Week 5 of ProtoSem, I explored the fundamentals of UI/UX design and learned how user needs, usability, and problem discovery influence product development. I focused on understanding users and their requirements before moving towards solution development, looking beyond visual design to consider how users interact with a product or system. We also participated in a marketplace session where clients and startup companies presented real-world problem statements. This gave me an opportunity to explore industry-oriented challenges, understand different problem areas, and identify potential opportunities for developing practical solutions. Alongside this, we worked on user discovery and requirement understanding to identify the needs of target users. Overall, Week 5 strengthened my understanding of UI/UX thinking, user research, requirement gathering, and problem definition.",
+
+    goals: [
+        "Understand the fundamentals of UI/UX design",
+        "Learn the importance of user needs and usability",
+        "Explore real-world industry problem statements",
+        "Understand user discovery and requirement gathering",
+        "Identify potential opportunities for product development"
+    ],
+
+    completed: [
+        "Learned the fundamentals of UI/UX design",
+        "Explored user needs and usability principles",
+        "Participated in the marketplace session",
+        "Interacted with problem statements presented by clients and startups",
+        "Studied real-world problems and potential product opportunities",
+        "Worked on user discovery and requirement understanding"
+    ],
+
+    challenges: "Understanding user needs from real-world problem statements, identifying the actual requirements behind a problem, and moving beyond surface-level observations to define meaningful product opportunities.",
+
+    skills: [
+        "UI/UX Design",
+        "User Research",
+        "Problem Identification",
+        "Requirement Gathering",
+        "User Discovery",
+        "Market Exploration",
+        "Critical Thinking",
+        "Product Thinking"
+    ],
+
+    tech: [
+        "UI/UX Design",
+        "User Research",
+        "Problem Statements",
+        "Requirement Analysis",
+        "Market Exploration"
+    ],
+
+    achievements: [
+        "Gained a foundational understanding of UI/UX design",
+        "Participated in a marketplace session with clients and startups",
+        "Explored real-world industry problem statements",
+        "Practiced identifying user needs and requirements",
+        "Developed a better understanding of problem-to-product thinking"
+    ],
+
+    images: [
+        "images/week5/a.png",
+        "images/week5/b.png",
+        "images/week5/c.png",
+        "images/week5/d.png"
+    ]
+},
+{
+    week: 6,
+    dates: "Aug 31 – Sep 4",
+    status: "completed",
+    title: "Microcontrollers, Embedded Systems & Soldering",
+
+    summaryShort: "Learned the fundamentals of microcontrollers, microprocessors, and embedded systems while gaining hands-on experience with sensors, actuators, soldering, and electronic circuit assembly.",
+
+    summary: "During Week 6 of ProtoSem, I explored the fundamentals of microcontrollers, microprocessors, and embedded systems. I learned about the basic architecture and working principles of embedded systems and how electronic systems interact with the physical environment. I was introduced to sensors and actuators and their roles in embedded applications, helping me understand how systems receive information and respond through physical actions. I also gained hands-on experience in soldering and desoldering electronic components, improving my confidence in handling circuit boards and electronic components. As a practical activity, I successfully soldered a 555 timer circuit using LEDs, resistors, and a capacitor. Building the circuit provided practical experience in making electronic connections and assembling components into a functional circuit.",
+
+    goals: [
+        "Understand the fundamentals of microcontrollers and microprocessors",
+        "Learn the basic concepts of embedded systems",
+        "Understand the role of sensors and actuators",
+        "Develop basic soldering and desoldering skills",
+        "Gain practical experience in electronic circuit assembly"
+    ],
+
+    completed: [
+        "Learned the fundamentals of microcontrollers and microprocessors",
+        "Explored the architecture and working principles of embedded systems",
+        "Learned about sensors and actuators",
+        "Practiced soldering and desoldering electronic components",
+        "Successfully soldered a 555 timer circuit",
+        "Built the circuit using LEDs, resistors, and a capacitor"
+    ],
+
+    challenges: "Handling electronic components carefully during soldering and desoldering, making accurate circuit connections, and understanding how individual components work together to form a functional electronic circuit.",
+
+    skills: [
+        "Embedded Systems",
+        "Microcontrollers",
+        "Microprocessors",
+        "Electronics",
+        "Soldering",
+        "Desoldering",
+        "Circuit Assembly",
+        "Hardware Handling"
+    ],
+
+    tech: [
+        "Microcontrollers",
+        "Microprocessors",
+        "Embedded Systems",
+        "Sensors",
+        "Actuators",
+        "555 Timer",
+        "LEDs",
+        "Electronic Components"
+    ],
+
+    achievements: [
+        "Gained a foundational understanding of embedded systems",
+        "Learned the roles of sensors and actuators in electronic systems",
+        "Developed hands-on soldering and desoldering skills",
+        "Successfully assembled and soldered a 555 timer circuit",
+        "Improved confidence in handling electronic components and circuit boards"
+    ],
+
+    images: [
+        "images/week6/a.png",
+        "images/week6/b.png",
+        "images/week6/c.png",
+        "images/week6/d.png"
+    ]
+},
+{
+    week: 7,
+    dates: "Sep 7 – Sep 11",
+    status: "completed",
+    title: "IoT, Connectivity & RTOS",
+
+    summaryShort: "Developed connected applications using Arduino IDE and ESP32, completed four IoT tasks involving web, cloud, and voice communication, and learned the fundamentals of RTOS.",
+
+    summary: "During Week 7 of ProtoSem, I explored Internet of Things (IoT), connectivity, and Real-Time Operating Systems (RTOS). I worked with Arduino IDE and ESP32 to understand how hardware devices communicate with web interfaces and cloud platforms. I completed four practical IoT tasks covering web-based LED control, MQTT cloud communication, voice-based control, and a Firebase-powered smart home system. These activities provided hands-on experience in connecting hardware with software and cloud services. I also explored the fundamentals of RTOS, including tasks, scheduling, and real-time execution, and applied these concepts through a small practical project. Overall, Week 7 strengthened my understanding of ESP32 development, IoT communication, cloud connectivity, voice-based control, and real-time systems.",
+
+    goals: [
+        "Understand the fundamentals of IoT and connected systems",
+        "Learn ESP32 development using Arduino IDE",
+        "Explore web and cloud communication with IoT devices",
+        "Understand MQTT and Firebase-based connectivity",
+        "Learn the fundamentals of Real-Time Operating Systems"
+    ],
+
+    completed: [
+        "Developed a web-based LED control system using ESP32",
+        "Implemented MQTT-based cloud communication",
+        "Explored voice-based control of an IoT device",
+        "Developed a Firebase-powered smart home system",
+        "Worked with ESP32 using Arduino IDE",
+        "Learned RTOS fundamentals including tasks and scheduling",
+        "Applied RTOS concepts through a practical project"
+    ],
+
+    challenges: "Connecting the ESP32 with different software and cloud platforms, understanding communication between hardware and web services, configuring IoT communication methods, and understanding task scheduling and real-time execution in RTOS.",
+
+    skills: [
+        "IoT Development",
+        "ESP32",
+        "Arduino IDE",
+        "Web Communication",
+        "Cloud Connectivity",
+        "MQTT",
+        "Firebase",
+        "Voice Control",
+        "RTOS",
+        "Task Scheduling"
+    ],
+
+    tech: [
+        "ESP32",
+        "Arduino IDE",
+        "MQTT",
+        "Firebase",
+        "IoT",
+        "RTOS",
+        "Web Interface",
+        "Cloud Communication"
+    ],
+
+    achievements: [
+        "Completed four practical IoT tasks using ESP32",
+        "Built a web-based LED control system",
+        "Implemented MQTT-based cloud communication",
+        "Explored voice-controlled IoT interaction",
+        "Developed a Firebase-powered smart home system",
+        "Gained a foundational understanding of RTOS and task scheduling"
+    ],
+
+    images: [
+        "images/week7/a.png",
+        "images/week7/b.png",
+        "images/week7/c.png",
+        "images/week7/d.png"
+    ],
+
+    detailLink: "week7-details.html"
+},
 ];
 
 (function initWeeklyUpdates() {
@@ -431,6 +726,8 @@ const weeklyUpdates = [
   const skillsEl = document.getElementById('week-modal-skills');
   const techEl = document.getElementById('week-modal-tech');
   const achievementsEl = document.getElementById('week-modal-achievements');
+  const moreLinkWrapEl = document.getElementById('week-modal-more-wrap');
+  const moreLinkEl = document.getElementById('week-modal-more-link');
   const prevBtn = document.getElementById('week-prev-btn');
   const nextBtn = document.getElementById('week-next-btn');
 
@@ -466,6 +763,16 @@ if (imagesEl) {
         imagesEl.innerHTML = "<p>No images available.</p>";
     }
 }
+
+    // Show a "View More Detailed" link only for weeks that define one
+    if (moreLinkWrapEl && moreLinkEl) {
+      if (w.detailLink) {
+        moreLinkEl.href = w.detailLink;
+        moreLinkWrapEl.style.display = '';
+      } else {
+        moreLinkWrapEl.style.display = 'none';
+      }
+    }
 
     prevBtn.disabled = index === 0;
     nextBtn.disabled = index === weeklyUpdates.length - 1;
@@ -587,3 +894,39 @@ emailjs.init("E9Yqa7Mg4iP67r-sh");
       });
   });
 })();
+
+// ==========================================================================
+// Intersection Observer for Active Task highlighting
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const taskSections = document.querySelectorAll('.task-section');
+    const taskLinks = document.querySelectorAll('.task-tab');
+
+    if (taskSections.length === 0 || taskLinks.length === 0) return;
+
+    const taskObserverOptions = {
+        root: null,
+        rootMargin: '-10% 0px -70% 0px',
+        threshold: 0
+    };
+
+    const taskObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeId = entry.target.id;
+                taskLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + activeId) {
+                        link.classList.add('active');
+                        // Smooth scroll navigation horizontally on mobile to show the active item
+                        link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                });
+            }
+        });
+    }, taskObserverOptions);
+
+    taskSections.forEach(section => {
+        taskObserver.observe(section);
+    });
+});

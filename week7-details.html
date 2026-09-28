@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 7 - IoT, Connectivity & RTOS</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Local overrides for the standalone page */
+  body {
+      background-color: #000;
+      color: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+  }
+  .week7-page-container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 60px 22px;
+  }
+  .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #2997ff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.8; }
+  .week7-header {
+      text-align: center;
+      margin: 40px 0 60px;
+  }
+  .week7-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+  }
+  .badge-week {
+      color: #2997ff;
+      background: rgba(41,151,255,0.1);
+      padding: 6px 14px;
+      border-radius: 999px;
+  }
+  .badge-status {
+      color: #34c759;
+      background: rgba(52,199,89,0.1);
+      padding: 6px 14px;
+      border-radius: 999px;
+  }
+  .week7-header h1 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+  }
+  .week7-header p {
+      font-size: 18px;
+      color: #a1a1a6;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<main class="week7-page-container">
+  <div style="margin-bottom: 20px;">
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to Portfolio
+      </a>
+  </div>
+
+  <div class="week7-header reveal">
+    <div class="week7-badges">
+        <span class="badge-week">Week 7</span>
+        <span class="badge-status">Completed</span>
+    </div>
+    <h1>IoT, Connectivity &amp; RTOS</h1>
+    <p>
+      Developed connected applications using Arduino IDE and ESP32, explored web and cloud communication through four IoT tasks, and learned the fundamentals of Real-Time Operating Systems.
+    </p>
+  </div>
+
+<!-- NAVIGATION -->
+    <div class="week7-task-nav reveal">
+      <div class="task-nav">
+        <a href="#week7-task1" class="task-tab active">TASK 1</a>
+        <a href="#week7-task2" class="task-tab">TASK 2</a>
+        <a href="#week7-task3" class="task-tab">TASK 3</a>
+        <a href="#week7-task4" class="task-tab">TASK 4</a>
+        <a href="#week7-task5" class="task-tab">TASK 5</a>
+      </div>
+    </div>
+
+<!-- ===================== TASK 1 ===================== -->
+  <section id="week7-task1" class="task-section">
+    <h2 class="task-title">TASK 1: ESP32 Web Server &amp; HTML LED Control</h2>
+    
+    <div class="detail-section">
+      <h3 class="sub-heading">1. Overview</h3>
+      <p>The objective of this task was to control an ESP32-connected LED through a locally hosted webpage. By turning the ESP32 into a standalone web server, any device on the same Wi-Fi network can interact with it via standard HTTP requests without requiring external cloud services.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">2. Concepts</h3>
+      <ul class="detail-list">
+        <li><strong>ESP32 Web Server:</strong> Utilizing the ESP32's capabilities to store and serve HTML content.</li>
+        <li><strong>Wi-Fi Communication:</strong> Establishing local network connectivity.</li>
+        <li><strong>HTTP Request/Response:</strong> Handling GET requests triggered by browser interactions.</li>
+        <li><strong>Browser-to-ESP32 Communication:</strong> Mapping specific URLs to hardware commands.</li>
+        <li><strong>GPIO Control:</strong> Driving digital pins based on software logic.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">3. System Design</h3>
+      <div class="arch-block">
+Phone / Laptop Browser
+        ↓
+      Wi-Fi
+        ↓
+      ESP32
+        ↓
+      GPIO
+        ↓
+       LED</div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">4. Hardware &amp; Software Components</h3>
+      <h4>Hardware</h4>
+      <ul class="detail-list">
+        <li>ESP32 Development Board</li>
+        <li>5mm LED</li>
+        <li>220Ω Resistor</li>
+        <li>Jumper Wires</li>
+        <li>Breadboard</li>
+      </ul>
+      <h4>Software</h4>
+      <ul class="detail-list">
+        <li>Arduino IDE</li>
+        <li>HTML / CSS</li>
+        <li>ESP32 Arduino framework (WiFi.h, WebServer.h)</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">5. Wiring / Setup</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Component</th><th>ESP32 Pin</th></tr>
+          <tr><td>LED Anode (long leg, via 220Ω resistor)</td><td>GPIO 2</td></tr>
+          <tr><td>LED Cathode (short leg)</td><td>GND</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">6. Implementation</h3>
+      <div class="code-caption">ESP32 Web Server Logic</div>
+      <pre class="code-block">
+#include &lt;WiFi.h&gt;
+#include &lt;WebServer.h&gt;
+
+const char* ssid = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
+const int ledPin = 2; // Using GPIO 2
+
+WebServer server(80);
+
+// HTML content
+const char webpage[] PROGMEM = R"rawliteral(
+&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;
+&lt;h1&gt;ESP32 LED Control&lt;/h1&gt;
+&lt;a href="/on"&gt;TURN ON&lt;/a&gt;
+&lt;a href="/off"&gt;TURN OFF&lt;/a&gt;
+&lt;/body&gt;&lt;/html&gt;
+)rawliteral";
+
+void handleRoot() {
+  server.send(200, "text/html", webpage);
+}
+
+void handleOn() {
+  digitalWrite(ledPin, HIGH);
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void handleOff() {
+  digitalWrite(ledPin, LOW);
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) delay(500);
+  
+  server.on("/", handleRoot);
+  server.on("/on", handleOn);
+  server.on("/off", handleOff);
+  server.begin();
+}
+
+void loop() {
+  server.handleClient();
+}</pre>
+      <p><strong>Wi-Fi Connection:</strong> The ESP32 connects to the local network using predefined credentials.<br>
+      <strong>Web Server Creation:</strong> A server is initialized on port 80 to listen for incoming HTTP traffic.<br>
+      <strong>HTML Interface:</strong> The HTML is stored in PROGMEM and contains anchor tags that act as control buttons.<br>
+      <strong>HTTP Routes:</strong> `server.on()` maps the root path to the HTML page, and `/on` / `/off` paths to GPIO control functions.<br>
+      <strong>GPIO Control:</strong> Triggering the specific HTTP routes alters the state of GPIO 2.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">7. Configuration</h3>
+      <ol class="detail-olist">
+        <li>Install ESP32 boards manager in Arduino IDE.</li>
+        <li>Update the Wi-Fi credentials in the code.</li>
+        <li>Upload the sketch and open the Serial Monitor (115200 baud).</li>
+        <li>Retrieve the assigned IP address.</li>
+        <li>Access the IP address from a browser on the same network.</li>
+      </ol>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">8. Evidence</h3>
+      
+      <h4>Images &amp; Screenshots</h4>
+      <div class="evidence-gallery">
+        <div class="evidence-image">
+          <img src="images/week7/task1/hardware/setup.jpg" alt="ESP32 hardware setup">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">ESP32 Hardware Setup<span class="sub-cap">Physical board setup on breadboard.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task1/wiring/circuit.jpg" alt="Circuit / wiring">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Circuit / Wiring<span class="sub-cap">Detailed view of the GPIO 2 connection.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task1/code/ide.png" alt="Arduino IDE code">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Arduino IDE Code<span class="sub-cap">Code compilation and upload process.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task1/interface/web.png" alt="Web interface">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Web Interface<span class="sub-cap">The locally hosted HTML page.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task1/hardware/led-off.jpg" alt="LED OFF state">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">LED OFF State<span class="sub-cap">Hardware response to /off route.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task1/hardware/led-on.jpg" alt="LED ON state">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">LED ON State<span class="sub-cap">Hardware response to /on route.</span></div>
+        </div>
+      </div>
+
+      <h4>Video Demonstration</h4>
+      <div class="week-video-card">
+        <div class="video-container">
+          <video controls id="vid-task1">
+              <source src="videos/week7/task1.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder" id="vid-placeholder-task1" style="display:none;">
+              <span>▶</span>
+              <p>Demo video to be added</p>
+          </div>
+        </div>
+        <div class="video-info">
+            <h4>Task 1 — ESP32 Web Server LED Control</h4>
+            <p>Demonstration of controlling the ESP32 LED through the web interface.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">9. Challenges &amp; Fixes</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Challenge</th><th>Fix</th></tr>
+          <tr><td>Browser timeout when accessing the IP.</td><td>Ensured phone and ESP32 were connected to the exact same Wi-Fi band and network.</td></tr>
+          <tr><td>Page state not updating smoothly.</td><td>Implemented a 303 Redirect header in the HTTP response to reload the page seamlessly.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">10. Reflection</h3>
+      <blockquote class="reflection">
+        This task clarified how HTTP requests work at a fundamental level. Using the ESP32 as both the physical controller and the web server provided a great introduction to localized IoT networks without needing external cloud reliance.
+      </blockquote>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">11. Repository Link</h3>
+      <a class="repo-btn" href="#" target="_blank">View Task 1 Source <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== TASK 2 ===================== -->
+  <section id="week7-task2" class="task-section">
+    <h2 class="task-title">TASK 2: Adafruit IO Dashboard &amp; MQTT</h2>
+    
+    <div class="detail-section">
+      <h3 class="sub-heading">1. Overview</h3>
+      <p>This task shifted from local network control to cloud-based IoT communication using Adafruit IO and the MQTT protocol. It allows global control of the ESP32-connected LED via a cloud dashboard.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">2. Concepts</h3>
+      <ul class="detail-list">
+        <li><strong>MQTT:</strong> A lightweight messaging protocol ideal for IoT.</li>
+        <li><strong>Broker:</strong> The central server (Adafruit IO) managing messages.</li>
+        <li><strong>Publisher / Subscriber:</strong> Devices can send (publish) or listen (subscribe) to specific data streams.</li>
+        <li><strong>Topic / Feed:</strong> The specific channel where data is published or subscribed.</li>
+        <li><strong>Adafruit IO:</strong> A cloud platform tailored for IoT visualization and broker services.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">3. System Design</h3>
+      <div class="arch-block">
+Adafruit IO Dashboard (Publisher)
+  ↓
+Adafruit IO Broker (MQTT Topic)
+  ↓
+ESP32 (Subscriber)
+  ↓
+LED Control</div>
+      <p>The dashboard publishes a state ("ON"/"OFF") to the MQTT feed. The ESP32 subscribes to this feed and updates the LED based on incoming messages.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">4. Hardware &amp; Software Components</h3>
+      <ul class="detail-list">
+        <li><strong>Hardware:</strong> ESP32, 5mm LED, 220Ω Resistor, Breadboard.</li>
+        <li><strong>Software:</strong> Arduino IDE, Adafruit MQTT Library, Adafruit IO Platform.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">5. Wiring / Setup</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Component</th><th>ESP32 Pin</th></tr>
+          <tr><td>LED Anode</td><td>GPIO 2</td></tr>
+          <tr><td>LED Cathode</td><td>GND</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">6. Implementation</h3>
+      <div class="code-caption">MQTT Subscription Logic (Redacted Credentials)</div>
+      <pre class="code-block">
+#define AIO_SERVER      "io.adafruit.com"
+#define AIO_SERVERPORT  1883
+#define AIO_USERNAME    "[REDACTED]"
+#define AIO_KEY         "[REDACTED]"
+
+Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
+Adafruit_MQTT_Subscribe led_feed = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/led");
+
+void setup() {
+  pinMode(2, OUTPUT);
+  mqtt.subscribe(&led_feed);
+}
+
+void loop() {
+  MQTT_connect();
+  Adafruit_MQTT_Subscribe *subscription;
+  while ((subscription = mqtt.readSubscription(5000))) {
+    if (subscription == &led_feed) {
+      String state = (char *)led_feed.lastread;
+      if (state == "ON") digitalWrite(2, HIGH);
+      if (state == "OFF") digitalWrite(2, LOW);
+    }
+  }
+}</pre>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">7. Configuration</h3>
+      <ol class="detail-olist">
+        <li>Create an Adafruit IO account.</li>
+        <li>Create a new Feed named `led`.</li>
+        <li>Create a Dashboard and add a Toggle Block connected to the `led` feed.</li>
+        <li>Insert the Adafruit IO Username and Key into the ESP32 code.</li>
+        <li>Ensure the ESP32 maintains a persistent MQTT connection in the loop.</li>
+      </ol>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">8. Evidence</h3>
+      
+      <h4>Images &amp; Screenshots</h4>
+      <div class="evidence-gallery">
+        <div class="evidence-image">
+          <img src="images/week7/task2/hardware/setup.jpg" alt="ESP32 hardware setup">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">ESP32 Hardware Setup<span class="sub-cap">Circuit ready for cloud control.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task2/mqtt/architecture.png" alt="MQTT architecture">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">MQTT Architecture<span class="sub-cap">Visual communication flow.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task2/adafruit/account.png" alt="Adafruit IO account">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Adafruit IO Setup<span class="sub-cap">Account and broker configuration.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task2/adafruit/feed.png" alt="Adafruit IO feed">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Adafruit IO Feed<span class="sub-cap">The data stream configuration.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task2/dashboard/control.png" alt="Dashboard ON/OFF control">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Dashboard Control<span class="sub-cap">The toggle UI on Adafruit IO.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task2/hardware/response.jpg" alt="Physical LED response">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Physical LED Response<span class="sub-cap">LED reacting to dashboard toggle.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task2/mqtt/code.png" alt="Arduino IDE MQTT code">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">MQTT Code Logic<span class="sub-cap">Subscription handling in IDE.</span></div>
+        </div>
+      </div>
+
+      <h4>Video Demonstration</h4>
+      <div class="week-video-card">
+        <div class="video-container">
+          <video controls id="vid-task2">
+              <source src="videos/week7/task2.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder" id="vid-placeholder-task2" style="display:none;">
+              <span>▶</span>
+              <p>Demo video to be added</p>
+          </div>
+        </div>
+        <div class="video-info">
+            <h4>Task 2 — Adafruit IO Dashboard &amp; MQTT</h4>
+            <p>Adafruit IO + MQTT — Cloud LED Control Demonstration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">9. Challenges &amp; Fixes</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Challenge</th><th>Fix</th></tr>
+          <tr><td>ESP32 disconnecting from the MQTT Broker randomly.</td><td>Added a robust `MQTT_connect()` function to handle reconnections automatically in the loop.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">10. Reflection</h3>
+      <blockquote class="reflection">
+        Moving to MQTT showcased the power of publish/subscribe architecture. It decoupled the client and server directly, meaning my ESP32 didn't need to expose itself to the public internet—it just securely connected outward to Adafruit IO.
+      </blockquote>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">11. Repository Link</h3>
+      <a class="repo-btn" href="#" target="_blank">View Task 2 Source <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== TASK 3 ===================== -->
+  <section id="week7-task3" class="task-section">
+    <h2 class="task-title">TASK 3: IFTTT + Adafruit IO IoT Automation</h2>
+    
+    <div class="detail-section">
+      <h3 class="sub-heading">1. Overview</h3>
+      <p>This task integrated IFTTT (If This Then That) with Adafruit IO to create event-driven automation, triggering actions on the ESP32 based on external conditions without manual intervention.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">2. Concepts</h3>
+      <ul class="detail-list">
+        <li><strong>IoT Automation:</strong> Creating rules where devices react to specific events dynamically.</li>
+        <li><strong>IFTTT:</strong> A web-based service that chains simple conditional statements (Applets).</li>
+        <li><strong>Trigger:</strong> The "If This" portion (e.g., specific time, weather event, or button press).</li>
+        <li><strong>Action:</strong> The "Then That" portion (sending data to Adafruit IO).</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">3. System Design</h3>
+      <div class="arch-block">
+External Event (Trigger)
+   ↓
+IFTTT Applet (Logic)
+   ↓
+Adafruit IO Feed (Action / Publish)
+   ↓
+ESP32 (Subscribe)
+   ↓
+Hardware Action (e.g. LED)</div>
+      <p>The trigger activates the IFTTT Applet, which publishes a predefined payload to the Adafruit IO feed. The ESP32, constantly subscribed to this feed, reads the payload and executes the hardware action.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">4. Hardware &amp; Software Components</h3>
+      <ul class="detail-list">
+        <li><strong>Hardware:</strong> ESP32, LED setup.</li>
+        <li><strong>Software:</strong> IFTTT Platform, Adafruit IO, Arduino IDE.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">5. Wiring / Setup</h3>
+      <p>The wiring remains identical to Task 2 (GPIO 2 to LED).</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">6. Implementation</h3>
+      <p>No new ESP32 code was required compared to Task 2. The intelligence and logic were implemented entirely in the cloud via IFTTT. The ESP32 continued acting as a dumb client listening to the Adafruit IO feed.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">7. Configuration</h3>
+      <ol class="detail-olist">
+        <li>Created an IFTTT account and connected the Adafruit service.</li>
+        <li>Configured an Applet: "If [Trigger], Then Send data to Adafruit IO feed 'led'".</li>
+        <li>Set the data payload to "ON" or "OFF" based on the trigger.</li>
+        <li>Tested the Applet to ensure the webhook successfully bridged to MQTT.</li>
+      </ol>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">8. Evidence</h3>
+      
+      <h4>Images &amp; Screenshots</h4>
+      <div class="evidence-gallery">
+        <div class="evidence-image">
+          <img src="images/week7/task3/ifttt/applet.png" alt="IFTTT Applet">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">IFTTT Applet<span class="sub-cap">The created automation rule.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task3/ifttt/trigger.png" alt="IFTTT Trigger">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">IFTTT Trigger<span class="sub-cap">The specific event condition.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task3/ifttt/action.png" alt="IFTTT Action">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">IFTTT Action<span class="sub-cap">Publishing to Adafruit IO.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task3/adafruit/feed.png" alt="Adafruit IO feed">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Adafruit Feed Update<span class="sub-cap">Data arriving from IFTTT.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task3/automation/hardware.jpg" alt="ESP32 hardware">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Hardware Status<span class="sub-cap">Board waiting for automation.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task3/automation/result.jpg" alt="Automation result">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Automation Result<span class="sub-cap">LED triggered autonomously.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task3/automation/dashboard.png" alt="Dashboard output">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Dashboard Output<span class="sub-cap">Visual sync across platforms.</span></div>
+        </div>
+      </div>
+
+      <h4>Video Demonstration</h4>
+      <div class="week-video-card">
+        <div class="video-container">
+          <video controls id="vid-task3">
+              <source src="videos/week7/task3.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder" id="vid-placeholder-task3" style="display:none;">
+              <span>▶</span>
+              <p>Demo video to be added</p>
+          </div>
+        </div>
+        <div class="video-info">
+            <h4>Task 3 — IFTTT + Adafruit IO IoT Automation</h4>
+            <p>Demonstration of IFTTT trigger correctly communicating through Adafruit to the ESP32.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">9. Challenges &amp; Fixes</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Challenge</th><th>Fix</th></tr>
+          <tr><td>Latency between the IFTTT trigger and the ESP32 response.</td><td>Noted that IFTTT can have inherent delays depending on the service API (polling vs webhooks). Used a webhook trigger for near-instant testing.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">10. Reflection</h3>
+      <blockquote class="reflection">
+        This task was conceptually important because it demonstrated API interoperability. Connecting IFTTT to Adafruit IO proved that you don't have to code every integration manually—leveraging existing cloud platforms allows for powerful automation ecosystems.
+      </blockquote>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">11. Repository Link</h3>
+      <a class="repo-btn" href="#" target="_blank">View Task 3 Source <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== TASK 4 ===================== -->
+  <section id="week7-task4" class="task-section">
+    <h2 class="task-title">TASK 4: Firebase IoT Monitoring Dashboard</h2>
+    
+    <div class="detail-section">
+      <h3 class="sub-heading">1. Overview</h3>
+      <p>This comprehensive task focused on building a secure, custom IoT monitoring dashboard using Firebase. It integrated real sensors (DHT11, LDR) and demonstrated how to sync embedded hardware data directly with a modern web database.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">2. Concepts</h3>
+      <ul class="detail-list">
+        <li><strong>Firebase Realtime Database (RTDB):</strong> A NoSQL database that synchronizes data in real-time across connected clients.</li>
+        <li><strong>Authentication vs Authorization:</strong> Authentication verifies identity (who you are), while authorization verifies permissions (what you can access). Firebase rules were used to secure the database.</li>
+        <li><strong>Cloud Computing Models:</strong> Utilizing Firebase as a BaaS (Backend-as-a-Service).</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">3. System Architecture</h3>
+      <div class="arch-block">
+Sensors (DHT11, LDR)
+ ↓
+ESP32
+ ↓
+Firebase Realtime Database
+ ↓
+Web Dashboard (HTML/JS)
+ ↓
+Authenticated User</div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">4. Hardware &amp; Software Components</h3>
+      <ul class="detail-list">
+        <li><strong>Hardware:</strong> ESP32, DHT11 (Temperature/Humidity), LDR (Light Sensor), LED/Bulb.</li>
+        <li><strong>Software:</strong> Arduino IDE, Firebase ESP32 Library, Firebase Web SDK, Custom HTML/CSS/JS Dashboard.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">5. Wiring / Setup</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Component</th><th>ESP32 Pin</th></tr>
+          <tr><td>DHT11 Data Pin</td><td>GPIO 4</td></tr>
+          <tr><td>LDR (Analog Read)</td><td>GPIO 34 (ADC)</td></tr>
+          <tr><td>LED / Bulb Relay</td><td>GPIO 2</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">6. Implementation</h3>
+      <p>The ESP32 reads analog values from the LDR and digital data from the DHT11. It formats this data and patches it to a specific node in the Firebase RTDB. Simultaneously, a web dashboard uses Firebase Authentication to log a user in, securely read those nodes in real-time, and write to a 'bulb' node to trigger hardware changes.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">7. Configuration</h3>
+      <ol class="detail-olist">
+        <li>Created a Firebase Project and registered a Web App.</li>
+        <li>Enabled Email/Password Authentication and created a test user.</li>
+        <li>Provisioned a Realtime Database and established read/write rules requiring authentication.</li>
+        <li>Configured the ESP32 with the Firebase project API key and database URL.</li>
+        <li>Developed a custom front-end dashboard to ingest and display the database paths visually.</li>
+      </ol>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">8. Evidence</h3>
+      
+      <h4>Images &amp; Screenshots</h4>
+      <div class="evidence-gallery">
+        <div class="evidence-image">
+          <img src="images/week7/task4/hardware/setup.jpg" alt="ESP32 hardware">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">ESP32 Hardware<span class="sub-cap">Overall board setup.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/hardware/dht11.jpg" alt="DHT11 wiring">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">DHT11 Wiring<span class="sub-cap">Temperature/Humidity sensor connection.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/hardware/ldr.jpg" alt="LDR wiring">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">LDR Wiring<span class="sub-cap">Light dependent resistor setup.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/firebase/project.png" alt="Firebase project">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Firebase Console<span class="sub-cap">Project configuration overview.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/authentication/login.png" alt="Firebase Auth">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Authentication<span class="sub-cap">Firebase Auth user setup.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/firebase/rtdb.png" alt="Firebase RTDB">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Realtime Database<span class="sub-cap">Live JSON data structure.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/dashboard/login-page.png" alt="Login page">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Dashboard Login<span class="sub-cap">Custom secure access portal.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/dashboard/main.png" alt="IoT dashboard">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Main Dashboard<span class="sub-cap">UI visualizing sensor telemetry.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/dashboard/bulb.png" alt="Bulb control">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Bulb Control<span class="sub-cap">Dashboard interface for relay/LED.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task4/hardware/prototype.jpg" alt="Physical prototype">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Physical Prototype<span class="sub-cap">The complete assembled system.</span></div>
+        </div>
+      </div>
+
+      <h4>Video Demonstration</h4>
+      <div class="week-video-card">
+        <div class="video-container">
+          <video controls id="vid-task4">
+              <source src="videos/week7/task4.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder" id="vid-placeholder-task4" style="display:none;">
+              <span>▶</span>
+              <p>Demo video to be added</p>
+          </div>
+        </div>
+        <div class="video-info">
+            <h4>Task 4 — Firebase IoT Monitoring Dashboard</h4>
+            <p>Firebase IoT Monitoring Dashboard — Complete Demonstration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">9. Challenges &amp; Fixes</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Challenge</th><th>Fix</th></tr>
+          <tr><td>Firebase Library conflicts on ESP32.</td><td>Used the official `Firebase ESP32 Client` library and ensured ArduinoJSON dependencies were matched.</td></tr>
+          <tr><td>Dashboard failing to read data.</td><td>Corrected Firebase Security Rules to allow read/write only if `auth != null`.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">10. Reflection</h3>
+      <blockquote class="reflection">
+        Building a custom dashboard integrated with Firebase was a significant step up from using off-the-shelf platforms like Adafruit IO. It required understanding web technologies (HTML/JS), database structuring, and security fundamentals.
+      </blockquote>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">11. Repository Link</h3>
+      <a class="repo-btn" href="#" target="_blank">View Task 4 Source <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== TASK 5 ===================== -->
+  <section id="week7-task5" class="task-section">
+    <h2 class="task-title">TASK 5: Firebase Logging, Automation &amp; Data Export</h2>
+    
+    <div class="detail-section">
+      <h3 class="sub-heading">1. Overview</h3>
+      <p>The final task culminated in a professional-grade IoT implementation. It expanded Task 4 by adding historical data logging, automated logic (threshold-based control), and the ability to visualize and export the telemetry data via CSV.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">2. Concepts</h3>
+      <ul class="detail-list">
+        <li><strong>Data Logging:</strong> Pushing sequential records instead of overwriting a single node.</li>
+        <li><strong>Edge Automation:</strong> The ESP32 evaluates LDR readings locally to automate lighting, reducing cloud latency.</li>
+        <li><strong>Data Visualization:</strong> Plotting historical RTDB data on dashboard charts.</li>
+        <li><strong>CSV Export:</strong> Converting JSON database objects into tabular format for external analysis.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">3. System Architecture</h3>
+      <div class="arch-block">
+[MANUAL MODE]
+User → Dashboard → Firebase → ESP32 → Bulb
+
+[AUTOMATIC MODE]
+LDR → ESP32 → Threshold Logic → Bulb
+
+[LOGGING]
+Sensors (DHT11/LDR) → ESP32 → Firebase /logs → Dashboard Charts & CSV</div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">4. Hardware &amp; Software Components</h3>
+      <ul class="detail-list">
+        <li><strong>Hardware:</strong> Same as Task 4 (ESP32, DHT11, LDR, LED).</li>
+        <li><strong>Software:</strong> Firebase ESP32, Chart.js for visualization, custom JS for CSV conversion.</li>
+      </ul>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">5. Wiring / Setup</h3>
+      <p>Wiring remained consistent with Task 4, maintaining the robust sensor ecosystem.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">6. Implementation</h3>
+      <p>The ESP32 script was modified to push timestamped objects to a `/logs` node in Firebase periodically. Furthermore, a `mode` variable (Auto/Manual) was monitored. If Auto, the ESP32 used the LDR threshold to toggle the bulb. The Dashboard used Chart.js to render the `/logs` array into graphs, and a JavaScript blob function was implemented to download the logs as a `.csv` file.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">7. Configuration</h3>
+      <ol class="detail-olist">
+        <li>Structured the RTDB to include a `logs/` directory.</li>
+        <li>Implemented NTP (Network Time Protocol) on the ESP32 for accurate timestamps.</li>
+        <li>Added a Mode switch on the web dashboard.</li>
+        <li>Integrated Chart.js script into the dashboard HTML.</li>
+      </ol>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">8. Evidence</h3>
+      
+      <h4>Images &amp; Screenshots</h4>
+      <div class="evidence-gallery">
+        <div class="evidence-image">
+          <img src="images/week7/task5/hardware/prototype.jpg" alt="Complete prototype">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Hardware System<span class="sub-cap">The final assembled prototype.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/dashboard/manual.png" alt="Manual mode">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Manual Mode<span class="sub-cap">Dashboard set to user control.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/dashboard/auto.png" alt="Automatic mode">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Automatic Mode<span class="sub-cap">Dashboard set to LDR threshold.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/firebase/logs.png" alt="Firebase database logs">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Firebase Logs<span class="sub-cap">Sequential data in RTDB.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/firebase/timestamps.png" alt="Timestamped data">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Timestamps<span class="sub-cap">Accurate NTP-based time records.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/charts/chart.png" alt="Data visualization chart">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Historical Chart<span class="sub-cap">Data rendered via Chart.js.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/csv/export-btn.png" alt="CSV export button">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">Export Interface<span class="sub-cap">The UI for triggering a download.</span></div>
+        </div>
+        <div class="evidence-image">
+          <img src="images/week7/task5/csv/file.png" alt="Downloaded CSV file">
+          <div class="image-placeholder" style="display:none;"><span>Image to be added</span></div>
+          <div class="image-caption">CSV Data<span class="sub-cap">Tabular data ready for analysis.</span></div>
+        </div>
+      </div>
+
+      <h4>Video Demonstration</h4>
+      <div class="week-video-card">
+        <div class="video-container">
+          <video controls id="vid-task5">
+              <source src="videos/week7/task5.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder" id="vid-placeholder-task5" style="display:none;">
+              <span>▶</span>
+              <p>Demo video to be added</p>
+          </div>
+        </div>
+        <div class="video-info">
+            <h4>Task 5 — Firebase Logging, Automation &amp; Data Export</h4>
+            <p>Firebase Logging + Automation + Data Export — Complete System Demonstration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">9. Challenges &amp; Fixes</h3>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <tr><th>Challenge</th><th>Fix</th></tr>
+          <tr><td>Firebase database growing too rapidly due to high-frequency logging.</td><td>Implemented a delay logic to push data only once every 5 minutes or upon significant threshold changes.</td></tr>
+          <tr><td>Accurate time-stamping for offline events.</td><td>Configured the ESP32 to ping an NTP server on boot to sync internal clocks.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">10. Reflection</h3>
+      <blockquote class="reflection">
+        This task brought everything together. I learned that a professional IoT system isn't just about turning things on and off; it involves robust data retention, edge logic for resilience, and providing stakeholders with actionable data via exports. It perfectly summarized the RTOS and Connectivity themes of the week.
+      </blockquote>
+    </div>
+
+    <div class="detail-section">
+      <h3 class="sub-heading">11. Repository Link</h3>
+      <a class="repo-btn" href="#" target="_blank">View Task 5 Source <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  
+  
+
+  <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to Portfolio
+      </a>
+  </div>
+</main>
+
+<footer style="text-align: center; padding: 40px; color: #6e6e73; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;">
+  © 2026 Jaishanth Lenin. Designed with care.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
