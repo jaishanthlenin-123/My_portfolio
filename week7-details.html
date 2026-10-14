@@ -99,6 +99,43 @@
   .media-slot.video-slot .video-container { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; display:flex;}
   .media-slot.video-slot video { width: 100%; height: 100%; object-fit: contain; }
   .placeholder-box { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-dim); background: #0a0a0c; font-size: 14px; font-weight: 600; letter-spacing: 1px; }
+
+  /* Enhanced Media Captions */
+  .media-caption {
+    padding: 14px 18px;
+    background: rgba(11, 15, 25, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .media-caption h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0 0 5px 0;
+    letter-spacing: -0.01em;
+  }
+  .media-caption p {
+    font-size: 12.5px;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .media-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 7px;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+  }
   
   @media (max-width: 800px) {
     .media-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -270,7 +307,7 @@
   /* --- TASK 5 IMAGE GRID --- */
   .task5-image-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-top: 16px;
     margin-bottom: 24px;
@@ -1436,6 +1473,11 @@ void loop() {
       <div class="media-grid">
         <div class="media-slot image-slot">
           <img src="images/week7/task1/1.jpeg" alt="Task 1 ESP32 Web Server Physical Setup" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Hardware Setup</span>
+            <h5>ESP32 Web Server Bench Assembly</h5>
+            <p>ESP32 Dev Module wired on breadboard with indicator LED and USB serial flashing connection during local Wi-Fi station setup.</p>
+          </div>
         </div>
         <div class="media-slot video-slot">
           <div class="video-container">
@@ -1443,6 +1485,11 @@ void loop() {
               <source src="videos/week7/task1.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
+          </div>
+          <div class="media-caption">
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <h5>Local Web Server LED Control</h5>
+            <p>Demonstrating browser-based HTTP control to toggle the physical breadboard LED across the local LAN.</p>
           </div>
         </div>
       </div>
@@ -2525,6 +2572,11 @@ void MQTT_connect() {
       <div class="media-grid">
         <div class="media-slot image-slot">
           <img src="images/week7/task2/2.jpeg" alt="Task 2 Adafruit IO and MQTT Hardware Setup" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Cloud Hardware</span>
+            <h5>Adafruit IO MQTT & 230V AC Relay Interface</h5>
+            <p>Pairing the ESP32 microcontroller with an Adafruit IO cloud dashboard to control an AC filament lamp via a 5V relay module.</p>
+          </div>
         </div>
         <div class="media-slot video-slot">
           <div class="video-container">
@@ -2532,6 +2584,11 @@ void MQTT_connect() {
               <source src="videos/week7/task2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
+          </div>
+          <div class="media-caption">
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <h5>MQTT Cloud Feed Actuation</h5>
+            <p>Low-latency MQTT publish and subscribe communication actuating the relay coil and lighting the lamp.</p>
           </div>
         </div>
       </div>
@@ -3778,6 +3835,11 @@ void MQTT_connect() {
       <div class="media-grid">
         <div class="media-slot image-slot">
           <img src="images/week7/task3/3.jpeg" alt="Task 3 IFTTT and Adafruit IO Automation Setup" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Automation Setup</span>
+            <h5>IFTTT Webhook Voice Control Testing</h5>
+            <p>Conducting smartphone-triggered voice automation tests linking Google Assistant/IFTTT webhooks to Adafruit IO feeds.</p>
+          </div>
         </div>
         <div class="media-slot video-slot">
           <div class="video-container">
@@ -3785,6 +3847,11 @@ void MQTT_connect() {
               <source src="videos/week7/task3.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
+          </div>
+          <div class="media-caption">
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <h5>Voice & Webhook Cloud-to-Cloud Automation</h5>
+            <p>End-to-end demonstration of verbal command triggers dispatching REST webhooks to toggle the AC bulb via MQTT.</p>
           </div>
         </div>
       </div>
@@ -5453,18 +5520,43 @@ window.toggleBulbState = () =&gt; {
       <div class="media-grid">
         <div class="media-slot image-slot">
           <img src="images/week7/task4/4.jpeg" alt="Task 4 Firebase IoT Prototype Setup" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Lab Bench</span>
+            <h5>Firebase Dual-Terminal Testing Setup</h5>
+            <p>Complete lab environment with ESP32 streaming DHT11 and LDR sensor readings to Firebase Realtime Database and laptop UI.</p>
+          </div>
         </div>
         <div class="media-slot image-slot">
-          <img src="images/week7/task4/4 (1).jpeg" alt="Task 4 Hardware and Sensor Wiring" loading="lazy">
+          <img src="images/week7/task4/4 (1).jpeg" alt="Task 4 Smart Environment Monitor Authentication" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Authentication</span>
+            <h5>ENV-04 Security & Sign-In Portal</h5>
+            <p>Dedicated authentication view verifying authorized operator credentials before granting access to live IoT controls.</p>
+          </div>
         </div>
         <div class="media-slot image-slot">
-          <img src="images/week7/task4/4 (2).jpeg" alt="Task 4 Multi-Sensor Configuration" loading="lazy">
+          <img src="images/week7/task4/4 (2).jpeg" alt="Task 4 Live Telemetry & Control Dashboard" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Live Dashboard</span>
+            <h5>Real-Time Telemetry & Dual Mode Controls</h5>
+            <p>Live sensor readings (Temperature 28.5&deg;C, Humidity 64%, Light 750 raw) with Automatic/Manual operating mode toggles.</p>
+          </div>
         </div>
         <div class="media-slot image-slot">
-          <img src="images/week7/task4/4 (3).jpeg" alt="Task 4 Firebase Dashboard and Relay Setup" loading="lazy">
+          <img src="images/week7/task4/4 (3).jpeg" alt="Task 4 Live Graphs (Temperature and Humidity)" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Live Charts</span>
+            <h5>Temperature & Humidity Dynamic Streams</h5>
+            <p>Real-time telemetry line charts plotting ambient temperature trends and relative humidity fluctuations.</p>
+          </div>
         </div>
         <div class="media-slot image-slot">
-          <img src="images/week7/task4/4 (4).jpeg" alt="Task 4 Circuit Execution Overview" loading="lazy">
+          <img src="images/week7/task4/4 (4).jpeg" alt="Task 4 LDR Light Curve and Historical Export" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">History & Export</span>
+            <h5>LDR Light Level Curve & Log History</h5>
+            <p>Ambient light tracking graph alongside time-stamped telemetry logs and one-click CSV export functionality.</p>
+          </div>
         </div>
         <div class="media-slot video-slot">
           <div class="video-container">
@@ -5473,13 +5565,10 @@ window.toggleBulbState = () =&gt; {
               Your browser does not support the video tag.
             </video>
           </div>
-        </div>
-        <div class="media-slot video-slot">
-          <div class="video-container">
-            <video controls preload="metadata">
-              <source src="videos/week7/task4.2.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+          <div class="media-caption">
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <h5>Task 4.1: Firebase Cloud Actuation</h5>
+            <p>Live demonstration of sub-second WebSockets synchronization toggling the AC lamp via Firebase RTDB.</p>
           </div>
         </div>
       </div>
@@ -6565,7 +6654,14 @@ window.toggleBulbState = () =&gt; {
         <h4>WHAT IT IS</h4>
         <p>Visual proof of the final frontend application displaying the live telemetry alongside the historical chart and export tools.</p>
 
-        
+        <div class="media-slot image-slot" style="margin: 24px 0;">
+          <img src="images/week7/task5/task5-dashboard.png" alt="Task 5 Integrated Analytical & Automation Dashboard" loading="lazy" style="width: 100%; height: auto; border-radius: 14px; display: block; border: 1px solid rgba(56, 189, 248, 0.25);">
+          <div class="media-caption">
+            <span class="media-badge">Frontend Architecture</span>
+            <h5>Integrated Analytical & Edge Automation Dashboard</h5>
+            <p>Unified panel displaying real-time FreeRTOS Core 0 telemetry KPIs, dual historical trend curves (Temperature/Humidity & LDR with threshold line), operational phase validation, and one-click RFC 4180 CSV export.</p>
+          </div>
+        </div>
 
         <h4>WHAT I DID</h4>
         <p>I captured the complete user interface showing all features integrated into a single cohesive layout.</p>
@@ -7093,13 +7189,36 @@ window.exportHistoricDataToCSV = async () =&gt; {
       <h4 style="font-size: 13.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; margin: 24px 0 16px; font-weight: 700;">Representative Project Images</h4>
       <div class="task5-image-grid">
         <div class="media-slot image-slot">
-          <img src="images/week7/task5/5.jpeg" alt="Task 5 Hardware Circuit & ESP32 Setup" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; display: block;">
+          <img src="images/week7/task5/5.jpeg" alt="Task 5 Hardware Circuit & ESP32 Setup" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; display: block;">
+          <div class="media-caption">
+            <span class="media-badge">Hardware Test</span>
+            <h5>Edge Automation Bench Setup</h5>
+            <p>ESP32 dual-core breadboard circuit with LDR, DHT11, and 5V relay module actuating an AC lamp under manual sensor coverage.</p>
+          </div>
+        </div>
+        <div class="media-slot image-slot">
+          <img src="images/week7/task5/task5-dashboard.png" alt="Task 5 Integrated Analytical & Automation Dashboard" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; display: block;">
+          <div class="media-caption">
+            <span class="media-badge">Dashboard UI</span>
+            <h5>Analytical & Automation Dashboard</h5>
+            <p>Complete dashboard view with live state pills, 5 KPI cards, dual SVG charts, and 30-sample historical telemetry log.</p>
+          </div>
         </div>
         <div class="media-slot image-slot">
           <img src="images/week7/task5/5.1.png" alt="Task 5 Telemetry Analytics & Sensor Charts" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; display: block;">
+          <div class="media-caption">
+            <span class="media-badge">Analytics Chart</span>
+            <h5>Telemetry Time-Series Trends</h5>
+            <p>High-resolution visualization of ambient room temperature and relative humidity progression across 31 historical intervals.</p>
+          </div>
         </div>
         <div class="media-slot image-slot">
           <img src="images/week7/task5/5.2.png" alt="Task 5 Historical Data Point Inspection" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; display: block;">
+          <div class="media-caption">
+            <span class="media-badge">Data Inspection</span>
+            <h5>Interactive Coordinate Inspection</h5>
+            <p>Hover cursor tooltip inspecting individual telemetry coordinate (Sample 18: Temperature 38.007&deg;C) for granular quality auditing.</p>
+          </div>
         </div>
       </div>
 
@@ -7111,6 +7230,11 @@ window.exportHistoricDataToCSV = async () =&gt; {
               <source src="videos/week7/task5.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
+          </div>
+          <div class="media-caption">
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <h5>Autonomous Edge Lighting & LDR Trigger</h5>
+            <p>Physical demonstration of LDR occlusion triggering instant autonomous relay actuation without cloud round-trip delay.</p>
           </div>
         </div>
       </div>

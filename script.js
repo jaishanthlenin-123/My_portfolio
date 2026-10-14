@@ -619,26 +619,26 @@ const weeklyUpdates = [
     status: "completed",
     title: "IoT, Connectivity & RTOS",
 
-    summaryShort: "Developed connected applications using Arduino IDE and ESP32, completed four IoT tasks involving web, cloud, and voice communication, and learned the fundamentals of RTOS.",
+    summaryShort: "Completed five comprehensive IoT and RTOS tasks using ESP32: local web server LED control, Adafruit IO MQTT telemetry, IFTTT voice automation, Firebase RTDB real-time sync, and FreeRTOS edge logging with analytical CSV export.",
 
-    summary: "During Week 7 of ProtoSem, I explored Internet of Things (IoT), connectivity, and Real-Time Operating Systems (RTOS). I worked with Arduino IDE and ESP32 to understand how hardware devices communicate with web interfaces and cloud platforms. I completed four practical IoT tasks covering web-based LED control, MQTT cloud communication, voice-based control, and a Firebase-powered smart home system. These activities provided hands-on experience in connecting hardware with software and cloud services. I also explored the fundamentals of RTOS, including tasks, scheduling, and real-time execution, and applied these concepts through a small practical project. Overall, Week 7 strengthened my understanding of ESP32 development, IoT communication, cloud connectivity, voice-based control, and real-time systems.",
+    summary: "During Week 7 of ProtoSem, I explored Internet of Things (IoT), connectivity, and Real-Time Operating Systems (RTOS). I worked with Arduino IDE, ESP32, and cloud architectures to engineer 5 progressive IoT systems: (1) Local embedded web server for hardware LED control, (2) Adafruit IO MQTT broker telemetry for AC bulb switching, (3) IFTTT webhook and voice-driven cloud automation, (4) Firebase Realtime Database live streaming with authenticated dashboard, and (5) FreeRTOS dual-core multitasking edge automation with historical time-series logging and client-side CSV data export. Overall, Week 7 solidified my ability to bridge physical sensors, embedded C++ firmware, cloud NoSQL pipelines, and responsive analytics interfaces.",
 
     goals: [
-        "Understand the fundamentals of IoT and connected systems",
-        "Learn ESP32 development using Arduino IDE",
-        "Explore web and cloud communication with IoT devices",
-        "Understand MQTT and Firebase-based connectivity",
-        "Learn the fundamentals of Real-Time Operating Systems"
+        "Understand the fundamentals of IoT protocols, connectivity, and embedded networking",
+        "Master ESP32 dual-core firmware development and FreeRTOS task scheduling",
+        "Implement local web servers (HTTP) and cloud messaging brokers (MQTT)",
+        "Connect cloud-to-cloud reactive automation pipelines via IFTTT webhooks",
+        "Build secure Google Firebase RTDB streaming and historical time-series logging",
+        "Design and implement analytical dashboards with RFC 4180 CSV telemetry export"
     ],
 
     completed: [
-        "Developed a web-based LED control system using ESP32",
-        "Implemented MQTT-based cloud communication",
-        "Explored voice-based control of an IoT device",
-        "Developed a Firebase-powered smart home system",
-        "Worked with ESP32 using Arduino IDE",
-        "Learned RTOS fundamentals including tasks and scheduling",
-        "Applied RTOS concepts through a practical project"
+        "Task 1: Programmed an ESP32 HTTP web server for local Wi-Fi LED toggling",
+        "Task 2: Integrated Adafruit IO MQTT broker and 5V relay module to switch an AC lamp",
+        "Task 3: Configured IFTTT webhooks and voice commands for hands-free cloud automation",
+        "Task 4: Developed a real-time Firebase RTDB smart environment monitor and web UI",
+        "Task 5: Implemented FreeRTOS Core 0 edge logic, Core 1 cloud push logging, and CSV export",
+        "Created comprehensive technical reference manuals and 30-record benchmark telemetry dataset"
     ],
 
     challenges: "Connecting the ESP32 with different software and cloud platforms, understanding communication between hardware and web services, configuring IoT communication methods, and understanding task scheduling and real-time execution in RTOS.",
@@ -668,19 +668,28 @@ const weeklyUpdates = [
     ],
 
     achievements: [
-        "Completed four practical IoT tasks using ESP32",
-        "Built a web-based LED control system",
-        "Implemented MQTT-based cloud communication",
-        "Explored voice-controlled IoT interaction",
-        "Developed a Firebase-powered smart home system",
-        "Gained a foundational understanding of RTOS and task scheduling"
+        "Engineered 5 fully functional, documented IoT systems from local LAN to multi-cloud",
+        "Mastered HTTP, MQTT, REST Webhooks, and WebSockets/SSE streaming protocols",
+        "Successfully deployed FreeRTOS preemptive multitasking on ESP32 dual-core architecture",
+        "Designed analytical dashboard with dual time-series charts and RFC 4180 CSV export",
+        "Authored project documentation including datasheets, wiring schematics, and code repositories"
     ],
 
     images: [
-        "images/week7/a.png",
-        "images/week7/b.png",
-        "images/week7/c.png",
-        "images/week7/d.png"
+        "images/week7/task1/1.jpeg",
+        "images/week7/task2/2.jpeg",
+        "images/week7/task3/3.jpeg",
+        "images/week7/task4/4.jpeg",
+        "images/week7/task5/5.jpeg",
+        "images/week7/task5/task5-dashboard.png"
+    ],
+
+    videos: [
+        { title: "Task 1: ESP32 Local Web Server LED Control", src: "videos/week7/task1.mp4" },
+        { title: "Task 2: Adafruit IO & MQTT AC Bulb Actuation", src: "videos/week7/task2.mp4" },
+        { title: "Task 3: IFTTT + Voice Command IoT Automation", src: "videos/week7/task3.mp4" },
+        { title: "Task 4: Firebase Realtime Database Monitoring", src: "videos/week7/task4.1.mp4" },
+        { title: "Task 5: Autonomous Edge Lighting & LDR Trigger", src: "videos/week7/task5.mp4" }
     ],
 
     detailLink: "week7-details.html"
@@ -706,6 +715,17 @@ const weeklyUpdates = [
         </div>
         <h4>${w.title}</h4>
         <p>${w.summaryShort}</p>
+        <div class="timeline-action-row">
+          <span class="timeline-view-btn">
+            View Details
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+          ${w.detailLink ? `
+            <a href="${w.detailLink}" class="timeline-doc-link" onclick="event.stopPropagation();" title="Open full Week ${w.week} documentation">
+              Full Documentation ↗
+            </a>
+          ` : ''}
+        </div>
       </div>
     </div>
   `).join('');
@@ -751,18 +771,41 @@ const weeklyUpdates = [
     achievementsEl.innerHTML = w.achievements.map(a => `<li>${a}</li>`).join('');
     techEl.innerHTML = w.tech.map(t => `<span class="chip">${t}</span>`).join('');
 
-    // Display the image for the selected week
-    const imagesEl = document.getElementById("week-modal-images");
+    // Pause any playing videos before rendering new week
+    overlay.querySelectorAll('video').forEach(vid => vid.pause());
 
-if (imagesEl) {
-    if (w.images && w.images.length > 0) {
+    // Display the images for the selected week
+    const imagesEl = document.getElementById("week-modal-images");
+    if (imagesEl) {
+      if (w.images && w.images.length > 0) {
         imagesEl.innerHTML = w.images.map(img => `
-            <img src="${img}" alt="${w.title}">
+          <img src="${img}" alt="${w.title}">
         `).join("");
-    } else {
-        imagesEl.innerHTML = "<p>No images available.</p>";
+      } else {
+        imagesEl.innerHTML = "<p style='color:var(--text-dim); font-size:13px;'>No images available for this week.</p>";
+      }
     }
-}
+
+    // Display videos if defined
+    const videosWrapEl = document.getElementById("week-modal-videos-wrap");
+    const videosEl = document.getElementById("week-modal-videos");
+    if (videosWrapEl && videosEl) {
+      if (w.videos && w.videos.length > 0) {
+        videosEl.innerHTML = w.videos.map(v => `
+          <div class="week-modal-video-card">
+            <video controls preload="metadata">
+              <source src="${v.src}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="week-modal-video-title">${v.title}</div>
+          </div>
+        `).join("");
+        videosWrapEl.style.display = '';
+      } else {
+        videosEl.innerHTML = '';
+        videosWrapEl.style.display = 'none';
+      }
+    }
 
     // Show a "View More Detailed" link only for weeks that define one
     if (moreLinkWrapEl && moreLinkEl) {
