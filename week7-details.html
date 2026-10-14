@@ -809,9 +809,9 @@
         <rect x="0" y="0" width="14" height="270" fill="#0f172a" rx="3"/>
         <text x="-22" y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D23</text>
         <text x="-22" y="185" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D4</text>
-        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 ★</text>
+        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 â˜…</text>
         <circle cx="7" cy="202" r="5.5" fill="#38bdf8" filter="url(#t1Glow)"/>
-        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="7" cy="242" r="5" fill="#94a3b8"/>
       </g>
     </g>
@@ -830,7 +830,7 @@
       <rect x="58" y="3" width="7" height="24" fill="#ea580c"/>
       <rect x="72" y="3" width="7" height="24" fill="#78350f"/>
       <rect x="92" y="3" width="7" height="24" fill="#eab308"/>
-      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Ω Resistor</text>
+      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Î© Resistor</text>
       <text x="70" y="42" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Current Limiting</text>
     </g>
 
@@ -860,8 +860,8 @@
     <g transform="translate(480, 20)">
       <rect x="0" y="0" width="370" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
       <text x="18" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="bold">Electrical Parameters:</text>
-      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">• ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
-      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">• Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
+      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
+      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
     </g>
   </svg>
 </div>
@@ -886,7 +886,7 @@
         <td>ESP32 &rarr; LED</td>
       </tr>
       <tr>
-        <td><strong>330Ω Resistor</strong></td>
+        <td><strong>330Î© Resistor</strong></td>
         <td>In-Series Lead</td>
         <td>Connected in-line</td>
         <td>Current limiter (prevents overcurrent on GPIO 2)</td>
@@ -954,7 +954,7 @@
         <td>ESP32 &rarr; LED</td>
       </tr>
       <tr>
-        <td><strong>330Ω Resistor</strong></td>
+        <td><strong>330Î© Resistor</strong></td>
         <td>In-Series Lead</td>
         <td>Connected in-line</td>
         <td>Current limiter (prevents overcurrent on GPIO 2)</td>
@@ -1472,6 +1472,14 @@ void loop() {
       <h3 class="topic-title">TASK 1 MEDIA</h3>
       <div class="media-grid">
         <div class="media-slot image-slot">
+          <img src="images/week7/task1/dashboard.jpg" alt="Task 1 ESP32 Web Server Control Dashboard" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Web Controller</span>
+            <h5>ESP32 Web Server Controller Dashboard</h5>
+            <p>Interactive web dashboard providing GPIO 2 LED control, system diagnostics, CPU frequency, heap utilization, and HTTP activity log.</p>
+          </div>
+        </div>
+        <div class="media-slot image-slot">
           <img src="images/week7/task1/1.jpeg" alt="Task 1 ESP32 Web Server Physical Setup" loading="lazy">
           <div class="media-caption">
             <span class="media-badge">Hardware Setup</span>
@@ -1652,7 +1660,7 @@ void loop() {
         <td>ESP32 &rarr; LED</td>
       </tr>
       <tr>
-        <td><strong>330Ω Resistor</strong></td>
+        <td><strong>330Î© Resistor</strong></td>
         <td>In-Series Lead</td>
         <td>Connected in-line</td>
         <td>Current limiter (prevents overcurrent on GPIO 2)</td>
@@ -1721,9 +1729,9 @@ void loop() {
         <rect x="0" y="0" width="14" height="270" fill="#0f172a" rx="3"/>
         <text x="-22" y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D23</text>
         <text x="-22" y="185" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D4</text>
-        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 ★</text>
+        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 â˜…</text>
         <circle cx="7" cy="202" r="5.5" fill="#38bdf8" filter="url(#t1Glow)"/>
-        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="7" cy="242" r="5" fill="#94a3b8"/>
       </g>
     </g>
@@ -1742,7 +1750,7 @@ void loop() {
       <rect x="58" y="3" width="7" height="24" fill="#ea580c"/>
       <rect x="72" y="3" width="7" height="24" fill="#78350f"/>
       <rect x="92" y="3" width="7" height="24" fill="#eab308"/>
-      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Ω Resistor</text>
+      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Î© Resistor</text>
       <text x="70" y="42" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Current Limiting</text>
     </g>
 
@@ -1772,8 +1780,8 @@ void loop() {
     <g transform="translate(480, 20)">
       <rect x="0" y="0" width="370" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
       <text x="18" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="bold">Electrical Parameters:</text>
-      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">• ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
-      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">• Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
+      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
+      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
     </g>
   </svg>
 </div>
@@ -1892,12 +1900,12 @@ void loop() {
       <rect width="220" height="280" rx="12" fill="url(#t2BlueGrad)" stroke="#38bdf8" stroke-width="2"/>
       <rect x="20" y="20" width="180" height="35" rx="6" fill="#0284c7"/>
       <text x="110" y="42" fill="#fff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">ESP32 EDGE CLIENT</text>
-      <text x="25" y="85" fill="#f8fafc" font-family="monospace" font-size="11">• WiFiClient.h</text>
-      <text x="25" y="110" fill="#f8fafc" font-family="monospace" font-size="11">• Adafruit_MQTT_Client</text>
-      <text x="25" y="135" fill="#38bdf8" font-family="monospace" font-size="11">• Subscribed: /led-control</text>
+      <text x="25" y="85" fill="#f8fafc" font-family="monospace" font-size="11">â€¢ WiFiClient.h</text>
+      <text x="25" y="110" fill="#f8fafc" font-family="monospace" font-size="11">â€¢ Adafruit_MQTT_Client</text>
+      <text x="25" y="135" fill="#38bdf8" font-family="monospace" font-size="11">â€¢ Subscribed: /led-control</text>
       <rect x="25" y="160" width="170" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
       <text x="35" y="185" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="bold">HARDWARE ATTACHED:</text>
-      <text x="35" y="205" fill="#38bdf8" font-family="monospace" font-size="11">GPIO 2 &rarr; 330Ω &rarr; LED</text>
+      <text x="35" y="205" fill="#38bdf8" font-family="monospace" font-size="11">GPIO 2 &rarr; 330Î© &rarr; LED</text>
       <text x="35" y="225" fill="#94a3b8" font-family="monospace" font-size="10">Active Callback Listener</text>
     </g>
 
@@ -2200,7 +2208,7 @@ void MQTT_connect() {
         <td>ESP32 &rarr; LED</td>
       </tr>
       <tr>
-        <td><strong>330Ω Resistor</strong></td>
+        <td><strong>330Î© Resistor</strong></td>
         <td>In-Series Lead</td>
         <td>Connected in-line</td>
         <td>Current limiter (prevents overcurrent on GPIO 2)</td>
@@ -2269,9 +2277,9 @@ void MQTT_connect() {
         <rect x="0" y="0" width="14" height="270" fill="#0f172a" rx="3"/>
         <text x="-22" y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D23</text>
         <text x="-22" y="185" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D4</text>
-        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 ★</text>
+        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 â˜…</text>
         <circle cx="7" cy="202" r="5.5" fill="#38bdf8" filter="url(#t1Glow)"/>
-        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="7" cy="242" r="5" fill="#94a3b8"/>
       </g>
     </g>
@@ -2290,7 +2298,7 @@ void MQTT_connect() {
       <rect x="58" y="3" width="7" height="24" fill="#ea580c"/>
       <rect x="72" y="3" width="7" height="24" fill="#78350f"/>
       <rect x="92" y="3" width="7" height="24" fill="#eab308"/>
-      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Ω Resistor</text>
+      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Î© Resistor</text>
       <text x="70" y="42" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Current Limiting</text>
     </g>
 
@@ -2320,8 +2328,8 @@ void MQTT_connect() {
     <g transform="translate(480, 20)">
       <rect x="0" y="0" width="370" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
       <text x="18" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="bold">Electrical Parameters:</text>
-      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">• ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
-      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">• Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
+      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
+      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
     </g>
   </svg>
 </div>
@@ -2571,6 +2579,14 @@ void MQTT_connect() {
       <h3 class="topic-title">TASK 2 MEDIA</h3>
       <div class="media-grid">
         <div class="media-slot image-slot">
+          <img src="images/week7/task2/dashboard.jpg" alt="Task 2 Adafruit IO MQTT Telemetry Dashboard" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Cloud Dashboard</span>
+            <h5>Adafruit IO — MQTT Telemetry Console</h5>
+            <p>Cloud telemetry dashboard displaying MQTT broker connection status (24ms ping), LED feed actuation, live feed telemetry stream, and 10-minute packet traffic chart.</p>
+          </div>
+        </div>
+        <div class="media-slot image-slot">
           <img src="images/week7/task2/2.jpeg" alt="Task 2 Adafruit IO and MQTT Hardware Setup" loading="lazy">
           <div class="media-caption">
             <span class="media-badge">Cloud Hardware</span>
@@ -2694,7 +2710,7 @@ void MQTT_connect() {
     </div>
   
     <div class="topic-section">
-      <h3 class="topic-title">Trigger → Action concept explained</h3>
+      <h3 class="topic-title">Trigger â†’ Action concept explained</h3>
       <div class="topic-content">
         <h4>WHAT IT IS</h4>
         <p>The fundamental logic paradigm of automation: a 'Trigger' is an event that occurs, and an 'Action' is the resulting payload executed.</p>
@@ -2781,7 +2797,7 @@ void MQTT_connect() {
         <td>ESP32 &rarr; LED</td>
       </tr>
       <tr>
-        <td><strong>330Ω Resistor</strong></td>
+        <td><strong>330Î© Resistor</strong></td>
         <td>In-Series Lead</td>
         <td>Connected in-line</td>
         <td>Current limiter (prevents overcurrent on GPIO 2)</td>
@@ -2850,9 +2866,9 @@ void MQTT_connect() {
         <rect x="0" y="0" width="14" height="270" fill="#0f172a" rx="3"/>
         <text x="-22" y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D23</text>
         <text x="-22" y="185" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D4</text>
-        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 ★</text>
+        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 â˜…</text>
         <circle cx="7" cy="202" r="5.5" fill="#38bdf8" filter="url(#t1Glow)"/>
-        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="7" cy="242" r="5" fill="#94a3b8"/>
       </g>
     </g>
@@ -2871,7 +2887,7 @@ void MQTT_connect() {
       <rect x="58" y="3" width="7" height="24" fill="#ea580c"/>
       <rect x="72" y="3" width="7" height="24" fill="#78350f"/>
       <rect x="92" y="3" width="7" height="24" fill="#eab308"/>
-      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Ω Resistor</text>
+      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Î© Resistor</text>
       <text x="70" y="42" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Current Limiting</text>
     </g>
 
@@ -2901,8 +2917,8 @@ void MQTT_connect() {
     <g transform="translate(480, 20)">
       <rect x="0" y="0" width="370" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
       <text x="18" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="bold">Electrical Parameters:</text>
-      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">• ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
-      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">• Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
+      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
+      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
     </g>
   </svg>
 </div>
@@ -3050,9 +3066,9 @@ void MQTT_connect() {
       <rect x="15" y="15" width="150" height="28" rx="5" fill="#0284c7"/>
       <text x="90" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">1. TRIGGER (THIS)</text>
       <text x="20" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">External Event:</text>
-      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">• Google Assistant</text>
-      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">• Sunset / Time (18:00)</text>
-      <text x="20" y="120" fill="#94a3b8" font-family="monospace" font-size="10">• Geofence / Webhook</text>
+      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Google Assistant</text>
+      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Sunset / Time (18:00)</text>
+      <text x="20" y="120" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Geofence / Webhook</text>
     </g>
 
     <path d="M 210 110 L 260 110" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
@@ -3064,8 +3080,8 @@ void MQTT_connect() {
       <rect x="15" y="15" width="160" height="28" rx="5" fill="#2563eb"/>
       <text x="95" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">2. IFTTT APPLET</text>
       <text x="20" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">Action Engine:</text>
-      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">• Evaluates Rule</text>
-      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">• Dispatches Webhook</text>
+      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Evaluates Rule</text>
+      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Dispatches Webhook</text>
       <text x="20" y="125" fill="#60a5fa" font-family="monospace" font-size="10">POST to Adafruit API</text>
     </g>
 
@@ -3093,7 +3109,7 @@ void MQTT_connect() {
       <text x="75" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">4. ESP32 EDGE</text>
       <text x="15" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">MQTT Callback:</text>
       <text x="15" y="90" fill="#22c55e" font-family="monospace" font-size="10">digitalWrite(2, HIGH)</text>
-      <text x="15" y="115" fill="#38bdf8" font-family="monospace" font-size="10">GPIO 2 &rarr; 330Ω</text>
+      <text x="15" y="115" fill="#38bdf8" font-family="monospace" font-size="10">GPIO 2 &rarr; 330Î©</text>
       <text x="15" y="130" fill="#ef4444" font-family="monospace" font-size="10">&rarr; LED Lights ON</text>
     </g>
 
@@ -3159,9 +3175,9 @@ void MQTT_connect() {
       <rect x="15" y="15" width="150" height="28" rx="5" fill="#0284c7"/>
       <text x="90" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">1. TRIGGER (THIS)</text>
       <text x="20" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">External Event:</text>
-      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">• Google Assistant</text>
-      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">• Sunset / Time (18:00)</text>
-      <text x="20" y="120" fill="#94a3b8" font-family="monospace" font-size="10">• Geofence / Webhook</text>
+      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Google Assistant</text>
+      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Sunset / Time (18:00)</text>
+      <text x="20" y="120" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Geofence / Webhook</text>
     </g>
 
     <path d="M 210 110 L 260 110" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
@@ -3173,8 +3189,8 @@ void MQTT_connect() {
       <rect x="15" y="15" width="160" height="28" rx="5" fill="#2563eb"/>
       <text x="95" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">2. IFTTT APPLET</text>
       <text x="20" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">Action Engine:</text>
-      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">• Evaluates Rule</text>
-      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">• Dispatches Webhook</text>
+      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Evaluates Rule</text>
+      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Dispatches Webhook</text>
       <text x="20" y="125" fill="#60a5fa" font-family="monospace" font-size="10">POST to Adafruit API</text>
     </g>
 
@@ -3202,7 +3218,7 @@ void MQTT_connect() {
       <text x="75" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">4. ESP32 EDGE</text>
       <text x="15" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">MQTT Callback:</text>
       <text x="15" y="90" fill="#22c55e" font-family="monospace" font-size="10">digitalWrite(2, HIGH)</text>
-      <text x="15" y="115" fill="#38bdf8" font-family="monospace" font-size="10">GPIO 2 &rarr; 330Ω</text>
+      <text x="15" y="115" fill="#38bdf8" font-family="monospace" font-size="10">GPIO 2 &rarr; 330Î©</text>
       <text x="15" y="130" fill="#ef4444" font-family="monospace" font-size="10">&rarr; LED Lights ON</text>
     </g>
 
@@ -3385,9 +3401,9 @@ void MQTT_connect() {
       <rect x="15" y="15" width="150" height="28" rx="5" fill="#0284c7"/>
       <text x="90" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">1. TRIGGER (THIS)</text>
       <text x="20" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">External Event:</text>
-      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">• Google Assistant</text>
-      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">• Sunset / Time (18:00)</text>
-      <text x="20" y="120" fill="#94a3b8" font-family="monospace" font-size="10">• Geofence / Webhook</text>
+      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Google Assistant</text>
+      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Sunset / Time (18:00)</text>
+      <text x="20" y="120" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Geofence / Webhook</text>
     </g>
 
     <path d="M 210 110 L 260 110" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
@@ -3399,8 +3415,8 @@ void MQTT_connect() {
       <rect x="15" y="15" width="160" height="28" rx="5" fill="#2563eb"/>
       <text x="95" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">2. IFTTT APPLET</text>
       <text x="20" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">Action Engine:</text>
-      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">• Evaluates Rule</text>
-      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">• Dispatches Webhook</text>
+      <text x="20" y="90" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Evaluates Rule</text>
+      <text x="20" y="105" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Dispatches Webhook</text>
       <text x="20" y="125" fill="#60a5fa" font-family="monospace" font-size="10">POST to Adafruit API</text>
     </g>
 
@@ -3428,7 +3444,7 @@ void MQTT_connect() {
       <text x="75" y="34" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">4. ESP32 EDGE</text>
       <text x="15" y="70" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold">MQTT Callback:</text>
       <text x="15" y="90" fill="#22c55e" font-family="monospace" font-size="10">digitalWrite(2, HIGH)</text>
-      <text x="15" y="115" fill="#38bdf8" font-family="monospace" font-size="10">GPIO 2 &rarr; 330Ω</text>
+      <text x="15" y="115" fill="#38bdf8" font-family="monospace" font-size="10">GPIO 2 &rarr; 330Î©</text>
       <text x="15" y="130" fill="#ef4444" font-family="monospace" font-size="10">&rarr; LED Lights ON</text>
     </g>
 
@@ -3526,7 +3542,7 @@ void MQTT_connect() {
         <td>ESP32 &rarr; LED</td>
       </tr>
       <tr>
-        <td><strong>330Ω Resistor</strong></td>
+        <td><strong>330Î© Resistor</strong></td>
         <td>In-Series Lead</td>
         <td>Connected in-line</td>
         <td>Current limiter (prevents overcurrent on GPIO 2)</td>
@@ -3595,9 +3611,9 @@ void MQTT_connect() {
         <rect x="0" y="0" width="14" height="270" fill="#0f172a" rx="3"/>
         <text x="-22" y="25" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D23</text>
         <text x="-22" y="185" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="end">D4</text>
-        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 ★</text>
+        <text x="-22" y="205" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="end">GPIO 2 â˜…</text>
         <circle cx="7" cy="202" r="5.5" fill="#38bdf8" filter="url(#t1Glow)"/>
-        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-22" y="245" fill="#e2e8f0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="7" cy="242" r="5" fill="#94a3b8"/>
       </g>
     </g>
@@ -3616,7 +3632,7 @@ void MQTT_connect() {
       <rect x="58" y="3" width="7" height="24" fill="#ea580c"/>
       <rect x="72" y="3" width="7" height="24" fill="#78350f"/>
       <rect x="92" y="3" width="7" height="24" fill="#eab308"/>
-      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Ω Resistor</text>
+      <text x="70" y="-8" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">330 Î© Resistor</text>
       <text x="70" y="42" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Current Limiting</text>
     </g>
 
@@ -3646,8 +3662,8 @@ void MQTT_connect() {
     <g transform="translate(480, 20)">
       <rect x="0" y="0" width="370" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
       <text x="18" y="24" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="bold">Electrical Parameters:</text>
-      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">• ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
-      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">• Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
+      <text x="18" y="42" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ ESP32 GPIO logic level: 3.3V | Active-HIGH</text>
+      <text x="18" y="56" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Forward Voltage: ~1.9V | Safe Current: ~4.2mA</text>
     </g>
   </svg>
 </div>
@@ -3833,6 +3849,14 @@ void MQTT_connect() {
     <div class="topic-section">
       <h3 class="topic-title">TASK 3 MEDIA</h3>
       <div class="media-grid">
+        <div class="media-slot image-slot">
+          <img src="images/week7/task3/dashboard.jpg" alt="Task 3 IFTTT and Adafruit IO Automation Dashboard" loading="lazy">
+          <div class="media-caption">
+            <span class="media-badge">Voice Automation</span>
+            <h5>IoT Cloud Automation Engine — IFTTT & Adafruit IO Bridge</h5>
+            <p>Cloud automation engine interface showing voice command applet workflow status, webhook pipeline diagnostics (680ms latency), incoming JSON payload, and automation event log.</p>
+          </div>
+        </div>
         <div class="media-slot image-slot">
           <img src="images/week7/task3/3.jpeg" alt="Task 3 IFTTT and Adafruit IO Automation Setup" loading="lazy">
           <div class="media-caption">
@@ -4300,7 +4324,7 @@ void MQTT_connect() {
       <text x="25" y="105" fill="#f8fafc" font-family="monospace" font-size="11">HTML5 + CSS + ES6 JS</text>
       <rect x="15" y="125" width="190" height="140" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
       <text x="25" y="148" fill="#22c55e" font-family="sans-serif" font-size="10" font-weight="bold">DASHBOARD UI WIDGETS:</text>
-      <text x="25" y="170" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Temp Gauge (°C)</text>
+      <text x="25" y="170" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Temp Gauge (Â°C)</text>
       <text x="25" y="190" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Humidity Bar (%)</text>
       <text x="25" y="210" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Light Level (LDR)</text>
       <text x="25" y="235" fill="#a855f7" font-family="monospace" font-size="10">&bull; Bulb Remote Toggle Button</text>
@@ -4363,23 +4387,23 @@ void MQTT_connect() {
       
       <!-- Labeled Pins Left -->
       <g transform="translate(10, 30)">
-        <text x="20" y="40" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold">3V3 (VCC) ★</text>
+        <text x="20" y="40" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold">3V3 (VCC) â˜…</text>
         <circle cx="5" cy="37" r="4.5" fill="#ef4444"/>
-        <text x="20" y="90" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold">GPIO 34 (ADC1) ★</text>
+        <text x="20" y="90" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold">GPIO 34 (ADC1) â˜…</text>
         <circle cx="5" cy="87" r="4.5" fill="#f59e0b"/>
-        <text x="20" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold">GND ★</text>
+        <text x="20" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold">GND â˜…</text>
         <circle cx="5" cy="377" r="4.5" fill="#94a3b8"/>
       </g>
 
       <!-- Labeled Pins Right -->
       <g transform="translate(225, 30)">
-        <text x="-15" y="180" fill="#a855f7" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 5 (RELAY) ★</text>
+        <text x="-15" y="180" fill="#a855f7" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 5 (RELAY) â˜…</text>
         <circle cx="10" cy="177" r="4.5" fill="#a855f7"/>
-        <text x="-15" y="210" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 4 (DHT11) ★</text>
+        <text x="-15" y="210" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 4 (DHT11) â˜…</text>
         <circle cx="10" cy="207" r="4.5" fill="#38bdf8"/>
-        <text x="-15" y="340" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">VIN (5V) ★</text>
+        <text x="-15" y="340" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">VIN (5V) â˜…</text>
         <circle cx="10" cy="337" r="4.5" fill="#ef4444"/>
-        <text x="-15" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-15" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="10" cy="377" r="4.5" fill="#94a3b8"/>
       </g>
     </g>
@@ -4409,9 +4433,9 @@ void MQTT_connect() {
       <text x="50" y="108" fill="#f59e0b" font-family="monospace" font-size="9" text-anchor="middle">CdS Cell</text>
       <g transform="translate(100, 18)">
         <text x="0" y="18" fill="#f59e0b" font-family="sans-serif" font-size="11" font-weight="bold">VOLTAGE DIVIDER CIRCUIT:</text>
-        <text x="0" y="38" fill="#ef4444" font-family="monospace" font-size="10">• Top leg of LDR to 3.3V Power</text>
-        <text x="0" y="56" fill="#f59e0b" font-family="monospace" font-size="10">• Center Junction to GPIO 34 (ADC1)</text>
-        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">• Bottom leg of 10kΩ resistor to GND</text>
+        <text x="0" y="38" fill="#ef4444" font-family="monospace" font-size="10">â€¢ Top leg of LDR to 3.3V Power</text>
+        <text x="0" y="56" fill="#f59e0b" font-family="monospace" font-size="10">â€¢ Center Junction to GPIO 34 (ADC1)</text>
+        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Bottom leg of 10kÎ© resistor to GND</text>
         <text x="0" y="92" fill="#64748b" font-family="monospace" font-size="9">Analog Resolution: 12-bit (0 - 4095)</text>
       </g>
     </g>
@@ -4427,9 +4451,9 @@ void MQTT_connect() {
       <text x="50" y="62" fill="#fff" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">5V RELAY</text>
       <g transform="translate(100, 18)">
         <text x="0" y="18" fill="#a855f7" font-family="sans-serif" font-size="11" font-weight="bold">1-CHANNEL RELAY MODULE:</text>
-        <text x="0" y="38" fill="#a855f7" font-family="monospace" font-size="10">• IN (Signal): &rarr; GPIO 5 (Digital OUT)</text>
-        <text x="0" y="56" fill="#ef4444" font-family="monospace" font-size="10">• VCC: &rarr; 5V / VIN</text>
-        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">• GND: &rarr; Common GND</text>
+        <text x="0" y="38" fill="#a855f7" font-family="monospace" font-size="10">â€¢ IN (Signal): &rarr; GPIO 5 (Digital OUT)</text>
+        <text x="0" y="56" fill="#ef4444" font-family="monospace" font-size="10">â€¢ VCC: &rarr; 5V / VIN</text>
+        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ GND: &rarr; Common GND</text>
         <text x="0" y="95" fill="#f8fafc" font-family="monospace" font-size="10">Load: AC/DC Bulb on COM &amp; NO</text>
       </g>
     </g>
@@ -4457,25 +4481,25 @@ void MQTT_connect() {
         <td>DATA (Pin 2)</td>
         <td><span class="pin-badge">GPIO 4</span></td>
         <td>Digital Bidirectional</td>
-        <td>One-Wire protocol communication for real-time Temperature (°C) & Humidity (%)</td>
+        <td>One-Wire protocol communication for real-time Temperature (Â°C) & Humidity (%)</td>
       </tr>
       <tr>
         <td><strong>DHT11 Environmental Sensor</strong></td>
         <td>VCC / GND</td>
         <td><span class="pin-badge">3.3V / GND</span></td>
         <td>Power Lines</td>
-        <td>Regulated 3.3V power supply with 10kΩ pull-up resistor on Data line</td>
+        <td>Regulated 3.3V power supply with 10kÎ© pull-up resistor on Data line</td>
       </tr>
       <tr>
         <td><strong>LDR Light Dependent Resistor</strong></td>
         <td>Divider Junction</td>
         <td><span class="pin-badge">GPIO 34</span></td>
         <td>Analog Input (ADC1_CH6)</td>
-        <td>0–4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
+        <td>0â€“4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
       </tr>
       <tr>
         <td><strong>LDR Voltage Divider</strong></td>
-        <td>10kΩ Fixed Resistor</td>
+        <td>10kÎ© Fixed Resistor</td>
         <td><span class="pin-badge">GND</span></td>
         <td>Passive Ground</td>
         <td>Completes divider circuit: V_out = V_in * (R_fixed / (R_ldr + R_fixed))</td>
@@ -4539,7 +4563,7 @@ void MQTT_connect() {
           <li>Created HTML elements with IDs `temp-display` and `hum-display`.</li>
           <li>Attached a Firebase `onValue` listener to the `/temperature` node.</li>
           <li>Wrote a callback function that extracts the snapshot value and uses `document.getElementById().innerText` to update the DOM.</li>
-          <li>Appended the '°C' and '%' symbols via JavaScript.</li>
+          <li>Appended the 'Â°C' and '%' symbols via JavaScript.</li>
           
         </ol>
 
@@ -4836,7 +4860,7 @@ void loop() {
       &lt;/div&gt;
       &lt;div class="input-group"&gt;
         &lt;label&gt;Password&lt;/label&gt;
-        &lt;input type="password" id="user-password" placeholder="••••••••"&gt;
+        &lt;input type="password" id="user-password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"&gt;
       &lt;/div&gt;
       &lt;button id="login-btn" class="btn btn-primary" onclick="handleLogin()"&gt;Sign In to Dashboard&lt;/button&gt;
       &lt;div id="auth-error" class="error-msg"&gt;&lt;/div&gt;
@@ -4855,15 +4879,15 @@ void loop() {
       &lt;!-- Sensor Metric Cards Grid --&gt;
       &lt;div class="metrics-grid"&gt;
         &lt;div class="card metric-card"&gt;
-          &lt;div class="metric-icon temp-icon"&gt;🌡️&lt;/div&gt;
+          &lt;div class="metric-icon temp-icon"&gt;ðŸŒ¡ï¸&lt;/div&gt;
           &lt;div class="metric-info"&gt;
             &lt;span class="metric-label"&gt;Temperature&lt;/span&gt;
-            &lt;span id="val-temp" class="metric-value"&gt;--.- °C&lt;/span&gt;
+            &lt;span id="val-temp" class="metric-value"&gt;--.- Â°C&lt;/span&gt;
           &lt;/div&gt;
         &lt;/div&gt;
 
         &lt;div class="card metric-card"&gt;
-          &lt;div class="metric-icon hum-icon"&gt;💧&lt;/div&gt;
+          &lt;div class="metric-icon hum-icon"&gt;ðŸ’§&lt;/div&gt;
           &lt;div class="metric-info"&gt;
             &lt;span class="metric-label"&gt;Humidity&lt;/span&gt;
             &lt;span id="val-hum" class="metric-value"&gt;-- %&lt;/span&gt;
@@ -4871,7 +4895,7 @@ void loop() {
         &lt;/div&gt;
 
         &lt;div class="card metric-card"&gt;
-          &lt;div class="metric-icon light-icon"&gt;☀️&lt;/div&gt;
+          &lt;div class="metric-icon light-icon"&gt;â˜€ï¸&lt;/div&gt;
           &lt;div class="metric-info"&gt;
             &lt;span class="metric-label"&gt;Ambient Light (LDR)&lt;/span&gt;
             &lt;span id="val-ldr" class="metric-value"&gt;----&lt;/span&gt;
@@ -5012,7 +5036,7 @@ function initRealtimeStreams() {
   // Listen for Temperature changes
   onValue(ref(db, "sensors/temperature"), (snapshot) =&gt; {
     const val = snapshot.val();
-    document.getElementById("val-temp").innerText = (val !== null) ? val.toFixed(1) + " °C" : "--.- °C";
+    document.getElementById("val-temp").innerText = (val !== null) ? val.toFixed(1) + " Â°C" : "--.- Â°C";
   });
 
   // Listen for Humidity changes
@@ -5168,7 +5192,7 @@ window.toggleBulbState = () =&gt; {
       <text x="25" y="105" fill="#f8fafc" font-family="monospace" font-size="11">HTML5 + CSS + ES6 JS</text>
       <rect x="15" y="125" width="190" height="140" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
       <text x="25" y="148" fill="#22c55e" font-family="sans-serif" font-size="10" font-weight="bold">DASHBOARD UI WIDGETS:</text>
-      <text x="25" y="170" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Temp Gauge (°C)</text>
+      <text x="25" y="170" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Temp Gauge (Â°C)</text>
       <text x="25" y="190" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Humidity Bar (%)</text>
       <text x="25" y="210" fill="#e2e8f0" font-family="monospace" font-size="10">&bull; Live Light Level (LDR)</text>
       <text x="25" y="235" fill="#a855f7" font-family="monospace" font-size="10">&bull; Bulb Remote Toggle Button</text>
@@ -5262,23 +5286,23 @@ window.toggleBulbState = () =&gt; {
       
       <!-- Labeled Pins Left -->
       <g transform="translate(10, 30)">
-        <text x="20" y="40" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold">3V3 (VCC) ★</text>
+        <text x="20" y="40" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold">3V3 (VCC) â˜…</text>
         <circle cx="5" cy="37" r="4.5" fill="#ef4444"/>
-        <text x="20" y="90" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold">GPIO 34 (ADC1) ★</text>
+        <text x="20" y="90" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold">GPIO 34 (ADC1) â˜…</text>
         <circle cx="5" cy="87" r="4.5" fill="#f59e0b"/>
-        <text x="20" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold">GND ★</text>
+        <text x="20" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold">GND â˜…</text>
         <circle cx="5" cy="377" r="4.5" fill="#94a3b8"/>
       </g>
 
       <!-- Labeled Pins Right -->
       <g transform="translate(225, 30)">
-        <text x="-15" y="180" fill="#a855f7" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 5 (RELAY) ★</text>
+        <text x="-15" y="180" fill="#a855f7" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 5 (RELAY) â˜…</text>
         <circle cx="10" cy="177" r="4.5" fill="#a855f7"/>
-        <text x="-15" y="210" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 4 (DHT11) ★</text>
+        <text x="-15" y="210" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 4 (DHT11) â˜…</text>
         <circle cx="10" cy="207" r="4.5" fill="#38bdf8"/>
-        <text x="-15" y="340" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">VIN (5V) ★</text>
+        <text x="-15" y="340" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">VIN (5V) â˜…</text>
         <circle cx="10" cy="337" r="4.5" fill="#ef4444"/>
-        <text x="-15" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-15" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="10" cy="377" r="4.5" fill="#94a3b8"/>
       </g>
     </g>
@@ -5308,9 +5332,9 @@ window.toggleBulbState = () =&gt; {
       <text x="50" y="108" fill="#f59e0b" font-family="monospace" font-size="9" text-anchor="middle">CdS Cell</text>
       <g transform="translate(100, 18)">
         <text x="0" y="18" fill="#f59e0b" font-family="sans-serif" font-size="11" font-weight="bold">VOLTAGE DIVIDER CIRCUIT:</text>
-        <text x="0" y="38" fill="#ef4444" font-family="monospace" font-size="10">• Top leg of LDR to 3.3V Power</text>
-        <text x="0" y="56" fill="#f59e0b" font-family="monospace" font-size="10">• Center Junction to GPIO 34 (ADC1)</text>
-        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">• Bottom leg of 10kΩ resistor to GND</text>
+        <text x="0" y="38" fill="#ef4444" font-family="monospace" font-size="10">â€¢ Top leg of LDR to 3.3V Power</text>
+        <text x="0" y="56" fill="#f59e0b" font-family="monospace" font-size="10">â€¢ Center Junction to GPIO 34 (ADC1)</text>
+        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Bottom leg of 10kÎ© resistor to GND</text>
         <text x="0" y="92" fill="#64748b" font-family="monospace" font-size="9">Analog Resolution: 12-bit (0 - 4095)</text>
       </g>
     </g>
@@ -5326,9 +5350,9 @@ window.toggleBulbState = () =&gt; {
       <text x="50" y="62" fill="#fff" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">5V RELAY</text>
       <g transform="translate(100, 18)">
         <text x="0" y="18" fill="#a855f7" font-family="sans-serif" font-size="11" font-weight="bold">1-CHANNEL RELAY MODULE:</text>
-        <text x="0" y="38" fill="#a855f7" font-family="monospace" font-size="10">• IN (Signal): &rarr; GPIO 5 (Digital OUT)</text>
-        <text x="0" y="56" fill="#ef4444" font-family="monospace" font-size="10">• VCC: &rarr; 5V / VIN</text>
-        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">• GND: &rarr; Common GND</text>
+        <text x="0" y="38" fill="#a855f7" font-family="monospace" font-size="10">â€¢ IN (Signal): &rarr; GPIO 5 (Digital OUT)</text>
+        <text x="0" y="56" fill="#ef4444" font-family="monospace" font-size="10">â€¢ VCC: &rarr; 5V / VIN</text>
+        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ GND: &rarr; Common GND</text>
         <text x="0" y="95" fill="#f8fafc" font-family="monospace" font-size="10">Load: AC/DC Bulb on COM &amp; NO</text>
       </g>
     </g>
@@ -5356,25 +5380,25 @@ window.toggleBulbState = () =&gt; {
         <td>DATA (Pin 2)</td>
         <td><span class="pin-badge">GPIO 4</span></td>
         <td>Digital Bidirectional</td>
-        <td>One-Wire protocol communication for real-time Temperature (°C) & Humidity (%)</td>
+        <td>One-Wire protocol communication for real-time Temperature (Â°C) & Humidity (%)</td>
       </tr>
       <tr>
         <td><strong>DHT11 Environmental Sensor</strong></td>
         <td>VCC / GND</td>
         <td><span class="pin-badge">3.3V / GND</span></td>
         <td>Power Lines</td>
-        <td>Regulated 3.3V power supply with 10kΩ pull-up resistor on Data line</td>
+        <td>Regulated 3.3V power supply with 10kÎ© pull-up resistor on Data line</td>
       </tr>
       <tr>
         <td><strong>LDR Light Dependent Resistor</strong></td>
         <td>Divider Junction</td>
         <td><span class="pin-badge">GPIO 34</span></td>
         <td>Analog Input (ADC1_CH6)</td>
-        <td>0–4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
+        <td>0â€“4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
       </tr>
       <tr>
         <td><strong>LDR Voltage Divider</strong></td>
-        <td>10kΩ Fixed Resistor</td>
+        <td>10kÎ© Fixed Resistor</td>
         <td><span class="pin-badge">GND</span></td>
         <td>Passive Ground</td>
         <td>Completes divider circuit: V_out = V_in * (R_fixed / (R_ldr + R_fixed))</td>
@@ -5635,9 +5659,9 @@ window.toggleBulbState = () =&gt; {
       <rect width="200" height="240" rx="10" fill="url(#t5Grad)" stroke="#38bdf8" stroke-width="2"/>
       <rect x="15" y="15" width="170" height="30" rx="5" fill="#0284c7"/>
       <text x="100" y="35" fill="#fff" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">1. SENSORS & NTP</text>
-      <text x="20" y="70" fill="#e2e8f0" font-family="monospace" font-size="10">• DHT11 (Temp/Hum)</text>
-      <text x="20" y="90" fill="#e2e8f0" font-family="monospace" font-size="10">• LDR (Light ADC: 0-4095)</text>
-      <text x="20" y="110" fill="#38bdf8" font-family="monospace" font-size="10">• NTPClient (Epoch Time)</text>
+      <text x="20" y="70" fill="#e2e8f0" font-family="monospace" font-size="10">â€¢ DHT11 (Temp/Hum)</text>
+      <text x="20" y="90" fill="#e2e8f0" font-family="monospace" font-size="10">â€¢ LDR (Light ADC: 0-4095)</text>
+      <text x="20" y="110" fill="#38bdf8" font-family="monospace" font-size="10">â€¢ NTPClient (Epoch Time)</text>
       <rect x="15" y="130" width="170" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
       <text x="25" y="155" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="bold">SAMPLE INTERVAL:</text>
       <text x="25" y="175" fill="#22c55e" font-family="monospace" font-size="10">Sensor read: every 2s</text>
@@ -5673,11 +5697,11 @@ window.toggleBulbState = () =&gt; {
       <text x="20" y="70" fill="#f8fafc" font-family="sans-serif" font-size="11" font-weight="bold">HISTORICAL RECORDS:</text>
       <rect x="15" y="85" width="180" height="135" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
       <text x="25" y="108" fill="#f59e0b" font-family="monospace" font-size="10">/logs/{pushId}:</text>
-      <text x="25" y="128" fill="#94a3b8" font-family="monospace" font-size="9">• timestamp: 1727546400</text>
-      <text x="25" y="145" fill="#94a3b8" font-family="monospace" font-size="9">• temperature: 27.4</text>
-      <text x="25" y="162" fill="#94a3b8" font-family="monospace" font-size="9">• humidity: 58.0</text>
-      <text x="25" y="179" fill="#94a3b8" font-family="monospace" font-size="9">• ldr: 1840</text>
-      <text x="25" y="196" fill="#94a3b8" font-family="monospace" font-size="9">• bulb: true | mode: "AUTO"</text>
+      <text x="25" y="128" fill="#94a3b8" font-family="monospace" font-size="9">â€¢ timestamp: 1727546400</text>
+      <text x="25" y="145" fill="#94a3b8" font-family="monospace" font-size="9">â€¢ temperature: 27.4</text>
+      <text x="25" y="162" fill="#94a3b8" font-family="monospace" font-size="9">â€¢ humidity: 58.0</text>
+      <text x="25" y="179" fill="#94a3b8" font-family="monospace" font-size="9">â€¢ ldr: 1840</text>
+      <text x="25" y="196" fill="#94a3b8" font-family="monospace" font-size="9">â€¢ bulb: true | mode: "AUTO"</text>
     </g>
 
     <path d="M 730 155 L 770 155" stroke="#f59e0b" stroke-width="3"/>
@@ -5689,8 +5713,8 @@ window.toggleBulbState = () =&gt; {
       <rect x="10" y="15" width="120" height="30" rx="5" fill="#15803d"/>
       <text x="70" y="35" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">4. EXPORT & UI</text>
       <text x="15" y="75" fill="#f8fafc" font-family="sans-serif" font-size="10" font-weight="bold">DASHBOARD:</text>
-      <text x="15" y="95" fill="#22c55e" font-family="monospace" font-size="10">• Chart.js Graph</text>
-      <text x="15" y="120" fill="#22c55e" font-family="monospace" font-size="10">• Mode Switcher</text>
+      <text x="15" y="95" fill="#22c55e" font-family="monospace" font-size="10">â€¢ Chart.js Graph</text>
+      <text x="15" y="120" fill="#22c55e" font-family="monospace" font-size="10">â€¢ Mode Switcher</text>
       <rect x="15" y="145" width="110" height="50" rx="5" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
       <text x="70" y="165" fill="#22c55e" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">CSV EXPORT</text>
       <text x="70" y="182" fill="#94a3b8" font-family="monospace" font-size="8" text-anchor="middle">Blob Download</text>
@@ -5700,8 +5724,8 @@ window.toggleBulbState = () =&gt; {
     <g transform="translate(30, 300)">
       <rect width="880" height="100" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1"/>
       <text x="25" y="32" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="bold">Data Integrity & Redundancy Strategy:</text>
-      <text x="25" y="58" fill="#94a3b8" font-family="monospace" font-size="11">• Edge Resiliency: If Wi-Fi briefly drops, local edge automation (LDR to Relay) continues operating without interruption.</text>
-      <text x="25" y="80" fill="#94a3b8" font-family="monospace" font-size="11">• Non-blocking Execution: Background millis() timers preserve sensor polling cadence while servicing network callbacks.</text>
+      <text x="25" y="58" fill="#94a3b8" font-family="monospace" font-size="11">â€¢ Edge Resiliency: If Wi-Fi briefly drops, local edge automation (LDR to Relay) continues operating without interruption.</text>
+      <text x="25" y="80" fill="#94a3b8" font-family="monospace" font-size="11">â€¢ Non-blocking Execution: Background millis() timers preserve sensor polling cadence while servicing network callbacks.</text>
     </g>
   </svg>
 </div>
@@ -5730,23 +5754,23 @@ window.toggleBulbState = () =&gt; {
       
       <!-- Labeled Pins Left -->
       <g transform="translate(10, 30)">
-        <text x="20" y="40" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold">3V3 (VCC) ★</text>
+        <text x="20" y="40" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold">3V3 (VCC) â˜…</text>
         <circle cx="5" cy="37" r="4.5" fill="#ef4444"/>
-        <text x="20" y="90" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold">GPIO 34 (ADC1) ★</text>
+        <text x="20" y="90" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold">GPIO 34 (ADC1) â˜…</text>
         <circle cx="5" cy="87" r="4.5" fill="#f59e0b"/>
-        <text x="20" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold">GND ★</text>
+        <text x="20" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold">GND â˜…</text>
         <circle cx="5" cy="377" r="4.5" fill="#94a3b8"/>
       </g>
 
       <!-- Labeled Pins Right -->
       <g transform="translate(225, 30)">
-        <text x="-15" y="180" fill="#a855f7" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 5 (RELAY) ★</text>
+        <text x="-15" y="180" fill="#a855f7" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 5 (RELAY) â˜…</text>
         <circle cx="10" cy="177" r="4.5" fill="#a855f7"/>
-        <text x="-15" y="210" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 4 (DHT11) ★</text>
+        <text x="-15" y="210" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GPIO 4 (DHT11) â˜…</text>
         <circle cx="10" cy="207" r="4.5" fill="#38bdf8"/>
-        <text x="-15" y="340" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">VIN (5V) ★</text>
+        <text x="-15" y="340" fill="#ef4444" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">VIN (5V) â˜…</text>
         <circle cx="10" cy="337" r="4.5" fill="#ef4444"/>
-        <text x="-15" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND ★</text>
+        <text x="-15" y="380" fill="#94a3b8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="end">GND â˜…</text>
         <circle cx="10" cy="377" r="4.5" fill="#94a3b8"/>
       </g>
     </g>
@@ -5776,9 +5800,9 @@ window.toggleBulbState = () =&gt; {
       <text x="50" y="108" fill="#f59e0b" font-family="monospace" font-size="9" text-anchor="middle">CdS Cell</text>
       <g transform="translate(100, 18)">
         <text x="0" y="18" fill="#f59e0b" font-family="sans-serif" font-size="11" font-weight="bold">VOLTAGE DIVIDER CIRCUIT:</text>
-        <text x="0" y="38" fill="#ef4444" font-family="monospace" font-size="10">• Top leg of LDR to 3.3V Power</text>
-        <text x="0" y="56" fill="#f59e0b" font-family="monospace" font-size="10">• Center Junction to GPIO 34 (ADC1)</text>
-        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">• Bottom leg of 10kΩ resistor to GND</text>
+        <text x="0" y="38" fill="#ef4444" font-family="monospace" font-size="10">â€¢ Top leg of LDR to 3.3V Power</text>
+        <text x="0" y="56" fill="#f59e0b" font-family="monospace" font-size="10">â€¢ Center Junction to GPIO 34 (ADC1)</text>
+        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ Bottom leg of 10kÎ© resistor to GND</text>
         <text x="0" y="92" fill="#64748b" font-family="monospace" font-size="9">Analog Resolution: 12-bit (0 - 4095)</text>
       </g>
     </g>
@@ -5794,9 +5818,9 @@ window.toggleBulbState = () =&gt; {
       <text x="50" y="62" fill="#fff" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">5V RELAY</text>
       <g transform="translate(100, 18)">
         <text x="0" y="18" fill="#a855f7" font-family="sans-serif" font-size="11" font-weight="bold">1-CHANNEL RELAY MODULE:</text>
-        <text x="0" y="38" fill="#a855f7" font-family="monospace" font-size="10">• IN (Signal): &rarr; GPIO 5 (Digital OUT)</text>
-        <text x="0" y="56" fill="#ef4444" font-family="monospace" font-size="10">• VCC: &rarr; 5V / VIN</text>
-        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">• GND: &rarr; Common GND</text>
+        <text x="0" y="38" fill="#a855f7" font-family="monospace" font-size="10">â€¢ IN (Signal): &rarr; GPIO 5 (Digital OUT)</text>
+        <text x="0" y="56" fill="#ef4444" font-family="monospace" font-size="10">â€¢ VCC: &rarr; 5V / VIN</text>
+        <text x="0" y="74" fill="#94a3b8" font-family="monospace" font-size="10">â€¢ GND: &rarr; Common GND</text>
         <text x="0" y="95" fill="#f8fafc" font-family="monospace" font-size="10">Load: AC/DC Bulb on COM &amp; NO</text>
       </g>
     </g>
@@ -5824,25 +5848,25 @@ window.toggleBulbState = () =&gt; {
         <td>DATA (Pin 2)</td>
         <td><span class="pin-badge">GPIO 4</span></td>
         <td>Digital Bidirectional</td>
-        <td>One-Wire protocol communication for real-time Temperature (°C) & Humidity (%)</td>
+        <td>One-Wire protocol communication for real-time Temperature (Â°C) & Humidity (%)</td>
       </tr>
       <tr>
         <td><strong>DHT11 Environmental Sensor</strong></td>
         <td>VCC / GND</td>
         <td><span class="pin-badge">3.3V / GND</span></td>
         <td>Power Lines</td>
-        <td>Regulated 3.3V power supply with 10kΩ pull-up resistor on Data line</td>
+        <td>Regulated 3.3V power supply with 10kÎ© pull-up resistor on Data line</td>
       </tr>
       <tr>
         <td><strong>LDR Light Dependent Resistor</strong></td>
         <td>Divider Junction</td>
         <td><span class="pin-badge">GPIO 34</span></td>
         <td>Analog Input (ADC1_CH6)</td>
-        <td>0–4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
+        <td>0â€“4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
       </tr>
       <tr>
         <td><strong>LDR Voltage Divider</strong></td>
-        <td>10kΩ Fixed Resistor</td>
+        <td>10kÎ© Fixed Resistor</td>
         <td><span class="pin-badge">GND</span></td>
         <td>Passive Ground</td>
         <td>Completes divider circuit: V_out = V_in * (R_fixed / (R_ldr + R_fixed))</td>
@@ -5910,7 +5934,7 @@ window.toggleBulbState = () =&gt; {
         </ol>
 
         <h4>MY UNDERSTANDING</h4>
-        <p>I understood that sensor data must often be routed to multiple places simultaneously—one fast path for real-time viewing, and one structured path for historical storage.</p>
+        <p>I understood that sensor data must often be routed to multiple places simultaneouslyâ€”one fast path for real-time viewing, and one structured path for historical storage.</p>
 
         <h4>MY CHALLENGE</h4>
         <p>The ESP32 struggled to process the slow DHT11 read times while also maintaining the Firebase streams.</p>
@@ -6562,7 +6586,7 @@ window.toggleBulbState = () =&gt; {
               <thead>
                 <tr>
                   <th>Timestamp (ISO-8601)</th>
-                  <th>Temperature (°C)</th>
+                  <th>Temperature (Â°C)</th>
                   <th>Humidity (%)</th>
                   <th>LDR Value</th>
                   <th>Light Status</th>
@@ -6710,25 +6734,25 @@ window.toggleBulbState = () =&gt; {
         <td>DATA (Pin 2)</td>
         <td><span class="pin-badge">GPIO 4</span></td>
         <td>Digital Bidirectional</td>
-        <td>One-Wire protocol communication for real-time Temperature (°C) & Humidity (%)</td>
+        <td>One-Wire protocol communication for real-time Temperature (Â°C) & Humidity (%)</td>
       </tr>
       <tr>
         <td><strong>DHT11 Environmental Sensor</strong></td>
         <td>VCC / GND</td>
         <td><span class="pin-badge">3.3V / GND</span></td>
         <td>Power Lines</td>
-        <td>Regulated 3.3V power supply with 10kΩ pull-up resistor on Data line</td>
+        <td>Regulated 3.3V power supply with 10kÎ© pull-up resistor on Data line</td>
       </tr>
       <tr>
         <td><strong>LDR Light Dependent Resistor</strong></td>
         <td>Divider Junction</td>
         <td><span class="pin-badge">GPIO 34</span></td>
         <td>Analog Input (ADC1_CH6)</td>
-        <td>0–4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
+        <td>0â€“4095 raw integer reading (12-bit ADC); inverse resistance proportional to ambient lux</td>
       </tr>
       <tr>
         <td><strong>LDR Voltage Divider</strong></td>
-        <td>10kΩ Fixed Resistor</td>
+        <td>10kÎ© Fixed Resistor</td>
         <td><span class="pin-badge">GND</span></td>
         <td>Passive Ground</td>
         <td>Completes divider circuit: V_out = V_in * (R_fixed / (R_ldr + R_fixed))</td>
@@ -7270,14 +7294,14 @@ window.exportHistoricDataToCSV = async () =&gt; {
           </div>
         </a>
 
-        <!-- 2. Tasks 1–3 Source (iot-content.ts) -->
+        <!-- 2. Tasks 1â€“3 Source (iot-content.ts) -->
         <a href="iot-content.ts" download="iot-content.ts" class="resource-card">
           <div class="resource-card-top">
             <div class="resource-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
             <div class="resource-info">
-              <h4>Tasks 1–3 Source</h4>
+              <h4>Tasks 1â€“3 Source</h4>
               <p>Firmware, Web Server, HTML generator & MQTT client modules (iot-content.ts)</p>
               <span class="resource-badge badge-source">TypeScript / Source</span>
             </div>
@@ -7476,7 +7500,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
             </div>
             <div class="resource-info">
               <h4>Task 5 Sensor Dataset (CSV)</h4>
-              <p>Synthetic demonstration data — 30 records (Temperature, Humidity, LDR & Mode)</p>
+              <p>Synthetic demonstration data â€” 30 records (Temperature, Humidity, LDR & Mode)</p>
               <span class="resource-badge badge-data">CSV Dataset</span>
             </div>
           </div>
