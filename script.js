@@ -619,13 +619,13 @@ const weeklyUpdates = [
     status: "completed",
     title: "IoT, Connectivity & RTOS",
 
-    summaryShort: "Completed five comprehensive IoT and RTOS tasks using ESP32: local web server LED control, Adafruit IO MQTT telemetry, IFTTT voice automation, Firebase RTDB real-time sync, and FreeRTOS edge logging with analytical CSV export.",
+    summaryShort: "Completed five comprehensive IoT tasks using ESP32: local web server LED control, Adafruit IO MQTT telemetry, IFTTT voice automation, Firebase RTDB real-time sync, and autonomous Firebase edge logging with analytical CSV export.",
 
-    summary: "During Week 7 of ProtoSem, I explored Internet of Things (IoT), connectivity, and Real-Time Operating Systems (RTOS). I worked with Arduino IDE, ESP32, and cloud architectures to engineer 5 progressive IoT systems: (1) Local embedded web server for hardware LED control, (2) Adafruit IO MQTT broker telemetry for AC bulb switching, (3) IFTTT webhook and voice-driven cloud automation, (4) Firebase Realtime Database live streaming with authenticated dashboard, and (5) FreeRTOS dual-core multitasking edge automation with historical time-series logging and client-side CSV data export. Overall, Week 7 solidified my ability to bridge physical sensors, embedded C++ firmware, cloud NoSQL pipelines, and responsive analytics interfaces.",
+    summary: "During Week 7 of ProtoSem, I explored Internet of Things (IoT), connectivity, and Real-Time Operating Systems (RTOS). I worked with Arduino IDE, ESP32, and cloud architectures to engineer 5 progressive IoT systems: (1) Local embedded web server for hardware LED control, (2) Adafruit IO MQTT broker telemetry for AC bulb switching, (3) IFTTT webhook and voice-driven cloud automation, (4) Firebase Realtime Database live streaming with authenticated dashboard, and (5) Firebase edge automation with LDR threshold lighting, continuous historical time-series logging, and client-side CSV data export. Overall, Week 7 solidified my ability to bridge physical sensors, embedded C++ firmware, cloud NoSQL pipelines, and responsive analytics interfaces.",
 
     goals: [
         "Understand the fundamentals of IoT protocols, connectivity, and embedded networking",
-        "Master ESP32 dual-core firmware development and FreeRTOS task scheduling",
+        "Master ESP32 firmware development, sensor interfacing, and edge automation logic",
         "Implement local web servers (HTTP) and cloud messaging brokers (MQTT)",
         "Connect cloud-to-cloud reactive automation pipelines via IFTTT webhooks",
         "Build secure Google Firebase RTDB streaming and historical time-series logging",
@@ -637,7 +637,7 @@ const weeklyUpdates = [
         "Task 2: Integrated Adafruit IO MQTT broker and 5V relay module to switch an AC lamp",
         "Task 3: Configured IFTTT webhooks and voice commands for hands-free cloud automation",
         "Task 4: Developed a real-time Firebase RTDB smart environment monitor and web UI",
-        "Task 5: Implemented FreeRTOS Core 0 edge logic, Core 1 cloud push logging, and CSV export",
+        "Task 5: Implemented Firebase autonomous LDR lighting, historical time-series logging, and CSV export",
         "Created comprehensive technical reference manuals and 30-record benchmark telemetry dataset"
     ],
 
@@ -670,7 +670,7 @@ const weeklyUpdates = [
     achievements: [
         "Engineered 5 fully functional, documented IoT systems from local LAN to multi-cloud",
         "Mastered HTTP, MQTT, REST Webhooks, and WebSockets/SSE streaming protocols",
-        "Successfully deployed FreeRTOS preemptive multitasking on ESP32 dual-core architecture",
+        "Successfully engineered autonomous edge decision logic, Firebase RTDB sync, and CSV data export",
         "Designed analytical dashboard with dual time-series charts and RFC 4180 CSV export",
         "Authored project documentation including datasheets, wiring schematics, and code repositories"
     ],
@@ -681,7 +681,8 @@ const weeklyUpdates = [
         "images/week7/task3/3.jpeg",
         "images/week7/task4/4.jpeg",
         "images/week7/task5/5.jpeg",
-        "images/week7/task5/task5-dashboard.png"
+        "images/week7/task5/task5-dashboard.png",
+        "images/week7/task5/firebase_realtime_database_history.png"
     ],
 
     videos: [

@@ -6647,7 +6647,14 @@ window.toggleBulbState = () =&gt; {
         <h4>WHAT IT IS</h4>
         <p>Visual documentation of the NoSQL structure efficiently storing the chronologically appended data.</p>
 
-        
+        <div class="media-slot image-slot" style="margin: 24px 0;">
+          <img src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 453; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+          <div class="media-caption">
+            <span class="media-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Database Console</span>
+            <h5>Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging</h5>
+            <p>Database structure in Google Firebase Realtime Database console showing the <code>devices/history</code> push record hierarchy. Visibly demonstrated active telemetry fields include <code>humidity: 58</code>, <code>temperature: 24.8</code>, and <code>timestamp: 4</code>. Additional structured keys for <code>device_id</code>, <code>imu</code>, <code>mq4_adc</code>, and <code>mq4_voltage</code> exist under the node while remaining collapsed in this data view.</p>
+          </div>
+        </div>
 
         <h4>WHAT I DID</h4>
         <p>I captured the Firebase console showing the nested hierarchy of generated push IDs containing the sensor telemetry.</p>
@@ -6683,7 +6690,7 @@ window.toggleBulbState = () =&gt; {
           <div class="media-caption">
             <span class="media-badge">Frontend Architecture</span>
             <h5>Integrated Analytical & Edge Automation Dashboard</h5>
-            <p>Unified panel displaying real-time FreeRTOS Core 0 telemetry KPIs, dual historical trend curves (Temperature/Humidity & LDR with threshold line), operational phase validation, and one-click RFC 4180 CSV export.</p>
+            <p>Unified panel displaying real-time edge telemetry KPIs, dual historical trend curves (Temperature/Humidity & LDR with threshold line), operational mode status, and one-click RFC 4180 CSV export.</p>
           </div>
         </div>
 
@@ -7210,6 +7217,16 @@ window.exportHistoricDataToCSV = async () =&gt; {
     <div class="topic-section">
       <h3 class="topic-title">TASK 5 MEDIA</h3>
 
+      <h4 style="font-size: 15px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1.2px; margin: 24px 0 16px; font-weight: 700;">Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging</h4>
+      <div class="media-slot image-slot" style="margin-bottom: 28px;">
+        <img src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 453; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+        <div class="media-caption">
+          <span class="media-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Cloud Database Console</span>
+          <h5>Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging</h5>
+          <p>Technical Analysis &amp; Schema Explanation: This console capture demonstrates persistent time-series data storage in Google Firebase Realtime Database under the root <code>devices</code> tree. Historical sensor telemetry is partitioned under the <code>history</code> path with chronologically generated push IDs (including <code>-P1KaG552e8SC8vZ_gfH</code>, <code>-P1KaGq2zuxnDTqKSLWJ</code>, and <code>-P1KaHaAVortINUixhrd</code>). Active metrics visibly demonstrated in the expanded record include ambient humidity (<code>humidity: 58</code>), ambient temperature (<code>temperature: 24.8</code>), and sequential sample tracking (<code>timestamp: 4</code>). Additional structured keys defined in the device record include collapsed child objects for <code>device_id</code>, <code>imu</code>, <code>mq4_adc</code>, and <code>mq4_voltage</code> (their key paths exist under the node, while nested sub-properties remain collapsed in this console view). The non-realtime read-only status banner indicates high data density across historical records, verifying high-frequency cloud logging.</p>
+        </div>
+      </div>
+
       <h4 style="font-size: 13.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; margin: 24px 0 16px; font-weight: 700;">Representative Project Images</h4>
       <div class="task5-image-grid">
         <div class="media-slot image-slot">
@@ -7217,7 +7234,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
           <div class="media-caption">
             <span class="media-badge">Hardware Test</span>
             <h5>Edge Automation Bench Setup</h5>
-            <p>ESP32 dual-core breadboard circuit with LDR, DHT11, and 5V relay module actuating an AC lamp under manual sensor coverage.</p>
+            <p>ESP32 breadboard circuit with LDR, DHT11, and 5V relay module actuating an AC lamp under manual sensor coverage.</p>
           </div>
         </div>
         <div class="media-slot image-slot">
@@ -7374,7 +7391,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
             </div>
             <div class="resource-info">
               <h4>ESP32 Technical Reference</h4>
-              <p>Project documentation: FreeRTOS dual-core tasking, GPIO mapping & power design</p>
+              <p>Project documentation: ESP32 hardware architecture, GPIO mapping & power design</p>
               <span class="resource-badge badge-pdf">Project PDF</span>
             </div>
           </div>

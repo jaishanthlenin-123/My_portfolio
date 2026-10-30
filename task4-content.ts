@@ -2,7 +2,7 @@
  * Week 7 IoT, Connectivity & RTOS — Tasks 4 & 5 Source Content
  * Author: Jaishanth Lenin
  * Description: Complete Firebase Realtime Database firmware, Edge Automation,
- * FreeRTOS multitasking, and CSV telemetry analytics module.
+ * non-blocking sensor acquisition, and CSV telemetry analytics module.
  */
 
 export interface TelemetryRecord {
@@ -115,101 +115,118 @@ export const task5Content: TaskDefinition = {
   id: "task5",
   title: "Firebase Logging, Automation & Data Export",
   category: "Autonomous Edge Computing & Analytical Export",
-  hardware: ["ESP32 Dual-Core SoC", "DHT11 Sensor (GPIO 4)", "LDR Light Sensor (GPIO 34)", "5V Relay Module (GPIO 18)", "Diagnostic LED (GPIO 2)"],
-  protocols: ["FreeRTOS Preemptive Scheduling", "Firebase RTDB Push Queue", "Client-Side Blob CSV Generation"],
+  hardware: ["ESP32 Development Board", "DHT11 Sensor (GPIO 4)", "LDR Light Sensor (GPIO 34)", "5V Relay Module (GPIO 5)", "Diagnostic LED (GPIO 2)"],
+  protocols: ["Non-blocking millis() Timing", "Firebase RTDB Push Queue", "Client-Side Blob CSV Generation"],
   configuration: {
-    ldrDarkThreshold: 1200,
+    ldrDarkThreshold: 2000,
     historicalLogsNode: "/logs",
     csvExportFilename: "task5_sensor_data.csv",
     sampleIntervalMs: 2000,
+    loggingIntervalMs: 60000,
     syntheticRecordsCount: 30,
   },
   firmwareSource: `
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
 #include <DHT.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>
 
 #define DHTPIN 4
 #define LDRPIN 34
-#define RELAYPIN 18
-#define LDR_DARK_THRESHOLD 1200
+#define BULBPIN 5
+#define LDR_THRESHOLD 2000
 
 DHT dht(DHTPIN, DHT11);
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 0, 60000);
+
 FirebaseData fbdo;
+FirebaseData streamData;
 FirebaseAuth auth;
 FirebaseConfig config;
 
-// FreeRTOS Task Handles
-TaskHandle_t TaskTelemetryHandle;
-TaskHandle_t TaskAutomationHandle;
+bool autoMode = true;
+bool currentBulbState = false;
 
-volatile float globalTemp = 0.0;
-volatile float globalHum = 0.0;
-volatile int globalLdr = 0;
-volatile bool autoMode = true;
-volatile bool bulbStatus = false;
+unsigned long lastSensorRead = 0;
+unsigned long lastHistoryLog = 0;
+const unsigned long SENSOR_INTERVAL = 2000;
+const unsigned long LOG_INTERVAL = 60000;
 
-// Core 0: Read Sensors & Edge Automation
-void vAutomationTask(void* pvParameters) {
-  for (;;) {
-    float t = dht.readTemperature();
-    float h = dht.readHumidity();
-    int l = analogRead(LDRPIN);
-
-    if (!isnan(t) && !isnan(h)) {
-      globalTemp = t;
-      globalHum = h;
-      globalLdr = l;
-
-      // Autonomous threshold logic
-      if (autoMode) {
-        if (l < LDR_DARK_THRESHOLD && !bulbStatus) {
-          bulbStatus = true;
-          digitalWrite(RELAYPIN, HIGH);
-        } else if (l >= LDR_DARK_THRESHOLD && bulbStatus) {
-          bulbStatus = false;
-          digitalWrite(RELAYPIN, LOW);
-        }
-      }
-    }
-    vTaskDelay(pdMS_TO_TICKS(1000));
-  }
-}
-
-// Core 1: Push Historical Telemetry to Firebase
-void vCloudSyncTask(void* pvParameters) {
-  for (;;) {
-    if (Firebase.ready()) {
-      FirebaseJson json;
-      json.set("temperature", globalTemp);
-      json.set("humidity", globalHum);
-      json.set("ldr", globalLdr);
-      json.set("lightStatus", globalLdr >= LDR_DARK_THRESHOLD ? "BRIGHT" : "DARK");
-      json.set("bulbStatus", bulbStatus ? "ON" : "OFF");
-      json.set("mode", autoMode ? "AUTO" : "MANUAL");
-      json.set("timestamp", (int)time(nullptr));
-
-      // Append historical record
-      Firebase.RTDB.pushJSON(&fbdo, "/logs", &json);
-    }
-    vTaskDelay(pdMS_TO_TICKS(5000));
+void streamCallback(FirebaseStream data) {
+  String path = data.dataPath();
+  if (path == "/mode") {
+    autoMode = data.stringData().equalsIgnoreCase("AUTO");
+  } else if (path == "/bulb" && !autoMode) {
+    currentBulbState = data.boolData();
+    digitalWrite(BULBPIN, currentBulbState ? HIGH : LOW);
   }
 }
 
 void setup() {
   Serial.begin(115200);
-  pinMode(RELAYPIN, OUTPUT);
+  pinMode(BULBPIN, OUTPUT);
+  pinMode(LDRPIN, INPUT);
   dht.begin();
 
   WiFi.begin("LAB_WIFI", "SECURE_PASS");
   while (WiFi.status() != WL_CONNECTED) delay(500);
 
-  xTaskCreatePinnedToCore(vAutomationTask, "AutomationTask", 4096, NULL, 2, &TaskTelemetryHandle, 0);
-  xTaskCreatePinnedToCore(vCloudSyncTask, "CloudSyncTask", 8192, NULL, 1, &TaskAutomationHandle, 1);
+  timeClient.begin();
+  timeClient.update();
+
+  config.api_key = "FIREBASE_API_KEY";
+  config.database_url = "FIREBASE_DATABASE_URL";
+  Firebase.begin(&config, &auth);
+
+  Firebase.RTDB.beginStream(&streamData, "/control");
+  Firebase.RTDB.setStreamCallback(&streamData, streamCallback, nullptr);
 }
 
 void loop() {
-  vTaskDelete(NULL); // Free loop task since FreeRTOS manages execution
+  timeClient.update();
+  unsigned long now = millis();
+
+  // 1. Periodic sensor read & edge decision logic (every 2s)
+  if (now - lastSensorRead >= SENSOR_INTERVAL) {
+    lastSensorRead = now;
+    float t = dht.readTemperature();
+    float h = dht.readHumidity();
+    int ldr = analogRead(LDRPIN);
+
+    if (autoMode) {
+      bool shouldLight = (ldr < LDR_THRESHOLD);
+      if (shouldLight != currentBulbState) {
+        currentBulbState = shouldLight;
+        digitalWrite(BULBPIN, currentBulbState ? HIGH : LOW);
+        Firebase.RTDB.setBool(&fbdo, "/control/bulb", currentBulbState);
+      }
+    }
+
+    Firebase.RTDB.setFloat(&fbdo, "/sensors/temperature", t);
+    Firebase.RTDB.setFloat(&fbdo, "/sensors/humidity", h);
+    Firebase.RTDB.setInt(&fbdo, "/sensors/ldr", ldr);
+  }
+
+  // 2. Periodic historical log push (every 60s)
+  if (now - lastHistoryLog >= LOG_INTERVAL) {
+    lastHistoryLog = now;
+    float t = dht.readTemperature();
+    float h = dht.readHumidity();
+    int ldr = analogRead(LDRPIN);
+    unsigned long epoch = timeClient.getEpochTime();
+
+    FirebaseJson json;
+    json.set("timestamp", epoch);
+    json.set("temperature", t);
+    json.set("humidity", h);
+    json.set("ldr", ldr);
+    json.set("bulb", currentBulbState);
+    json.set("mode", autoMode ? "AUTO" : "MANUAL");
+
+    Firebase.RTDB.pushJSON(&fbdo, "/logs", &json);
+  }
 }
 `,
   frontendSource: `
