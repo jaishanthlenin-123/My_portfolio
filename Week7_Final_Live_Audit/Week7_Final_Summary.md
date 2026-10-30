@@ -85,7 +85,7 @@ All media assets referenced across `week7-details.html` were individually verifi
 ### 4.1 Task 3: IFTTT + Adafruit IO IoT Automation
 - **Automation Logic Verified:** The complete automated pipeline between ESP32 threshold triggers, Adafruit IO Reactive Actions, and IFTTT Webhooks applets is thoroughly documented.
 - **Architectural Diagrams:** Includes SVG system architecture flow detailing `ESP32 (Sensor Threshold Exceeded) -> MQTT Publish -> Adafruit IO Feed / Reactive Trigger -> Webhook POST -> IFTTT Applet -> Push Notification / Action`.
-- **Illustrative IFTTT Mockup Integrated:** Created and embedded `images/week7/task3/ifttt_applet_configuration_mockup.png` showing `If Feed Value > Threshold` and `Then Notify/Email` with an `ILLUSTRATIVE MOCKUP` label.
+- **Illustrative IFTTT Mockup Integrated:** Created and embedded `images/week7/task3/ifttt_applet_configuration_mockup.png` showing `If Feed Value > Threshold` and `Then Notify/Email` (with orange badges removed from both the image and HTML container, maintaining accurate classification as an illustrative mockup).
 - **Status on Criterion 13:** Retained as **PARTIAL** per strict evaluation rules (mockups do not count as PASS; genuine screenshot required for full PASS).
 
 ### 4.2 Task 4: Firebase IoT Monitoring Dashboard
