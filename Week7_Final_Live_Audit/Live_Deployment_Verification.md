@@ -43,7 +43,7 @@ Every critical asset path on the public domain was tested for HTTP availability,
 | `images/week7/task4/4 (2).jpeg` | **200 OK** | Task 4 live sensor dashboard overview |
 | `images/week7/task4/4 (3).jpeg` | **200 OK** | Task 4 control panel actuation interface |
 | `images/week7/task4/4 (4).jpeg` | **200 OK** | Task 4 live streaming telemetry graphs |
-| `images/week7/task4/firebase_sensors_control_database_mockup.png` | **Pending Push** | Task 4 illustrative Firebase database mockup (113,949 bytes) |
+| `images/week7/task4/firebase_sensors_control_database_mockup.png` | **200 OK** | Task 4 illustrative Firebase database mockup (113,949 bytes) |
 | `images/week7/task5/5 (1).jpeg` | **200 OK** | Task 5 physical automation bench |
 | `images/week7/task5/firebase_realtime_database_history.png` | **200 OK** | Task 5 authentic Firebase RTDB timestamped records (102,512 bytes) |
 
