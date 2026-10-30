@@ -72,7 +72,7 @@ The objective of Task 3 is to construct an event-driven multi-cloud automation a
 ## 5. Missing Evidence
 
 - **Criterion 13 (Screenshots of the IFTTT configuration)**:
-  - *Current State*: Topic 13 in `week7-details.html` explains the Applet creation procedure and displays an SVG architecture pipeline diagram. However, a raw visual screenshot capturing the actual IFTTT web/mobile Applet setup card (showing "If [Google Assistant] Then [Adafruit IO Send data to feed]") is missing from `images/week7/task3/`.
+  - *Current State*: Topic 13 in `week7-details.html` now integrates an illustrative workflow configuration mockup ([ifttt_applet_configuration_mockup.png](file:///e:/portfolio/images/week7/task3/ifttt_applet_configuration_mockup.png)) clearly detailing the Trigger ("If Feed Value > 2000") and Action ("Then Send Notification / Email") architecture. Both orange mockup badges have been cleanly excised from the asset and HTML presentation. However, in accordance with academic integrity guidelines, an illustrative mockup is not recognized as authentic platform evidence. A raw capture from an authenticated IFTTT portal session remains missing.
   - *Status*: **PARTIAL**.
 
 ---
@@ -97,7 +97,7 @@ The objective of Task 3 is to construct an event-driven multi-cloud automation a
 ---
 
 ## 8. Remaining Actions
-- [ ] Capture a screenshot of the IFTTT Applet configuration page (showing the trigger block and Adafruit IO action block).
-- [ ] Save the screenshot as `images/week7/task3/ifttt_config.png`.
-- [ ] Add the image tag to Topic 13 in `week7-details.html` to promote Criterion 13 from **PARTIAL** to **PASS**.
+- [ ] Log in to the active IFTTT account and capture an authentic browser screenshot of the configured Applet showing the Adafruit IO trigger and notification/email action cards.
+- [ ] Save the authentic capture to `images/week7/task3/ifttt_applet_genuine.png`.
+- [ ] Embed the authentic capture in Topic 13 of `week7-details.html` to promote Criterion 13 from **PARTIAL** to full **PASS**.
 

@@ -24,52 +24,51 @@ Every critical asset path on the public domain was tested for HTTP availability,
 
 ---
 
-### 1.2 Image Assets (21 Production Assets Verified)
+### 1.2 Image Assets (20 Production Assets Verified)
 | Path | Status | Verification Note |
 | :--- | :---: | :--- |
-| `images/week7/task1/1 (1).jpeg` | **200 OK** | Task 1 physical breadboard circuit |
-| `images/week7/task1/1 (2).jpeg` | **200 OK** | Task 1 ESP32 pin wiring closeup |
-| `images/week7/task1/1 (3).jpeg` | **200 OK** | Task 1 web server UI rendered on desktop |
-| `images/week7/task1/1 (4).jpeg` | **200 OK** | Task 1 mobile browser toggle interface |
-| `images/week7/task2/2 (1).jpeg` | **200 OK** | Task 2 hardware wiring with sensor/LED |
-| `images/week7/task2/2 (2).jpeg` | **200 OK** | Task 2 Adafruit IO dashboard gauges |
-| `images/week7/task2/2 (3).jpeg` | **200 OK** | Task 2 MQTT feed configuration card |
-| `images/week7/task2/2 (4).jpeg` | **200 OK** | Task 2 live telemetry graph |
-| `images/week7/task3/3 (1).jpeg` | **200 OK** | Task 3 ESP32 connected to automation rig |
-| `images/week7/task3/3 (2).jpeg` | **200 OK** | Task 3 trigger condition testing setup |
-| `images/week7/task3/3 (3).jpeg` | **200 OK** | Task 3 mobile notification receipt |
-| `images/week7/task3/3 (4).jpeg` | **200 OK** | Task 3 hardware relay actuation state |
-| `images/week7/task3/ifttt_applet_configuration_mockup.png` | **200 OK** | Task 3 illustrative IFTTT Applet configuration mockup (63,647 bytes) |
-| `images/week7/task4/4 (1).jpeg` | **200 OK** | Task 4 multi-sensor hardware breadboard |
-| `images/week7/task4/4 (2).jpeg` | **200 OK** | Task 4 live sensor dashboard overview |
-| `images/week7/task4/4 (3).jpeg` | **200 OK** | Task 4 control panel actuation interface |
-| `images/week7/task4/4 (4).jpeg` | **200 OK** | Task 4 live streaming telemetry graphs |
+| `images/week7/task1/1.jpeg` | **200 OK** | Task 1 physical breadboard circuit (172,044 bytes) |
+| `images/week7/task1/dashboard.jpg` | **200 OK** | Task 1 web server UI rendered on browser (529,724 bytes) |
+| `images/week7/task2/2.jpeg` | **200 OK** | Task 2 hardware wiring with sensor/LED (131,094 bytes) |
+| `images/week7/task2/dashboard.jpg` | **200 OK** | Task 2 Adafruit IO cloud dashboard gauges (596,793 bytes) |
+| `images/week7/task3/3.jpeg` | **200 OK** | Task 3 ESP32 connected to automation rig (116,350 bytes) |
+| `images/week7/task3/dashboard.jpg` | **200 OK** | Task 3 cloud automation engine & webhook bridge (567,700 bytes) |
+| `images/week7/task3/ifttt_applet_configuration_mockup.png` | **200 OK** | Task 3 illustrative IFTTT Applet configuration mockup (61,754 bytes) |
+| `images/week7/task4/4 (1).jpeg` | **200 OK** | Task 4 dual-terminal test setup (85,159 bytes) |
+| `images/week7/task4/4 (2).jpeg` | **200 OK** | Task 4 authentication & security portal (59,722 bytes) |
+| `images/week7/task4/4 (3).jpeg` | **200 OK** | Task 4 real-time telemetry & dual mode controls (60,179 bytes) |
+| `images/week7/task4/4 (4).jpeg` | **200 OK** | Task 4 dynamic temperature & humidity streams (60,538 bytes) |
+| `images/week7/task4/4.jpeg` | **200 OK** | Task 4 hardware bench assembly & sensor array (157,143 bytes) |
 | `images/week7/task4/firebase_database.png` | **200 OK** | Task 4 genuine Firebase database screenshot from project `Apppp` (112,074 bytes) |
 | `images/week7/task4/firebase_sensors_control_database_mockup.png` | **200 OK** | Task 4 preserved Firebase database schema mockup (113,949 bytes) |
-| `images/week7/task5/5 (1).jpeg` | **200 OK** | Task 5 physical automation bench |
-| `images/week7/task5/firebase_realtime_database_history.png` | **200 OK** | Task 5 authentic Firebase RTDB timestamped records (102,512 bytes) |
+| `images/week7/task5/5.1.png` | **200 OK** | Task 5 edge automation bench setup (65,370 bytes) |
+| `images/week7/task5/5.2.png` | **200 OK** | Task 5 analytical telemetry time-series trends (71,957 bytes) |
+| `images/week7/task5/5.3.png` | **200 OK** | Task 5 interactive coordinate inspection tooltip (155,248 bytes) |
+| `images/week7/task5/5.jpeg` | **200 OK** | Task 5 hardware assembly with DHT11, LDR, and relay (175,334 bytes) |
+| `images/week7/task5/firebase_realtime_database_history.png` | **200 OK** | Task 5 authentic Firebase RTDB timestamped records from project `Apppp` (112,074 bytes) |
+| `images/week7/task5/task5-dashboard.png` | **200 OK** | Task 5 integrated analytical & edge automation dashboard (155,248 bytes) |
 
 ---
 
 ### 1.3 High-Definition Demonstration Videos (5 MP4 Files)
 | Asset Path | Status | File Size | Description |
 | :--- | :---: | :---: | :--- |
-| `video/week7/Task 1-ESP32 Web Server & HTML LED Control.mp4` | **200 OK** | 11.49 MB | Web server HTTP toggle demonstration |
-| `video/week7/Task 2-Adafruit IO Dashboard & MQTT.mp4` | **200 OK** | 15.31 MB | Adafruit IO two-way MQTT publishing & subscribing |
-| `video/week7/Task 3-IFTTT + Adafruit IO IoT Automation.mp4` | **200 OK** | 13.01 MB | Automated alert notification trigger on threshold breach |
-| `video/week7/Task 4-Firebase IoT Monitoring Dashboard.mp4` | **200 OK** | 13.00 MB | Real-time Firebase streaming and web dashboard sync |
-| `video/week7/Task 5-Firebase Logging, Automation & Data Export.mp4` | **200 OK** | 14.85 MB | Sensor automation, RTDB logging & CSV data export |
+| `videos/week7/task1.mp4` | **200 OK** | 2.91 MB | Web server HTTP toggle demonstration |
+| `videos/week7/task2.mp4` | **200 OK** | 1.81 MB | Adafruit IO two-way MQTT publishing & subscribing |
+| `videos/week7/task3.mp4` | **200 OK** | 2.30 MB | Automated alert notification trigger on threshold breach |
+| `videos/week7/task4.1.mp4` | **200 OK** | 2.06 MB | Real-time Firebase streaming and web dashboard sync |
+| `videos/week7/task5.mp4` | **200 OK** | 1.88 MB | Sensor automation, RTDB logging & CSV data export |
 
 ---
 
 ### 1.4 Downloadable Engineering Resources & Datasets
 | Resource Path | Status | Format | Purpose |
 | :--- | :---: | :---: | :--- |
-| `docs/week7/ESP32_WebServer_Guide.pdf` | **200 OK** | PDF | Task 1 technical implementation guide |
-| `docs/week7/AdafruitIO_MQTT_Architecture.pdf` | **200 OK** | PDF | Task 2 protocol and architectural reference |
-| `docs/week7/IFTTT_Automation_Workflow.pdf` | **200 OK** | PDF | Task 3 trigger/action automation blueprint |
-| `docs/week7/Firebase_RTDB_Integration.pdf` | **200 OK** | PDF | Task 4 cloud telemetry architecture manual |
-| `data/week7/task5_sensor_data.csv` | **200 OK** | CSV | Task 5 historical sensor dataset (DHT11 & LDR) |
+| `docs/esp32-technical-reference.pdf` | **200 OK** | PDF | ESP32 hardware & Wi-Fi architecture reference (59,831 bytes) |
+| `docs/dht11-sensor-reference.pdf` | **200 OK** | PDF | DHT11 environmental sensor protocol manual (56,731 bytes) |
+| `docs/firebase-realtime-database-reference.pdf` | **200 OK** | PDF | Firebase RTDB cloud sync architecture reference (64,454 bytes) |
+| `docs/task5-sensor-data-reference.pdf` | **200 OK** | PDF | Task 5 historical data logging and export manual (70,808 bytes) |
+| `task5_sensor_data.csv` | **200 OK** | CSV | Task 5 30-entry historical sensor dataset (2,253 bytes) |
 
 ---
 
@@ -112,7 +111,7 @@ A dedicated string and DOM audit was executed to ensure total compliance with th
 1. **Title:** Confirmed exact heading:
    `<h2 class="task-title">TASK 5: Firebase Logging, Automation & Data Export</h2>`
 2. **Zero Erroneous RTOS Statements:** Verified that zero instances of "RTOS", "FreeRTOS", "dual-core", "Core 0", "Core 1", or "task scheduling" exist in Task 5 descriptions.
-3. **Actual Technical Implementation:** Correctly documents the non-blocking `millis()` polling loop, LDR analog thresholding with 100-count hysteresis, NTP network time synchronization, Firebase RTDB `/devices/history` push nodes, and CSV export.
+3. **Actual Technical Implementation:** Correctly documents the non-blocking `millis()` polling loop, LDR analog thresholding with 100-count hysteresis, NTP network time synchronization, Firebase RTDB `/history` push nodes, and CSV export.
 4. **Authentic Image:** Displays `images/week7/task5/firebase_realtime_database_history.png` directly under the dedicated section header.
 
 ---

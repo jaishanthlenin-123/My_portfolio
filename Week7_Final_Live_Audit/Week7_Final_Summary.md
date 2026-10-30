@@ -43,31 +43,30 @@ This report delivers the authoritative final audit of the live, production-deplo
 
 ### 3.1 Media Assets (HTTP 200 OK Confirmed)
 All media assets referenced across `week7-details.html` were individually verified on the production CDN:
-- **Physical Setup & Dashboard Photographs (21 images):**
-  - Task 1: `images/week7/task1/1 (1).jpeg`, `1 (2).jpeg`, `1 (3).jpeg`, `1 (4).jpeg` (Hardware wiring & web server controls)
-  - Task 2: `images/week7/task2/2 (1).jpeg`, `2 (2).jpeg`, `2 (3).jpeg`, `2 (4).jpeg` (Hardware circuit & Adafruit IO dashboard gauges)
-  - Task 3: `images/week7/task3/3 (1).jpeg`, `3 (2).jpeg`, `3 (3).jpeg`, `3 (4).jpeg`, `ifttt_applet_configuration_mockup.png` (Hardware wiring, trigger notifications & illustrative IFTTT mockup)
-  - Task 4: `images/week7/task4/4 (1).jpeg`, `4 (2).jpeg`, `4 (3).jpeg`, `4 (4).jpeg`, `firebase_database.png`, `firebase_sensors_control_database_mockup.png` (Hardware wiring, live multi-sensor UI, authentic Firebase console screenshot & preserved schema mockup)
-  - Task 5: `images/week7/task5/5 (1).jpeg`, `images/week7/task5/firebase_realtime_database_history.png` (Physical setup & authentic Firebase RTDB live telemetry and history tree from project `Apppp`)
+- **Physical Setup & Dashboard Photographs (20 images):**
+  - Task 1: `images/week7/task1/1.jpeg`, `images/week7/task1/dashboard.jpg` (Hardware circuit & web server controls)
+  - Task 2: `images/week7/task2/2.jpeg`, `images/week7/task2/dashboard.jpg` (Hardware circuit & Adafruit IO dashboard gauges)
+  - Task 3: `images/week7/task3/3.jpeg`, `images/week7/task3/dashboard.jpg`, `images/week7/task3/ifttt_applet_configuration_mockup.png` (Hardware wiring, automation engine & illustrative IFTTT mockup)
+  - Task 4: `images/week7/task4/4 (1).jpeg`, `4 (2).jpeg`, `4 (3).jpeg`, `4 (4).jpeg`, `4.jpeg`, `firebase_database.png`, `firebase_sensors_control_database_mockup.png` (Hardware wiring, live multi-sensor UI, authentic Firebase console screenshot from project `Apppp` & preserved schema mockup)
+  - Task 5: `images/week7/task5/5.1.png`, `5.2.png`, `5.3.png`, `5.jpeg`, `task5-dashboard.png`, `firebase_realtime_database_history.png` (Hardware bench assembly, trend graphs, coordinate tooltip, dashboard view & authentic Firebase historical log records from project `Apppp`)
 - **High-Definition Video Demonstrations (5 MP4 files):**
-  - Task 1 Video: `video/week7/Task 1-ESP32 Web Server & HTML LED Control.mp4` (HTTP 200 OK, 11,489,642 bytes)
-  - Task 2 Video: `video/week7/Task 2-Adafruit IO Dashboard & MQTT.mp4` (HTTP 200 OK, 15,311,942 bytes)
-  - Task 3 Video: `video/week7/Task 3-IFTTT + Adafruit IO IoT Automation.mp4` (HTTP 200 OK, 13,010,488 bytes)
-  - Task 4 Video: `video/week7/Task 4-Firebase IoT Monitoring Dashboard.mp4` (HTTP 200 OK, 13,000,503 bytes)
-  - Task 5 Video: `video/week7/Task 5-Firebase Logging, Automation & Data Export.mp4` (HTTP 200 OK, 14,845,984 bytes)
+  - Task 1 Video: `videos/week7/task1.mp4` (HTTP 200 OK, 2,913,223 bytes)
+  - Task 2 Video: `videos/week7/task2.mp4` (HTTP 200 OK, 1,808,180 bytes)
+  - Task 3 Video: `videos/week7/task3.mp4` (HTTP 200 OK, 2,302,947 bytes)
+  - Task 4 Video: `videos/week7/task4.1.mp4` (HTTP 200 OK, 2,062,901 bytes)
+  - Task 5 Video: `videos/week7/task5.mp4` (HTTP 200 OK, 1,880,912 bytes)
 
 ### 3.2 Live Downloadable Assets (HTTP 200 OK Confirmed)
 - **Engineering PDF Guides:**
-  - `docs/week7/ESP32_WebServer_Guide.pdf` (Task 1 Comprehensive Guide)
-  - `docs/week7/AdafruitIO_MQTT_Architecture.pdf` (Task 2 Protocol Architecture)
-  - `docs/week7/IFTTT_Automation_Workflow.pdf` (Task 3 Webhooks & Rules Engine)
-  - `docs/week7/Firebase_RTDB_Integration.pdf` (Task 4 Cloud Data Stream Blueprint)
+  - `docs/esp32-technical-reference.pdf` (Task 1 ESP32 Technical Reference, 59,831 bytes)
+  - `docs/dht11-sensor-reference.pdf` (Task 2 & 5 Sensor Protocol Reference, 56,731 bytes)
+  - `docs/firebase-realtime-database-reference.pdf` (Task 4 Cloud Database Telemetry Manual, 64,454 bytes)
+  - `docs/task5-sensor-data-reference.pdf` (Task 5 Historical Data Logging Blueprint, 70,808 bytes)
 - **Sensor Dataset:**
-  - `data/week7/task5_sensor_data.csv` (Task 5 historical sensor dataset containing timestamped DHT11 and LDR records)
+  - `task5_sensor_data.csv` (Task 5 historical sensor dataset containing 30 timestamped DHT11 and LDR records, 2,253 bytes)
 - **Source Code Repositories:**
   - Embedded TypeScript interactive simulators in `week7-details.html`
-  - GitHub repository root codebase files
-
+  - GitHub repository root codebase files (`iot-content.ts`, `task4-content.ts`, `script.js`)
 ### 3.3 Live Documentation & Datasheet External Links (HTTP 200 OK Confirmed)
 - Espressif ESP32 Official Datasheet & Technical Reference Manual
 - Adafruit IO API Documentation & MQTT Broker Specification

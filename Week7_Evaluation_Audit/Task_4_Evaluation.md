@@ -86,7 +86,7 @@ The objective of Task 4 is to build a modern, secure, enterprise-grade cloud tel
 ## 5. Missing Evidence
 
 - **Criterion 16 (Screenshots of the Firebase database)**:
-  - *Current State*: Topic 22 in `week7-details.html` documents the database structure and includes an SVG architecture diagram. While an authentic database screenshot exists for Task 5's `devices/history` tree, a dedicated raw screenshot of the Firebase Realtime Database web console displaying Task 4's `/sensors` and `/control` node tree is missing from `images/week7/task4/`.
+  - *Current State*: Topic 22 in `week7-details.html` now integrates an authentic Firebase Realtime Database web console screenshot from active project `Apppp` ([firebase_database.png](file:///e:/portfolio/images/week7/task4/firebase_database.png)) showing active telemetry under `/current` (`bulbState: false`, `humidity: 64`, `ldr: 750`, `mode: "AUTO"`, `temperature: 28.5`) and `/history`. In addition, an illustrative schema mockup ([firebase_sensors_control_database_mockup.png](file:///e:/portfolio/images/week7/task4/firebase_sensors_control_database_mockup.png)) illustrates the theoretical `/sensors` and `/control` branch hierarchy. However, because the live database organizes data under `/current` rather than literal `/sensors` and `/control` top-level keys, this criterion is conservatively maintained as **PARTIAL** for strict rubric adherence.
   - *Status*: **PARTIAL**.
 
 ---
@@ -111,8 +111,6 @@ The objective of Task 4 is to build a modern, secure, enterprise-grade cloud tel
 ---
 
 ## 8. Remaining Actions
-- [ ] Open the Firebase Console for the Task 4 project.
-- [ ] Expand the `/sensors` (`temperature`, `humidity`, `ldr`) and `/control` (`bulb`) JSON tree.
-- [ ] Take a clean screenshot and save it to `images/week7/task4/firebase_database.png`.
-- [ ] Link the screenshot in Topic 22 of `week7-details.html` to promote Criterion 16 from **PARTIAL** to **PASS**.
+- [ ] (Optional) In the Firebase Console for project `Apppp`, add or alias a top-level node `/sensors` (`temperature`, `humidity`, `ldr`) and `/control` (`bulb`) to match the literal naming in the evaluation checklist criterion.
+- [ ] Capture the updated console tree and replace `images/week7/task4/firebase_database.png` to promote Criterion 16 from **PARTIAL** to full **PASS**.
 

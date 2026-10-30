@@ -602,7 +602,7 @@ This document constitutes the authoritative, criterion-by-criterion evaluation a
 - [x] **Screenshots of the Firebase log data**
   - **Status**: PASS
   - **Evidence File/Path**: [images/week7/task5/firebase_realtime_database_history.png](file:///e:/portfolio/images/week7/task5/firebase_realtime_database_history.png), embedded in [week7-details.html](file:///e:/portfolio/week7-details.html) (Topic 20 and Task 5 Media)
-  - **Verification Notes**: Verified with the newly provided authentic Firebase console capture showing `https://cattle-moniter-default-rtdb.asia-southeast1.firebasedatabase.app > devices > history` with push IDs (`-P1KaG552e8SC8vZ_gfH`, `-P1KaGq2zuxnDTqKSLWJ`, `-P1KaHaAVortINUixhrd`), showing `humidity: 58`, `temperature: 24.8`, and `timestamp: 4`.
+  - **Verification Notes**: Verified with the authentic Firebase console capture from project `Apppp` (`https://apppp-f359e-default-rtdb.asia-southeast1.firebasedatabase.app`) displaying live telemetry under `/current` (`bulbState: false`, `humidity: 64`, `ldr: 750`, `mode: "AUTO"`, `temperature: 28.5`) and historical push records under `/history` (with push ID `-Nh1a` logging `bulbState: false`, `humidity: 60`, `ldr: 820`).
   - **Required Action**: None. Fully verified.
 
 - [x] **Screenshots of the dashboard and data visualization**
