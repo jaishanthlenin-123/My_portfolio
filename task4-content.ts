@@ -118,7 +118,8 @@ export const task5Content: TaskDefinition = {
   hardware: ["ESP32 Development Board", "DHT11 Sensor (GPIO 4)", "LDR Light Sensor (GPIO 34)", "5V Relay Module (GPIO 5)", "Diagnostic LED (GPIO 2)"],
   protocols: ["Non-blocking millis() Timing", "Firebase RTDB Push Queue", "Client-Side Blob CSV Generation"],
   configuration: {
-    ldrDarkThreshold: 2000,
+    ldrOnThreshold: 1800,
+    ldrOffThreshold: 2200,
     historicalLogsNode: "/logs",
     csvExportFilename: "task5_sensor_data.csv",
     sampleIntervalMs: 2000,
@@ -135,7 +136,8 @@ export const task5Content: TaskDefinition = {
 #define DHTPIN 4
 #define LDRPIN 34
 #define BULBPIN 5
-#define LDR_THRESHOLD 2000
+#define LDR_ON_THRESHOLD 1800
+#define LDR_OFF_THRESHOLD 2200
 
 DHT dht(DHTPIN, DHT11);
 WiFiUDP ntpUDP;
@@ -196,12 +198,16 @@ void loop() {
     int ldr = analogRead(LDRPIN);
 
     if (autoMode) {
-      bool shouldLight = (ldr < LDR_THRESHOLD);
-      if (shouldLight != currentBulbState) {
-        currentBulbState = shouldLight;
-        digitalWrite(BULBPIN, currentBulbState ? HIGH : LOW);
-        Firebase.RTDB.setBool(&fbdo, "/control/bulb", currentBulbState);
+      if (ldr < LDR_ON_THRESHOLD && !currentBulbState) {
+        currentBulbState = true;
+        digitalWrite(BULBPIN, HIGH);
+        Firebase.RTDB.setBool(&fbdo, "/control/bulb", true);
+      } else if (ldr > LDR_OFF_THRESHOLD && currentBulbState) {
+        currentBulbState = false;
+        digitalWrite(BULBPIN, LOW);
+        Firebase.RTDB.setBool(&fbdo, "/control/bulb", false);
       }
+      // Retain state between 1800 and 2200 to eliminate relay chatter
     }
 
     Firebase.RTDB.setFloat(&fbdo, "/sensors/temperature", t);

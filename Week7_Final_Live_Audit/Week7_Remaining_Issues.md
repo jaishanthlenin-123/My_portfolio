@@ -13,8 +13,8 @@ Only **2 criteria** have been evaluated as **PARTIAL** because they ask specific
 
 | # | Task | Checklist Criterion | Current State | Deficit | Remediation Effort |
 | :-: | :--- | :--- | :--- | :--- | :---: |
-| **1** | **Task 3** | Criterion 13: *Screenshots of the IFTTT configuration* | Detailed SVG data flow diagram and step-by-step trigger/action workflow are documented. | Missing direct PNG/JPEG screenshot of the IFTTT web portal Applet configuration card ("If Adafruit IO Feed Value > Threshold, Then Send Email/Notification"). | 5 minutes |
-| **2** | **Task 4** | Criterion 16: *Screenshots of the Firebase database* | Illustrative mockup (`firebase_sensors_control_database_mockup.png`) and SVG schema integrated under Task 4. | Lacks an authentic direct browser screenshot captured from the active Firebase web console. Mockup is illustrative only. | 5 minutes |
+| **1** | **Task 3** | Criterion 13: *Screenshots of the IFTTT configuration* | Illustrative mockup (`ifttt_applet_configuration_mockup.png`) and SVG data flow diagram are integrated under Task 3. | Lacks an authentic browser screenshot captured from an active, authenticated IFTTT portal session. Mockup alone cannot be counted as PASS. | 5 minutes |
+| **2** | **Task 4** | Criterion 16: *Screenshots of the Firebase database* | Genuine Firebase console screenshot (`firebase_database.png`) from project `Apppp` and preserved schema mockup are integrated under Task 4. | The genuine screenshot organizes telemetry/control under `/current` and `/history` instead of literal keys `/sensors` and `/control`. | Optional (if evaluator requires literal keys) |
 
 ---
 

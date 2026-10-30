@@ -311,9 +311,9 @@ Every single checklist criterion from the official evaluation syllabus is evalua
 
 - [ ] **Screenshots of the IFTTT configuration**
   - **Status**: PARTIAL
-  - **Live Evidence Location**: [`week7-details.html#task3`](https://jaishanthlenin-123.github.io/My_portfolio/week7-details.html#task3) (Topic 13)
-  - **Live Verification Notes**: The configuration process and rule logic are explained in prose and illustrated via an SVG architecture diagram. However, an actual raw screenshot of the IFTTT web portal Applet editor card is missing from `images/week7/task3/`.
-  - **Required Action**: Log into IFTTT.com, capture a screenshot of the Applet summary/configuration screen, save it as `images/week7/task3/ifttt_config.png`, and add it to Topic 13 in `week7-details.html`.
+  - **Live Evidence Location**: [`week7-details.html#task3`](https://jaishanthlenin-123.github.io/My_portfolio/week7-details.html#task3) (Topic 13, `images/week7/task3/ifttt_applet_configuration_mockup.png`)
+  - **Live Verification Notes**: Topic 13 documents the automation pipeline and data-flow architecture with an SVG diagram, and now includes a dedicated professional illustrative mockup (`images/week7/task3/ifttt_applet_configuration_mockup.png`) showing the trigger (`If Feed Value > Threshold`) and action (`Then Notify/Email`) with an explicit `ILLUSTRATIVE MOCKUP` badge. In accordance with strict evaluation guidelines, this criterion remains **PARTIAL** until an authentic browser screenshot captured from an active, authenticated IFTTT portal session is supplied.
+  - **Required Action**: To upgrade this criterion to PASS, log into an authenticated IFTTT session, capture a raw screenshot of the Applet summary/configuration screen, save it as `images/week7/task3/ifttt_applet_configuration.png`, and update the portfolio link.
 
 - [x] **Screenshots of the Adafruit IO dashboard/feed**
   - **Status**: PASS
@@ -453,9 +453,9 @@ Every single checklist criterion from the official evaluation syllabus is evalua
 
 - [ ] **Screenshots of the Firebase database**
   - **Status**: PARTIAL
-  - **Live Evidence Location**: [`week7-details.html#task4`](https://jaishanthlenin-123.github.io/My_portfolio/week7-details.html#task4) (Topic 22, `images/week7/task4/firebase_sensors_control_database_mockup.png`)
-  - **Live Verification Notes**: An illustrative visual mockup has been integrated under Task 4 at `images/week7/task4/firebase_sensors_control_database_mockup.png` and clearly labeled with an `ILLUSTRATIVE MOCKUP` badge, displaying the structured `/sensors` (`temperature: 24.8`, `humidity: 58`, `ldr: 1720`) and `/control` (`bulb: true`, `mode: "AUTO"`) tree. However, under strict evaluation standards, this criterion remains **PARTIAL** because the asset is an illustrative diagram mockup rather than an authentic direct screenshot captured from an active Firebase web console. It is not counted as PASS and does not prove live cloud connectivity until supplemented by a genuine live console screenshot.
-  - **Required Action**: Open the live Firebase Realtime Database Console for the Task 4 project, expand `/sensors` and `/control` showing live operating values, capture a genuine browser screenshot, save it to `images/week7/task4/firebase_database.png`, and link it to upgrade this criterion to PASS.
+  - **Live Evidence Location**: [`week7-details.html#task4`](https://jaishanthlenin-123.github.io/My_portfolio/week7-details.html#task4) (Topic 22, `images/week7/task4/firebase_database.png`)
+  - **Live Verification Notes**: A genuine live Firebase Realtime Database web console screenshot from the student's active project (`Apppp`) has been integrated at `images/week7/task4/firebase_database.png`. It visibly demonstrates authentic live cloud database connectivity with active sensor telemetry (`temperature: 28.5`, `humidity: 64`, `ldr: 750`) and device controls (`bulbState: false`, `mode: "AUTO"`), exactly matching the live dashboard telemetry. However, in the actual implementation, telemetry and controls are organized under `/current` (and logs under `/history`) rather than separate top-level branches literally named `/sensors` and `/control`. An illustrative diagram mockup of the theoretical `/sensors` and `/control` schema is also preserved under `images/week7/task4/firebase_sensors_control_database_mockup.png` (with badge removed). Because the literal `/sensors` and `/control` branch names are not used in the live console tree, this criterion is conservatively maintained as **PARTIAL** for strict compliance.
+  - **Required Action**: If the evaluator requires literal node keys `/sensors` and `/control`, provision those exact keys in the Firebase project console and update the screenshot. If the evaluator accepts the implemented `/current` structure, this criterion qualifies for PASS.
 
 - [x] **Screenshots of the working dashboard**
   - **Status**: PASS

@@ -3461,6 +3461,17 @@ void MQTT_connect() {
 </div>
 
 
+        <div class="media-slot image-slot" style="margin: 28px 0 12px 0;">
+          <a href="images/week7/task3/ifttt_applet_configuration_mockup.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size IFTTT Applet configuration mockup">
+            <img src="images/week7/task3/ifttt_applet_configuration_mockup.png" alt="IFTTT Applet Configuration &ndash; Trigger and Action Workflow" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 516; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.35); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
+          </a>
+          <div class="media-caption">
+            <span class="media-badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 700; letter-spacing: 0.6px;">ILLUSTRATIVE MOCKUP</span>
+            <h5>IFTTT Applet Configuration &ndash; Trigger &amp; Action Workflow</h5>
+            <p>Illustrative mockup representing the IFTTT automation rule. The trigger monitors an Adafruit IO feed (e.g., feed value exceeding threshold) and dispatches an automated notification and actuator payload to the ESP32 edge device.</p>
+          </div>
+        </div>
+
         <h4>WHAT I DID</h4>
         <p>I captured the 'If This' and 'Then That' blocks configured on my screen.</p>
 
@@ -3865,6 +3876,16 @@ void MQTT_connect() {
             <p>Conducting smartphone-triggered voice automation tests linking Google Assistant/IFTTT webhooks to Adafruit IO feeds.</p>
           </div>
         </div>
+        <div class="media-slot image-slot">
+          <a href="images/week7/task3/ifttt_applet_configuration_mockup.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size IFTTT Applet configuration mockup">
+            <img src="images/week7/task3/ifttt_applet_configuration_mockup.png" alt="IFTTT Applet Configuration &ndash; Trigger and Action Workflow" loading="lazy">
+          </a>
+          <div class="media-caption">
+            <span class="media-badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 700; letter-spacing: 0.6px;">ILLUSTRATIVE MOCKUP</span>
+            <h5>IFTTT Applet Configuration &ndash; Trigger &amp; Action Workflow</h5>
+            <p>Illustrative mockup representing the IFTTT automation rule linking Adafruit IO feed thresholds to automated notifications.</p>
+          </div>
+        </div>
         <div class="media-slot video-slot">
           <div class="video-container">
             <video controls preload="metadata">
@@ -4256,12 +4277,24 @@ void MQTT_connect() {
         <h4>HOW I SOLVED IT</h4>
         <p>I ensured the ESP32 pushed data as raw numbers (int/float) so the dashboard could easily perform mathematical logic or charting without needing to parse strings.</p>
 
+        <!-- Genuine Live Firebase Database Screenshot -->
         <div class="media-slot image-slot" style="margin: 28px 0 12px 0;">
-          <a href="images/week7/task4/firebase_sensors_control_database_mockup.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size Firebase database structure mockup">
-            <img src="images/week7/task4/firebase_sensors_control_database_mockup.png" alt="Firebase Realtime Database &ndash; Sensors &amp; Control Structure" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 516; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.35); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
+          <a href="images/week7/task4/firebase_database.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size live Firebase database screenshot">
+            <img src="images/week7/task4/firebase_database.png" alt="Firebase Realtime Database &ndash; Live Database Structure" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 518; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
           </a>
           <div class="media-caption">
-            <span class="media-badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 700; letter-spacing: 0.6px;">ILLUSTRATIVE MOCKUP</span>
+            <span class="media-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); font-weight: 700; letter-spacing: 0.6px;">LIVE DATABASE CONSOLE</span>
+            <h5>Firebase Realtime Database &ndash; Live Database Structure</h5>
+            <p>Genuine Firebase Realtime Database console from the active project (<code>Apppp</code>) displaying the live operational tree. The <code>/current</code> node stores active sensor telemetry (<code>temperature: 28.5</code>, <code>humidity: 64</code>, <code>ldr: 750</code>) alongside device actuation states (<code>bulbState: false</code>, <code>mode: &quot;AUTO&quot;</code>), while <code>/history</code> stores chronological logging records.</p>
+          </div>
+        </div>
+
+        <!-- Preserved Firebase Database Mockup (Orange badge removed per instruction) -->
+        <div class="media-slot image-slot" style="margin: 28px 0 12px 0;">
+          <a href="images/week7/task4/firebase_sensors_control_database_mockup.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size Firebase database structure mockup">
+            <img src="images/week7/task4/firebase_sensors_control_database_mockup.png" alt="Firebase Realtime Database &ndash; Sensors &amp; Control Structure" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 516; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
+          </a>
+          <div class="media-caption">
             <h5>Firebase Realtime Database &ndash; Sensors &amp; Control Structure</h5>
             <p>Illustrative Firebase Realtime Database structure showing the sensor monitoring and device-control branches. The diagram represents the expected organization of the <code>/sensors</code> and <code>/control</code> data.</p>
           </div>
@@ -5594,13 +5627,22 @@ window.toggleBulbState = () =&gt; {
           </div>
         </div>
         <div class="media-slot image-slot">
+          <a href="images/week7/task4/firebase_database.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size live Firebase database screenshot">
+            <img src="images/week7/task4/firebase_database.png" alt="Firebase Realtime Database &ndash; Live Database Structure" loading="lazy">
+          </a>
+          <div class="media-caption">
+            <span class="media-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); font-weight: 700; letter-spacing: 0.6px;">LIVE DATABASE CONSOLE</span>
+            <h5>Firebase Realtime Database &ndash; Live Database Structure</h5>
+            <p>Genuine Firebase console screenshot from active project (<code>Apppp</code>) displaying live <code>/current</code> sensor nodes and <code>/history</code> log nodes.</p>
+          </div>
+        </div>
+        <div class="media-slot image-slot">
           <a href="images/week7/task4/firebase_sensors_control_database_mockup.png" target="_blank" rel="noopener noreferrer" title="Click to view full-size Firebase database structure mockup">
             <img src="images/week7/task4/firebase_sensors_control_database_mockup.png" alt="Firebase Realtime Database &ndash; Sensors &amp; Control Structure" loading="lazy">
           </a>
           <div class="media-caption">
-            <span class="media-badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 700; letter-spacing: 0.6px;">ILLUSTRATIVE MOCKUP</span>
             <h5>Firebase Realtime Database &ndash; Sensors &amp; Control Structure</h5>
-            <p>Illustrative Firebase Realtime Database structure showing the sensor monitoring and device-control branches. The diagram represents the expected organization of the <code>/sensors</code> and <code>/control</code> data.</p>
+            <p>Illustrative Firebase Realtime Database structure showing the sensor monitoring and device-control branches.</p>
           </div>
         </div>
         <div class="media-slot video-slot">
@@ -6669,11 +6711,11 @@ window.toggleBulbState = () =&gt; {
         <p>Visual documentation of the NoSQL structure efficiently storing the chronologically appended data.</p>
 
         <div class="media-slot image-slot" style="margin: 24px 0;">
-          <img src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 453; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+          <img src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 518; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
           <div class="media-caption">
-            <span class="media-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Database Console</span>
+            <span class="media-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); font-weight: 700; letter-spacing: 0.6px;">LIVE DATABASE CONSOLE</span>
             <h5>Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging</h5>
-            <p>Database structure in Google Firebase Realtime Database console showing the <code>devices/history</code> push record hierarchy. Visibly demonstrated active telemetry fields include <code>humidity: 58</code>, <code>temperature: 24.8</code>, and <code>timestamp: 4</code>. Additional structured keys for <code>device_id</code>, <code>imu</code>, <code>mq4_adc</code>, and <code>mq4_voltage</code> exist under the node while remaining collapsed in this data view.</p>
+            <p>Google Firebase Realtime Database console from active project (<code>Apppp</code>) displaying live sensor monitoring and historical logging. The <code>/current</code> branch reflects real-time environmental telemetry (<code>temperature: 28.5</code>, <code>humidity: 64</code>, <code>ldr: 750</code>) and operational modes (<code>mode: &quot;AUTO&quot;</code>, <code>bulbState: false</code>), while <code>/history</code> appends chronologically pushed sensor records (such as push key <code>-Nh1a</code> with <code>humidity: 60</code>, <code>ldr: 820</code>, <code>bulbState: false</code>).</p>
           </div>
         </div>
 
@@ -7034,7 +7076,8 @@ FirebaseConfig config;
 // System State Variables
 bool autoMode = true;         // True = Automatic, False = Manual
 bool currentBulbState = false;
-const int LDR_THRESHOLD = 2000; // Threshold: &lt; 2000 is Dark -&gt; Turn Light ON
+const int LDR_ON_THRESHOLD = 1800;   // Below 1800: Dark -&gt; Bulb ON
+const int LDR_OFF_THRESHOLD = 2200;  // Above 2200: Bright -&gt; Bulb OFF
 
 unsigned long lastSensorRead = 0;
 unsigned long lastHistoryLog = 0;
@@ -7099,15 +7142,20 @@ void loop() {
     float h = dht.readHumidity();
     int ldr = analogRead(LDRPIN);
 
-    // Edge Decision Logic: Automatic Mode Lighting
+    // Edge Decision Logic: Automatic Mode Lighting with Hysteresis (1800 ON / 2200 OFF)
     if (autoMode) {
-      bool shouldLight = (ldr &lt; LDR_THRESHOLD);
-      if (shouldLight != currentBulbState) {
-        currentBulbState = shouldLight;
-        digitalWrite(BULBPIN, currentBulbState ? HIGH : LOW);
-        Serial.printf("[EDGE AUTO] LDR: %d (&lt; %d) -&gt; Bulb turned %s\n", ldr, LDR_THRESHOLD, currentBulbState ? "ON" : "OFF");
-        Firebase.RTDB.setBool(&amp;fbdo, "/control/bulb", currentBulbState);
+      if (ldr &lt; 1800 &amp;&amp; !currentBulbState) {
+        currentBulbState = true;
+        digitalWrite(BULBPIN, HIGH);
+        Serial.printf("[EDGE AUTO] LDR: %d (&lt; 1800) -&gt; Bulb turned ON\n", ldr);
+        Firebase.RTDB.setBool(&amp;fbdo, "/control/bulb", true);
+      } else if (ldr &gt; 2200 &amp;&amp; currentBulbState) {
+        currentBulbState = false;
+        digitalWrite(BULBPIN, LOW);
+        Serial.printf("[EDGE AUTO] LDR: %d (&gt; 2200) -&gt; Bulb turned OFF\n", ldr);
+        Firebase.RTDB.setBool(&amp;fbdo, "/control/bulb", false);
       }
+      // Retain previous state between 1800 and 2200 to eliminate relay chatter
     }
 
     // Sync live sensor values
@@ -7240,7 +7288,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
 
       <h4 style="font-size: 15px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1.2px; margin: 24px 0 16px; font-weight: 700;">Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging</h4>
       <div class="media-slot image-slot" style="margin-bottom: 28px;">
-        <img src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 453; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+        <img src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging" loading="lazy" style="width: 100%; height: auto; max-height: 520px; aspect-ratio: 1024 / 518; object-fit: contain; background: #0e1117; display: block; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
         <div class="media-caption">
           <span class="media-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Cloud Database Console</span>
           <h5>Firebase Realtime Database &ndash; Live Sensor Data &amp; Historical Logging</h5>
@@ -7339,8 +7387,8 @@ window.exportHistoricDataToCSV = async () =&gt; {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
             <div class="resource-info">
-              <h4>Tasks 1â€“3 Source</h4>
-              <p>Firmware, Web Server, HTML generator & MQTT client modules (iot-content.ts)</p>
+              <h4>Tasks 1&ndash;3 Source Code</h4>
+              <p>ESP32 Web Server, Adafruit IO MQTT client &amp; IFTTT automation firmware modules (iot-content.ts)</p>
               <span class="resource-badge badge-source">TypeScript / Source</span>
             </div>
           </div>
@@ -7393,8 +7441,8 @@ window.exportHistoricDataToCSV = async () =&gt; {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
             <div class="resource-info">
-              <h4>Task 4 & 5 Source</h4>
-              <p>Firebase Realtime Database firmware, Edge threshold logic & CSV export (task4-content.ts)</p>
+              <h4>Tasks 4 &amp; 5 Source Code</h4>
+              <p>Firebase Realtime Database firmware, Edge threshold logic &amp; CSV export (task4-content.ts)</p>
               <span class="resource-badge badge-source">TypeScript / Source</span>
             </div>
           </div>
