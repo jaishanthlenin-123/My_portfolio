@@ -14,7 +14,7 @@ Only **2 criteria** have been evaluated as **PARTIAL** because they ask specific
 | # | Task | Checklist Criterion | Current State | Deficit | Remediation Effort |
 | :-: | :--- | :--- | :--- | :--- | :---: |
 | **1** | **Task 3** | Criterion 13: *Screenshots of the IFTTT configuration* | Detailed SVG data flow diagram and step-by-step trigger/action workflow are documented. | Missing direct PNG/JPEG screenshot of the IFTTT web portal Applet configuration card ("If Adafruit IO Feed Value > Threshold, Then Send Email/Notification"). | 5 minutes |
-| **2** | **Task 4** | Criterion 16: *Screenshots of the Firebase database* | Dual-channel JSON schema (`/sensors` and `/control`) is documented and demonstrated via live web UI and video. | Missing direct PNG/JPEG console screenshot showing the raw Firebase Realtime Database tree for the Task 4 schema. | 5 minutes |
+| **2** | **Task 4** | Criterion 16: *Screenshots of the Firebase database* | Illustrative mockup (`firebase_sensors_control_database_mockup.png`) and SVG schema integrated under Task 4. | Lacks an authentic direct browser screenshot captured from the active Firebase web console. Mockup is illustrative only. | 5 minutes |
 
 ---
 
@@ -53,42 +53,31 @@ Only **2 criteria** have been evaluated as **PARTIAL** because they ask specific
 #### Description & Context
 - **Criterion Text:** `Screenshots of the Firebase database`
 - **Location in Checklist:** Task 4, Item 16.
-- **Why it is currently PARTIAL:** Task 5 now has an authentic Firebase Realtime Database screenshot showing historical logging nodes (`images/week7/task5/firebase_realtime_database_history.png`), but Task 4 specifically focuses on the real-time monitoring and control channels:
-  ```json
-  {
-    "sensors": {
-      "temperature": 28.5,
-      "humidity": 65.0,
-      "ldr": 450,
-      "timestamp": 1730275200
-    },
-    "control": {
-      "relay": 1,
-      "mode": "auto",
-      "threshold": 500
-    }
-  }
+- **Current Integration:** An illustrative visual mockup has been integrated at `images/week7/task4/firebase_sensors_control_database_mockup.png`, displaying:
   ```
-  The portfolio currently represents this schema in code and SVG diagrams, but lacks a direct screenshot of the Firebase RTDB web console tree displaying this specific structure.
+  /
+  ├── sensors
+  │   ├── temperature: 24.8
+  │   ├── humidity: 58
+  │   └── ldr: 1720
+  │
+  └── control
+      ├── bulb: true
+      └── mode: "AUTO"
+  ```
+  It is presented with an `ILLUSTRATIVE MOCKUP` badge and an explicit caption noting that it represents the expected structure.
+- **Why it Remains PARTIAL:** In strict alignment with academic and engineering integrity standards, an illustrative mockup represents conceptual architecture rather than verifiable evidence of active cloud connectivity. To transition from PARTIAL to PASS, an authentic screenshot captured directly from the live Firebase Realtime Database web console is required.
 
-#### Remediation Steps:
-1. Open the [Firebase Console](https://console.firebase.google.com/) for your project.
+#### Remediation Steps to Reach 100% PASS:
+1. Open the [Firebase Console](https://console.firebase.google.com/) for your active Task 4 project.
 2. Navigate to **Build > Realtime Database > Data**.
-3. Expand the `/sensors` and `/control` nodes in the tree viewer.
-4. Capture a clean browser screenshot showing both nodes with active values.
+3. Expand the `/sensors` and `/control` nodes in the data viewer tree so that the live nodes are visible.
+4. Capture an authentic full browser screenshot showing the database URL, project header, and expanded tree.
 5. Save the image to:
    ```
    images/week7/task4/firebase_sensors_control_database.png
    ```
-6. Insert the image reference into `week7-details.html` within the Task 4 gallery section:
-   ```html
-   <div class="gallery-item">
-     <img src="images/week7/task4/firebase_sensors_control_database.png" alt="Firebase Realtime Database Sensors and Control Tree" loading="lazy">
-     <div class="gallery-caption">
-       <strong>Firebase RTDB Console:</strong> Real-time `/sensors` telemetry stream and `/control` actuation state tree.
-     </div>
-   </div>
-   ```
+6. Update `week7-details.html` to replace or supplement the mockup with this genuine console screenshot, then update the checklist status from PARTIAL to PASS.
 
 ---
 
@@ -112,3 +101,4 @@ Once the two screenshots are placed in their respective folders and linked in `w
    git push host main
    ```
 4. Verify on GitHub Pages that both images load with HTTP status `200 OK`.
+

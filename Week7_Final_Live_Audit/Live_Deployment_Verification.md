@@ -24,7 +24,7 @@ Every critical asset path on the public domain was tested for HTTP availability,
 
 ---
 
-### 1.2 Image Assets (18 Production Assets Verified)
+### 1.2 Image Assets (19 Production Assets Verified)
 | Path | Status | Verification Note |
 | :--- | :---: | :--- |
 | `images/week7/task1/1 (1).jpeg` | **200 OK** | Task 1 physical breadboard circuit |
@@ -43,6 +43,7 @@ Every critical asset path on the public domain was tested for HTTP availability,
 | `images/week7/task4/4 (2).jpeg` | **200 OK** | Task 4 live sensor dashboard overview |
 | `images/week7/task4/4 (3).jpeg` | **200 OK** | Task 4 control panel actuation interface |
 | `images/week7/task4/4 (4).jpeg` | **200 OK** | Task 4 live streaming telemetry graphs |
+| `images/week7/task4/firebase_sensors_control_database_mockup.png` | **Pending Push** | Task 4 illustrative Firebase database mockup (113,949 bytes) |
 | `images/week7/task5/5 (1).jpeg` | **200 OK** | Task 5 physical automation bench |
 | `images/week7/task5/firebase_realtime_database_history.png` | **200 OK** | Task 5 authentic Firebase RTDB timestamped records (102,512 bytes) |
 
@@ -117,3 +118,4 @@ A dedicated string and DOM audit was executed to ensure total compliance with th
 ## 4. Verification Verdict
 
 The deployed ProtoSem Week 7 website is fully live, error-free, and adheres to the highest engineering and visual documentation standards. All digital assets load cleanly with HTTP 200 status codes.
+

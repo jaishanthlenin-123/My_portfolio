@@ -453,9 +453,9 @@ Every single checklist criterion from the official evaluation syllabus is evalua
 
 - [ ] **Screenshots of the Firebase database**
   - **Status**: PARTIAL
-  - **Live Evidence Location**: [`week7-details.html#task4`](https://jaishanthlenin-123.github.io/My_portfolio/week7-details.html#task4) (Topic 22)
-  - **Live Verification Notes**: Topic 22 documents the database architecture and JSON schema with an SVG diagram. While an authentic database screenshot exists for Task 5's `devices/history` tree, a dedicated raw screenshot of the Firebase Realtime Database web console specifically displaying Task 4's `/sensors` and `/control` node tree is missing from `images/week7/task4/`.
-  - **Required Action**: Open the Firebase Console for the Task 4 project, expand `/sensors` and `/control`, capture a screenshot, save it to `images/week7/task4/firebase_database.png`, and add it to Topic 22 in `week7-details.html`.
+  - **Live Evidence Location**: [`week7-details.html#task4`](https://jaishanthlenin-123.github.io/My_portfolio/week7-details.html#task4) (Topic 22, `images/week7/task4/firebase_sensors_control_database_mockup.png`)
+  - **Live Verification Notes**: An illustrative visual mockup has been integrated under Task 4 at `images/week7/task4/firebase_sensors_control_database_mockup.png` and clearly labeled with an `ILLUSTRATIVE MOCKUP` badge, displaying the structured `/sensors` (`temperature: 24.8`, `humidity: 58`, `ldr: 1720`) and `/control` (`bulb: true`, `mode: "AUTO"`) tree. However, under strict evaluation standards, this criterion remains **PARTIAL** because the asset is an illustrative diagram mockup rather than an authentic direct screenshot captured from an active Firebase web console. It is not counted as PASS and does not prove live cloud connectivity until supplemented by a genuine live console screenshot.
+  - **Required Action**: Open the live Firebase Realtime Database Console for the Task 4 project, expand `/sensors` and `/control` showing live operating values, capture a genuine browser screenshot, save it to `images/week7/task4/firebase_database.png`, and link it to upgrade this criterion to PASS.
 
 - [x] **Screenshots of the working dashboard**
   - **Status**: PASS
@@ -654,3 +654,4 @@ Every single checklist criterion from the official evaluation syllabus is evalua
   - **Required Action**: None. Verified live.
 
 ---
+
