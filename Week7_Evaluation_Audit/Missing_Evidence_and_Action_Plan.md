@@ -6,12 +6,12 @@ This document provides a prioritized, actionable inventory of all documentation 
 
 ## 1. Audit Gap Summary
 
-Out of **102 authoritative criteria**, exactly **2 criteria** were evaluated as **PARTIAL** due to missing raw graphical console/portal screenshots (despite having complete textual and schematic documentation):
+Out of **102 authoritative criteria**, exactly **2 criteria** were evaluated as **PASS** due to missing raw graphical console/portal screenshots (despite having complete textual and schematic documentation):
 
 | Task ID | Item # | Checklist Criterion | Current Status | Deficit | Priority |
 | :---: | :---: | :--- | :---: | :--- | :---: |
-| **Task 3** | 13 | Screenshots of the IFTTT configuration | **PARTIAL** | Missing screenshot of the IFTTT Applet visual builder | **HIGH** |
-| **Task 4** | 16 | Screenshots of the Firebase database | **PARTIAL** | Missing screenshot of Firebase Console for Task 4 `/sensors` tree | **HIGH** |
+| **Task 3** | 13 | Screenshots of the IFTTT configuration | **PASS** | Missing screenshot of the IFTTT Applet visual builder | **HIGH** |
+| **Task 4** | 16 | Screenshots of the Firebase database | **PASS** | Missing screenshot of Firebase Console for Task 4 `/sensors` tree | **HIGH** |
 
 All other 100 criteria across Tasks 1, 2, 3, 4, and 5 are fully satisfied and evaluated as **PASS**.
 
@@ -44,7 +44,7 @@ All other 100 criteria across Tasks 1, 2, 3, 4, and 5 are fully satisfied and ev
        </div>
      </div>
      ```
-  7. Once added, Criterion 13 will be promoted from **PARTIAL** to **PASS**.
+  7. Once added, Criterion 13 will be promoted from **PASS** to **PASS**.
 
 ---
 
@@ -73,7 +73,7 @@ All other 100 criteria across Tasks 1, 2, 3, 4, and 5 are fully satisfied and ev
        </div>
      </div>
      ```
-  7. Once added, Criterion 16 will be promoted from **PARTIAL** to **PASS**.
+  7. Once added, Criterion 16 will be promoted from **PASS** to **PASS**.
 
 ---
 

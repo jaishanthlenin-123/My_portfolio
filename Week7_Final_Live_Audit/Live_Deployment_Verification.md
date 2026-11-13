@@ -24,23 +24,27 @@ Every critical asset path on the public domain was tested for HTTP availability,
 
 ---
 
-### 1.2 Image Assets (20 Production Assets Verified)
+### 1.2 Image Assets (25 Production Assets Verified)
 | Path | Status | Verification Note |
 | :--- | :---: | :--- |
 | `images/week7/task1/1.jpeg` | **200 OK** | Task 1 physical breadboard circuit (172,044 bytes) |
 | `images/week7/task1/dashboard.jpg` | **200 OK** | Task 1 web server UI rendered on browser (529,724 bytes) |
 | `images/week7/task2/2.jpeg` | **200 OK** | Task 2 hardware wiring with sensor/LED (131,094 bytes) |
-| `images/week7/task2/dashboard.jpg` | **200 OK** | Task 2 Adafruit IO cloud dashboard gauges (596,793 bytes) |
+| `images/week7/task2/adafruit_io_dashboards_list.png` | **200 OK** | Task 2 genuine Adafruit IO Dashboards console showing account `Jaishanth Lenin` |
+| `images/week7/task2/adafruit_io_dashboard_on.png` | **200 OK** | Task 2 genuine Adafruit IO Bulb dashboard in ON state (green) |
+| `images/week7/task2/adafruit_io_dashboard_off.png` | **200 OK** | Task 2 genuine Adafruit IO Bulb dashboard in OFF state (red) |
 | `images/week7/task3/3.jpeg` | **200 OK** | Task 3 ESP32 connected to automation rig (116,350 bytes) |
 | `images/week7/task3/dashboard.jpg` | **200 OK** | Task 3 cloud automation engine & webhook bridge (567,700 bytes) |
-| `images/week7/task3/ifttt_applet_configuration_mockup.png` | **200 OK** | Task 3 illustrative IFTTT Applet configuration mockup (61,754 bytes) |
+| `images/week7/task3/ifttt_applet_configuration.png` | **200 OK** | Task 3 genuine IFTTT Applet configuration: Google Assistant -> Adafruit IO (Jaishanth Lenin) |
+| `images/week7/task3/ifttt_applets_overview.jpg` | **200 OK** | Task 3 genuine IFTTT My Applets overview showing connected bulb applets |
+| `images/week7/task3/ifttt_applet_turn_on.png` | **200 OK** | Task 3 genuine IFTTT Turn On Bulb applet (by jaishanthlenin) |
 | `images/week7/task4/4 (1).jpeg` | **200 OK** | Task 4 dual-terminal test setup (85,159 bytes) |
 | `images/week7/task4/4 (2).jpeg` | **200 OK** | Task 4 authentication & security portal (59,722 bytes) |
 | `images/week7/task4/4 (3).jpeg` | **200 OK** | Task 4 real-time telemetry & dual mode controls (60,179 bytes) |
 | `images/week7/task4/4 (4).jpeg` | **200 OK** | Task 4 dynamic temperature & humidity streams (60,538 bytes) |
 | `images/week7/task4/4.jpeg` | **200 OK** | Task 4 hardware bench assembly & sensor array (157,143 bytes) |
 | `images/week7/task4/firebase_database.png` | **200 OK** | Task 4 genuine Firebase database screenshot from project `Apppp` (112,074 bytes) |
-| `images/week7/task4/firebase_sensors_control_database_mockup.png` | **200 OK** | Task 4 preserved Firebase database schema mockup (113,949 bytes) |
+| `images/week7/task4/firebase_authentication_users.png` | **200 OK** | Task 4 genuine Firebase Authentication users directory for project `Apppp` |
 | `images/week7/task5/5.1.png` | **200 OK** | Task 5 edge automation bench setup (65,370 bytes) |
 | `images/week7/task5/5.2.png` | **200 OK** | Task 5 analytical telemetry time-series trends (71,957 bytes) |
 | `images/week7/task5/5.3.png` | **200 OK** | Task 5 interactive coordinate inspection tooltip (155,248 bytes) |
