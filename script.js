@@ -681,7 +681,7 @@ const weeklyUpdates = [
         "images/week7/task3/3.jpeg",
         "images/week7/task4/4.jpeg",
         "images/week7/task5/5.jpeg",
-        "images/week7/task5/task5-dashboard.png",
+        "images/week7/task5/task5_web_dashboard.png",
         "images/week7/task5/firebase_realtime_database_history.png"
     ],
 

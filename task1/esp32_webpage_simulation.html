@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 Web Server</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0b0f19;
+      color: #f1f5f9;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      background: #161e2e;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-sizing: border-box;
+    }
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .status-box {
+      padding: 14px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+    .status-on {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      border: 1px solid #22c55e;
+    }
+    .status-off {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid #ef4444;
+    }
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+      box-sizing: border-box;
+      user-select: none;
+    }
+    .btn-toggle {
+      background: #38bdf8;
+      color: #0b0f19;
+    }
+    .btn-toggle:hover {
+      background: #0284c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>ESP32 Web Server</h1>
+    <p>Standalone Local Network Controller</p>
+    <div id="statusBox" class="status-box status-off">CURRENT STATE: INACTIVE (OFF)</div>
+    <a href="/toggle" id="toggleBtn" class="btn btn-toggle" role="button">Toggle LED State</a>
+  </div>
+
+  <script>
+    // State variable matching ESP32 firmware bool ledState = false;
+    let ledState = false;
+
+    function updateUi() {
+      const statusBox = document.getElementById('statusBox');
+      if (ledState) {
+        statusBox.className = 'status-box status-on';
+        statusBox.textContent = 'CURRENT STATE: ACTIVE (ON)';
+      } else {
+        statusBox.className = 'status-box status-off';
+        statusBox.textContent = 'CURRENT STATE: INACTIVE (OFF)';
+      }
+    }
+
+    function toggleLed() {
+      ledState = !ledState;
+      updateUi();
+      return { ledPin: 2, state: ledState };
+    }
+
+    document.getElementById('toggleBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      toggleLed();
+    });
+
+    // Simulated /status and /toggle endpoints returning the firmware JSON structure
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options) {
+      const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : '');
+      if (urlStr.endsWith('/status')) {
+        return Promise.resolve(new Response(JSON.stringify({ ledPin: 2, state: ledState }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        }));
+      }
+      if (urlStr.endsWith('/toggle')) {
+        toggleLed();
+        return Promise.resolve(new Response(JSON.stringify({ ledPin: 2, state: ledState }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        }));
+      }
+      return originalFetch ? originalFetch.apply(this, arguments) : Promise.reject(new Error('Network request disabled in simulation'));
+    };
+
+    // Public programmatic helpers for simulation testing
+    window.getStatus = function() {
+      return { ledPin: 2, state: ledState };
+    };
+
+    window.setLedState = function(state) {
+      ledState = Boolean(state);
+      updateUi();
+      return { ledPin: 2, state: ledState };
+    };
+  </script>
+</body>
+</html>
+
