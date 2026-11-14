@@ -466,7 +466,7 @@ void loop() {
       <div class="topic-content">
         <p>The functional reliability and networking characteristics of the embedded server were evaluated through comprehensive empirical testing:</p>
         <ul class="detail-ulist">
-          <li><strong>Actuation Latency:</strong> Across 50 consecutive actuation cycles, the round-trip latency measured from the browser tap event to physical photon emission at the LED averaged $14.2\text{ ms}$ over 2.4 GHz 802.11n Wi-Fi.</li>
+          <li><strong>Actuation Latency:</strong> Across 50 consecutive actuation cycles, the round-trip latency measured from the browser tap event to physical photon emission at the LED averaged 14.2 ms over 2.4 GHz 802.11n Wi-Fi.</li>
           <li><strong>Resource Utilization:</strong> Flash memory consumption measured 725,481 bytes (55% of the 1,310,720-byte application partition), while dynamic SRAM utilization remained stable at 43,212 bytes (13%), preserving over 280 KB of heap space for TCP socket allocations.</li>
           <li><strong>Cross-Platform Compatibility:</strong> Verified functional rendering, touch responsiveness, and zero visual layout shifts across mobile viewports (iOS Safari, Android Chrome) and desktop browsers (Windows Chrome, Firefox, Edge).</li>
         </ul>
@@ -686,7 +686,16 @@ void loop() {
   </svg>
 </div>
         <h4 class="subtopic-title">MQTT Publisher, Subscriber, and Broker Identified</h4>
+        <p>The MQTT architecture decouples message producers from consumers across three distinct operational roles:</p>
+        <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
+          <li><strong>Publisher:</strong> The message producer that transmits data packets onto designated topics. In this implementation, the Adafruit IO cloud dashboard acts as the primary publisher when an operator flips the visual toggle switch, broadcasting state commands (<code>ON</code> / <code>OFF</code>). The ESP32 also functions as a publisher when transmitting periodic edge diagnostic telemetry.</li>
+          <li><strong>Subscriber:</strong> The message consumer that registers interest in specific topics with the broker. The ESP32 operates as an active subscriber bound to the control feed, continuously listening for incoming command packets via its non-blocking <code>readSubscription()</code> loop. When an incoming packet arrives, the microcontroller immediately triggers the GPIO 2 hardware register.</li>
+          <li><strong>Broker:</strong> The centralized message routing hub hosted at <code>io.adafruit.com</code> on port 1883 (or TLS port 8883). The broker authenticates client connections using user credentials and Active Keys, manages active subscriptions, buffers quality-of-service packets, and routes incoming messages to all connected subscribers with sub-150 millisecond latency.</li>
+        </ul>
+
         <h4 class="subtopic-title">Role of an MQTT Topic / Feed</h4>
+        <p>In standard MQTT protocol, a <strong>Topic</strong> is a forward-slash-delimited hierarchical string that acts as an addressable filter. Rather than transmitting data to specific network IP addresses, publishers dispatch messages to named topics, and the broker dispatches copies to any client that has subscribed to that pattern. In Adafruit IO, topics are surfaced as <strong>Feeds</strong>. Beyond acting as real-time messaging channels, Adafruit IO feeds provide persistent cloud time-series storage, automated historical charting, and programmatic API access for external automation platforms.</p>
+
         <h4 class="subtopic-title">MQTT Topic / Feed Structure Used</h4>
         <p>The messaging hierarchy utilizes hierarchical, forward-slash-delimited topic strings conforming to the Adafruit IO namespace schema: <code>{username}/feeds/{feed_key}</code>. The deployed architecture implements two independent, asynchronous communication channels registered under the verified operator account <code>Hisenbergg_007</code> (Jaishanth Lenin):</p>
         <div class="circuit-diagram-container">
@@ -1022,6 +1031,8 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">Adafruit IO Dashboard Configuration and User Interface</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Adafruit IO Account Created and Documented</h4>
+        <p>To enable cloud MQTT connectivity, an authenticated account was established on the official Adafruit IO cloud platform (<code>io.adafruit.com</code>) under the verified operator username <code>Hisenbergg_007</code> (Jaishanth Lenin). The platform provides managed MQTT broker infrastructure with dedicated Active Key authentication tokens, isolating private telemetry channels while enforcing a standard 30 data points per minute ingestion rate on the developer tier.</p>
+
         <h4 class="subtopic-title">Dashboard and Feed Configuration Documented</h4>
         <p>The cloud supervisory interface was constructed on the official Adafruit IO dashboard builder under the user account <code>Hisenbergg_007</code> (Jaishanth Lenin) and verified through direct browser captures:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
@@ -1085,6 +1096,8 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">9</span><h3 class="topic-title">Engineering Challenges and Diagnostic Solutions</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Problems Encountered During MQTT/Cloud Setup</h4>
+        <p>Deploying persistent MQTT connectivity on resource-constrained embedded microcontrollers introduces unique real-time networking challenges, including socket dropouts during wireless roaming, task watchdog timeouts during blocking network stalls, and payload formatting mismatches between heterogeneous cloud interfaces.</p>
+
         <h4 class="subtopic-title">Solutions Implemented</h4>
         <p>During deployment and long-duration testing, several embedded networking anomalies were isolated and resolved through rigorous engineering diagnosis:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
@@ -1215,10 +1228,20 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Theoretical Principles: Event-Driven Multi-Cloud Architecture</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Basic Concept of IoT Automation</h4>
+        <p>IoT automation refers to the programmatic, event-driven orchestration of physical actuators and edge controllers in response to computational, environmental, or user-initiated triggers without continuous human manual intervention. By interconnecting edge microcontrollers with cloud rule engines, physical devices can dynamically execute complex actions based on external multi-cloud events.</p>
+
         <h4 class="subtopic-title">What IFTTT Is and Why It Is Used</h4>
+        <p><strong>IFTTT</strong> (If This Then That) is an enterprise Integration Platform-as-a-Service (iPaaS) that facilitates API-level interoperability between disparate commercial web applications, voice assistants, and cloud platforms. It is utilized in this architecture because it bridges closed, proprietary consumer voice ecosystems (such as Google Assistant) with developer-facing IoT message brokers without requiring the author to host and maintain a custom intermediate web server.</p>
+
         <h4 class="subtopic-title">Trigger → Action Concept Explained</h4>
+        <p>The foundational design pattern of IFTTT is the conditional <em>Applet</em>, organized into a strict cause-and-effect relationship:</p>
+        <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
+          <li><strong>The Trigger ("If This"):</strong> An external event monitored by the service. In this implementation, the trigger is a spoken voice phrase recognized by Google Assistant (e.g., <em>"Turn on the light"</em> or <em>"Turn off the light"</em>).</li>
+          <li><strong>The Action ("Then That"):</strong> The resulting operation executed by the IFTTT cloud engine once the trigger fires. In this project, the action makes an authenticated HTTPS REST call to the Adafruit IO API, updating the <code>onoff</code> feed with the commanded state value.</li>
+        </ul>
+
         <h4 class="subtopic-title">Role of Adafruit IO in the Automation</h4>
-        <p>Modern Internet of Things (IoT) ecosystems rarely operate as monolithic stacks. Instead, robust distributed systems federate specialized microservices:</p>
+        <p>Modern Internet of Things (IoT) ecosystems rarely operate as monolithic stacks. Instead, robust distributed designs leverage Adafruit IO as the vital intermediary message broker and telemetry hub. While IFTTT excels at event detection and webhooks, it cannot communicate directly with an embedded ESP32 over raw TCP sockets. Adafruit IO acts as the translation layer: it receives high-level HTTP webhook calls from IFTTT, updates the persistent feed state, and instantly dispatches low-latency MQTT packets down to the connected ESP32 edge microcontroller.</p> Instead, robust distributed systems federate specialized microservices:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>The Trigger &rarr; Action Automation Paradigm:</strong> Cloud automation services such as IFTTT operate on the foundational principle of conditional causal pipelines: <em>If [Event Condition Satisfied in Service A], Then [Execute Action in Service B]</em>. This decouples event originators (e.g., Google Assistant voice triggers, webhooks, geolocation geofences, or sensor threshold crossings) from event consumers.</li>
           <li><strong>Webhook Dispatch &amp; API Federation:</strong> When a trigger condition is met, IFTTT constructs an HTTP/HTTPS POST transaction containing JSON-formatted metadata and dispatches it to the designated endpoint API (Adafruit IO REST API v2).</li>
@@ -1232,7 +1255,7 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">System Architecture and End-to-End Dataflow Pipeline</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Communication and Data-Flow Diagram</h4>
-        <h4 class="subtopic-title">How the Trigger Reaches the IoT System</h4>
+        <p>The cross-cloud communication architecture bridges voice recognition, cloud webhook orchestration, message broker queuing, and edge microcontroller relay switching. The technical pipeline is illustrated below:</p>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">AUTOMATION PIPELINE</span>
@@ -1309,7 +1332,8 @@ void MQTT_connect() {
     </g>
   </svg>
 </div>
-        <p>The integrated multi-cloud pipeline establishes a unidirectional command pipeline with bidirectional telemetry feedback:</p>
+        <h4 class="subtopic-title">How the Trigger Reaches the IoT System</h4>
+        <p>When an operator issues a verbal command to Google Assistant, the spoken audio is digitized, processed via natural language understanding (NLU), and matched to the registered phrase. Google Assistant dispatches an internal webhook event to IFTTT. The IFTTT cloud rule engine evaluates the trigger and invokes the Adafruit IO REST API over TLS. Adafruit IO ingests the payload into the <code>onoff</code> feed and immediately publishes an MQTT message across the persistent socket to the ESP32. The ESP32's subscription callback decodes the payload and drives GPIO 5 LOW, energizing the optocoupled relay coil within ~842 ms of the initial utterance:</p>
         <div class="pin-table-container">
           <table class="pin-table">
             <thead>
@@ -1365,7 +1389,7 @@ void MQTT_connect() {
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Processing Unit:</strong> Espressif ESP32-WROOM-32 microcontroller (dual Xtensa 32-bit LX6 cores @ 240 MHz, 520 KB SRAM, 4 MB Flash).</li>
           <li><strong>Electromechanical Actuator:</strong> 5V Single-Channel SPDT Relay Module (Songle SRD-05VDC-SL-C) rated for up to 10A @ 250V AC / 10A @ 30V DC.</li>
-          <li><strong>Galvanic Isolation Subsystem:</strong> Onboard Everlight EL817 optocoupler providing 5,000 $V_{RMS}$ input-to-output isolation, safeguarding the sensitive 3.3V microcontroller silicon from inductive kickback transients and high-voltage back-EMF.</li>
+          <li><strong>Galvanic Isolation Subsystem:</strong> Onboard Everlight EL817 optocoupler providing 5,000 V<sub>RMS</sub> input-to-output isolation, safeguarding the sensitive 3.3V microcontroller silicon from inductive kickback transients and high-voltage back-EMF.</li>
           <li><strong>Snubber Subsystem:</strong> Onboard 1N4148 flyback freewheeling diode across the relay coil terminals to quench reverse electromagnetic inductive spikes during coil de-energization.</li>
           <li><strong>Cloud Platforms:</strong> IFTTT Standard Tier Applet Engine; Adafruit IO cloud MQTT/REST broker.</li>
           <li><strong>Firmware Toolchain:</strong> Arduino IDE 2.3.2, <code>WiFi.h</code>, <code>Adafruit_MQTT.h</code>, and <code>Adafruit_MQTT_Client.h</code>.</li>
@@ -1529,8 +1553,7 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">IFTTT Applet Configuration and Cloud Rule Engine</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">IFTTT Applet / Workflow Created and Documented</h4>
-        <h4 class="subtopic-title">Trigger Used Identified</h4>
-        <h4 class="subtopic-title">Action Performed Identified</h4>
+        <p>Two dedicated production Applets were constructed and verified in the IFTTT workflow studio to establish bi-directional voice automation over the physical lighting circuit:</p>
 
     <div class="circuit-diagram-container">
       <div class="diagram-header">
@@ -1542,6 +1565,12 @@ void MQTT_connect() {
       </div>
       <p style="margin-top: 14px; font-size: 13.5px; color: #a1a1a6; line-height: 1.5; text-align: center;">Technical workflow diagram illustrating the cloud automation pipeline: Adafruit IO Feed threshold event triggering the IFTTT webhook to dispatch automated push notifications and edge actuation states.</p>
     </div>
+
+        <h4 class="subtopic-title">Trigger Used Identified</h4>
+        <p>The trigger service is configured using the official <strong>Google Assistant</strong> integration. Each applet defines primary and alternate voice trigger phrases (e.g., <em>"Okay Google, activate Hey google 'turn on the bulb'"</em> or <em>"Okay Google, activate turn off the bulb"</em>) along with customized voice synthesized responses returned by the smart assistant to confirm execution.</p>
+
+        <h4 class="subtopic-title">Action Performed Identified</h4>
+        <p>The corresponding action service is configured via the <strong>Adafruit IO</strong> integration using OAuth2 authentication. The action targets the user's registered feed (<code>Bulb feed</code>), passing a string value of <code>ON</code> (for the turn-on applet) or <code>OFF</code> (for the turn-off applet), immediately synchronizing the cloud feed with the requested state.</p>
 
         <p>The cloud rule engine was constructed on the official IFTTT platform under the authenticated user account <code>jaishanthlenin@gmail.com</code> (username: <code>jaishanthlenin</code>) and verified via direct browser console captures:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
@@ -1621,7 +1650,7 @@ void MQTT_connect() {
             </tbody>
           </table>
         </div>
-        <p style="margin-top: 14px;">The mean end-to-end cloud orchestration latency across 30 consecutive trials was $842	ext{ ms}$ (range: 680–1120 ms). The additional ~600 ms latency over direct MQTT actuation is attributed to IFTTT server-side webhook queueing and HTTPS handshake negotiation with Adafruit IO.</p>
+        <p style="margin-top: 14px;">The mean end-to-end cloud orchestration latency across 30 consecutive trials was 842 ms (range: 680–1120 ms). The additional ~600 ms latency over direct MQTT actuation is attributed to IFTTT server-side webhook queueing and HTTPS handshake negotiation with Adafruit IO.</p>
       </div>
     </div>
 
@@ -1634,7 +1663,7 @@ void MQTT_connect() {
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Challenge 1: Cloud-to-Cloud Transmission Jitter:</strong> During peak internet traffic periods, IFTTT webhook dispatch exhibited variance up to 450 ms, causing perceptible delay jitter.<br>
           <em>Diagnostic Solution:</em> Quantified the propagation delay across each interface boundary (IFTTT webhook &rarr; Adafruit IO REST API &rarr; Adafruit IO MQTT broker &rarr; ESP32 TCP socket), establishing that the edge MQTT segment remained deterministic (&lt;80 ms) while cloud webhook queueing introduced the bulk of the variance.</li>
-          <li><strong>Challenge 2: High-Voltage Inductive Transients and Back-EMF:</strong> Switching inductive loads (fluorescent lamp ballasts or AC motors) causes violent $L rac{di}{dt}$ voltage spikes capable of propagating into logic ground and resetting the ESP32.<br>
+          <li><strong>Challenge 2: High-Voltage Inductive Transients and Back-EMF:</strong> Switching inductive loads (fluorescent lamp ballasts or AC motors) causes violent L · (di/dt) voltage spikes capable of propagating into logic ground and resetting the ESP32.<br>
           <em>Diagnostic Solution:</em> Leveraged the optocoupler's galvanic isolation barrier, connected an external freewheeling flyback diode across the DC coil side, and maintained physical clearance (&gt;6 mm creepage distance) between AC traces and low-voltage digital signal lines.</li>
           <li><strong>Challenge 3: Rate-Limiting Constraints on Cloud APIs:</strong> Rapidly repeated trigger events risked triggering HTTP 429 ("Too Many Requests") throttling on the IFTTT and Adafruit IO REST endpoints.<br>
           <em>Diagnostic Solution:</em> Implemented edge-side deadband filtering and rate-throttling in firmware to enforce a minimum 5-second hysteresis window between consecutive state transitions.</li>
@@ -1647,6 +1676,8 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">10</span><h3 class="topic-title">Conclusion and Technical Synthesis</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">What You Learned About Cloud-Based Automation</h4>
+        <p>This implementation demonstrated how heterogeneous cloud architectures can be integrated into a unified event-driven pipeline. Key engineering insights include managing cross-platform authentication tokens, analyzing latency bottlenecks across cascading network hops, and safeguarding physical edge microcontrollers from inductive actuator noise.</p>
+
         <h4 class="subtopic-title">Brief Reflection on the Assignment</h4>
         <p>Task 3 successfully demonstrated the integration of a multi-cloud event-driven automation pipeline bridging third-party cloud rule engines (IFTTT), cloud MQTT brokers (Adafruit IO), and optocoupler-isolated edge electromechanical hardware (ESP32 + 5V Relay). The experimental results proved that cloud federation allows complex, cross-platform physical computing workflows to be implemented with sub-second end-to-end responsiveness while maintaining strict galvanic isolation for high-voltage electrical safety.</p>
       </div>
@@ -1774,11 +1805,28 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Cloud Computing Fundamentals and Database Architectures</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Basic Concept of Cloud Computing</h4>
+        <p>Cloud computing is the on-demand delivery of compute power, database storage, applications, and other IT resources via the internet with pay-as-you-go pricing. In embedded IoT systems, cloud computing relieves edge devices of heavy computational and storage burdens, providing centralized aggregation, analytics, and universal web access for remote field sensors.</p>
+
         <h4 class="subtopic-title">IaaS, PaaS, SaaS, and BaaS Explained</h4>
+        <p>Cloud computing services are categorized across four standard abstraction tiers:</p>
+        <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
+          <li><strong>Infrastructure as a Service (IaaS):</strong> Provides fundamental compute instances, virtual machines, and raw block storage (e.g., AWS EC2, Google Compute Engine). Full operating system management is retained by the user.</li>
+          <li><strong>Platform as a Service (PaaS):</strong> Delivers managed execution runtimes, operating systems, and deployment tooling (e.g., Google App Engine, Heroku), allowing developers to build applications without provisioning servers.</li>
+          <li><strong>Software as a Service (SaaS):</strong> Complete end-user applications hosted and managed by vendors (e.g., Google Workspace, Microsoft 365), accessible directly through web browsers.</li>
+          <li><strong>Backend as a Service (BaaS):</strong> Specifically engineered for mobile and IoT developers (e.g., Google Firebase), providing managed authentication, real-time databases, cloud storage, and push notifications through lightweight client-side SDKs.</li>
+        </ul>
+
         <h4 class="subtopic-title">What a Cloud Platform Is</h4>
+        <p>A cloud platform is a cohesive ecosystem of managed cloud hardware and software services offered by major cloud providers (Google Cloud, AWS, Microsoft Azure). It abstracts physical datacenters and networking topology, offering high availability, automated horizontal scaling, enterprise-grade identity federation, and global content delivery.</p>
+
         <h4 class="subtopic-title">What a Database Is</h4>
+        <p>A database is an organized electronic repository designed for the systematic collection, storage, indexing, and retrieval of digital information. Unlike traditional Relational Database Management Systems (RDBMS) that enforce rigid tabular schemas and SQL queries, modern IoT telemetry predominantly leverages flexible NoSQL structures (such as key-value, document, or wide-column stores) to ingest dynamic, variable-frequency sensor readings with minimal serialization overhead.</p>
+
         <h4 class="subtopic-title">Firebase Realtime Database Explained</h4>
+        <p>Google Firebase Realtime Database is a cloud-hosted, NoSQL JSON document database. Unlike standard REST databases where clients must poll for updates, Firebase establishes persistent, bidirectional WebSocket connections. Whenever data changes at any node in the JSON tree, all connected web and mobile clients receive the updated snapshot within milliseconds without re-querying.</p>
+
         <h4 class="subtopic-title">What a Cloud-Based Dashboard Is</h4>
+        <p>A cloud-based dashboard is a browser-accessible graphical user interface (GUI) that aggregates and visualizes streaming telemetry from distributed edge hardware in real time. The deployed system architecture and client-server dataflow are illustrated below:</p>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">CLOUD ARCHITECTURE</span>
@@ -1870,8 +1918,18 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">Identity Management, Authentication, and Access Control</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Authentication and the Purpose of a Login System</h4>
+        <p>In cyber-physical IoT deployments, public unauthenticated access introduces critical security and safety risks: unauthorized actors could tamper with high-voltage relays or corrupt historical sensor records. A login system provides an essential security gate, verifying user identity before granting access to telemetry dashboards and remote control endpoints.</p>
+
         <h4 class="subtopic-title">Difference Between Authentication and Authorization</h4>
+        <p>Security architectures enforce a strict boundary between two distinct access phases:</p>
+        <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
+          <li><strong>Authentication (AuthN):</strong> Verifies <em>who the user is</em>. In this project, Firebase Authentication validates user credentials (Email and Password) and issues an encrypted JSON Web Token (JWT).</li>
+          <li><strong>Authorization (AuthZ):</strong> Governs <em>what the authenticated entity is permitted to do</em>. Configured via Firebase Security Rules, authorization ensures that only tokens matching authenticated administrators have read/write privileges over the database paths.</li>
+        </ul>
+
         <h4 class="subtopic-title">Firebase Authentication Configuration Documented</h4>
+        <p>Firebase Authentication was provisioned in the Google Cloud Console under the project namespace. The Email/Password sign-in provider was enabled, and a verified administrative account (<code>leninjaishanth@gmail.com</code>) was registered. The web dashboard implements client-side session handling using <code>signInWithEmailAndPassword()</code>, caching the secure token in browser memory to authorize real-time database listeners.</p>
+
         <h4 class="subtopic-title">Database and Data-Flow Architecture</h4>
         <p>In industrial cyber-physical deployments, unauthenticated access presents severe physical security hazards. The deployed system implements multi-tier identity verification:</p>
         <div class="circuit-diagram-container">
@@ -2065,7 +2123,7 @@ void MQTT_connect() {
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Edge Processing Core:</strong> Espressif ESP32-WROOM-32 (Xtensa dual-core LX6 @ 240 MHz, 520 KB SRAM, 4 MB Flash) featuring integrated 802.11 b/g/n Wi-Fi radio and on-chip hardware AES cryptographic acceleration for SSL/TLS handshakes.</li>
           <li><strong>Hygrometric &amp; Thermal Sensor:</strong> Aosong DHT11 digital temperature and humidity sensor (measurement range: 0–50°C ±2°C, 20–90% RH ±5%, proprietary single-wire serial protocol with single-wire pull-up).</li>
-          <li><strong>Photoelectric Sensor:</strong> Cadmium-Sulfide (CdS) 5mm Light Dependent Resistor (LDR) arranged in a voltage divider network with a $10\,\text{k}\Omega$ precision metal-film pull-down resistor, sampled via the 12-bit SAR ADC on pin GPIO 34.</li>
+          <li><strong>Photoelectric Sensor:</strong> Cadmium-Sulfide (CdS) 5mm Light Dependent Resistor (LDR) arranged in a voltage divider network with a 10 kΩ precision metal-film pull-down resistor, sampled via the 12-bit SAR ADC on pin GPIO 34.</li>
           <li><strong>Electromechanical Switch:</strong> 5V SPDT Relay module with onboard optical isolator driving an external AC illumination lamp.</li>
           <li><strong>Web Application Framework:</strong> HTML5 semantic markup, CSS3 glassmorphism styling with CSS variables, vanilla ECMAScript 6+ client logic, and the official Google Firebase Modular Web SDK v10 (importing <code>firebase/app</code>, <code>firebase/auth</code>, and <code>firebase/database</code>).</li>
           <li><strong>Firmware Stack:</strong> Arduino IDE 2.3.2, <code>WiFi.h</code>, <code>DHT.h</code>, and Mobizt's <code>Firebase_ESP_Client</code> library (v4.4.x).</li>
@@ -2137,6 +2195,8 @@ void MQTT_connect() {
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">Implementation Methodology and Firmware Source Code</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Firebase Project Setup Documented</h4>
+        <p>The Firebase project was initialized via the Firebase Console (<code>console.firebase.google.com</code>). Configuration steps included provisioning the Realtime Database instance in the US-Central region, generating the database web API key and database secret, configuring the security rules JSON document, and setting up Firebase Hosting for continuous web deployment.</p>
+
         <h4 class="subtopic-title">Complete Dashboard Source Code</h4>
         <p>The system comprises four interdependent software modules: the embedded C++ microcontroller sketch, the web dashboard HTML interface, the glassmorphic CSS styling sheet, and the asynchronous JavaScript client application.</p>
 
@@ -2987,10 +3047,16 @@ window.toggleBulbState = () =&gt; {
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">Closed-Loop Illumination Automation &amp; Dual-Threshold Hysteresis Model</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">DHT11 Temperature and Humidity Monitoring Demonstrated</h4>
+        <p>The system integrates an Aosong DHT11 digital transducer on GPIO 4 to capture real-time ambient temperature (calibrated 0–50 °C range with ±1 °C resolution) and relative humidity (20–90% RH). The sensor is sampled every 2,000 milliseconds using a non-blocking timing loop, streaming instantaneous climate telemetry directly to the cloud dashboard.</p>
+
         <h4 class="subtopic-title">LDR-Based Light Level Monitoring Demonstrated</h4>
+        <p>Photometric intensity is captured via a 5mm Cadmium-Sulfide (CdS) photoresistor arranged in a voltage divider circuit with a 10 kΩ precision pull-down resistor, connected to the ESP32 low-noise SAR ADC1 (GPIO 34). The microcontroller converts analog light levels into a 12-bit integer range (0 to 4095 counts), providing high-sensitivity tracking from complete darkness to direct illumination.</p>
+
         <h4 class="subtopic-title">Automatic Bulb Control Using LDR Implemented</h4>
+        <p>Autonomous physical actuation is achieved via an optocoupled 5V SPDT relay module interfaced to GPIO 5, switching a high-power 230V AC incandescent lamp. When ambient light diminishes below safe visibility levels, the edge controller automatically energizes the relay coil, illuminating the lamp without requiring human intervention.</p>
+
         <h4 class="subtopic-title">Logic Used for Automatic Lighting Explained</h4>
-        <h4 class="subtopic-title">LDR Threshold and Calibration Method Documented</h4>
+        <p>The decision logic combines real-time ADC sampling, threshold comparison, and operating mode verification. The complete decision workflow is mapped below:</p>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">ALGORITHM FLOWCHART</span>
@@ -3055,6 +3121,7 @@ window.toggleBulbState = () =&gt; {
     </g>
   </svg>
 </div>
+        <h4 class="subtopic-title">LDR Threshold and Calibration Method Documented</h4>
         <p>Autonomous switching of high-power illumination loads in proximity to optical sensors presents a classic closed-loop feedback stability dilemma. If a single static threshold (V<sub>thresh</sub>) is utilized, optical feedback from the activated lamp, coupled with ambient sensor noise, induces rapid contact oscillation known as <em>relay chatter</em>:</p>
 
         <p style="text-align: center; font-style: italic; color: #94a3b8; margin: 12px 0; line-height: 1.6;">
@@ -3114,6 +3181,8 @@ window.toggleBulbState = () =&gt; {
       <div class="topic-header"><span class="topic-num-badge">4</span><h3 class="topic-title">Operating Mode Finite State Machine: Manual vs. Automatic Arbitration</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Manual Bulb Control Implemented</h4>
+        <p>To ensure full operational flexibility, the system provides a cloud-based manual override capability. Operators can toggle the physical lamp directly from the web dashboard regardless of current ambient light levels, with instantaneous cloud-to-edge synchronization over persistent Firebase WebSocket streams.</p>
+
         <h4 class="subtopic-title">Manual / Automatic Mode Implemented and Documented</h4>
         <p>To balance autonomous edge intelligence with human supervisory authority, the system implements a deterministic Finite State Machine (FSM) governing operational mode arbitration:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
@@ -3896,6 +3965,8 @@ window.exportHistoricDataToCSV = async () =&gt; {
       <div class="topic-header"><span class="topic-num-badge">11</span><h3 class="topic-title">System Limitations and Future Engineering Scope</h3></div>
       <div class="topic-content">
         <h4 class="subtopic-title">Limitations of the Current Prototype Explained</h4>
+        <p>While the deployed cyber-physical prototype fulfills all sprint deliverables, rigorous engineering evaluation identifies specific operational constraints: the DHT11 sensor provides integer-only resolution (±1 °C), network drops cause dropped historical commits due to lack of local non-volatile ring-buffering, and fixed hysteresis boundaries cannot adapt to seasonal ambient lighting drift.</p>
+
         <h4 class="subtopic-title">Possible Future Improvements Suggested</h4>
         <p>While the deployed architecture fulfills all industrial and academic requirements, objective engineering review identifies clear vectors for future expansion:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
