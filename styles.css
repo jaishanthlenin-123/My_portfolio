@@ -349,6 +349,29 @@
   .topic-content h4:first-child {
     margin-top: 0;
   }
+  .subtopic-title, .topic-content h4.subtopic-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin: 24px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subtopic-title:first-child, .topic-content h4.subtopic-title:first-child {
+    margin-top: 0;
+  }
+  .subtopic-title::before, .topic-content h4.subtopic-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    background: var(--blue);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
   .topic-content p {
     font-size: 16.5px;
     line-height: 1.72;

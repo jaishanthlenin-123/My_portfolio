@@ -63,6 +63,7 @@
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">1</span><h3 class="topic-title">Introduction and Technical Objective</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Objective of the Assignment and the Problem Being Addressed</h4>
         <p>This project investigates the deployment of a standalone embedded HTTP web server on an Espressif ESP32 microcontroller to achieve direct, local-area network physical computing. The engineering objective is to implement deterministic, bi-directional control of an external light-emitting diode (LED) over an IEEE 802.11 b/g/n wireless local area network (WLAN) using standard Hypertext Transfer Protocol (HTTP/1.1) request-response transactions, operating entirely independent of third-party cloud brokers or external internet gateways.</p>
         <p>By executing an embedded server daemon directly on the microcontroller silicon, the system transforms physical input/output states into network-routable endpoints, establishing a direct link between client-side browser user actions and physical microcontroller GPIO voltage transitions with sub-20 millisecond local response times.</p>
       </div>
@@ -72,6 +73,7 @@
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Problem Statement and Architectural Principles</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Basic Concept of an ESP32 Web Server</h4>
         <p>Embedded systems traditionally rely on physical actuation interfaces (tactile switches, rotary encoders, or local serial consoles) for human-machine interaction. While commercial Internet of Things (IoT) cloud architectures enable remote control, they mandate constant wide-area network (WAN) connectivity, introduce latency variability, and present single points of failure when internet service is degraded. Local-network embedded web servers eliminate cloud dependencies by serving graphical control interfaces directly from on-chip microcontroller flash memory.</p>
         <p>The ESP32 operates in Wi-Fi Station (STA) mode, authenticating with a local wireless access point and negotiating a dynamic IPv4 address via DHCP. The firmware binds a socket listener on standard HTTP Port 80, serving an embedded HTML5 document to connected user agents and mapping uniform resource identifier (URI) path requests to hardware register manipulations.</p>
       </div>
@@ -81,6 +83,7 @@
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">System Architecture and Communication Protocol</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">How the ESP32 and Browser Communicate over Wi-Fi</h4>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">COMMUNICATION PIPELINE</span>
@@ -150,6 +153,7 @@
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">4</span><h3 class="topic-title">Hardware and Software Specifications</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Hardware Components Used</h4>
         <p>The experimental setup utilizes the following hardware and software toolchains:</p>
         <ul class="detail-ulist">
           <li><strong>Microcontroller Core:</strong> Espressif ESP32 NodeMCU DevKit (Xtensa dual-core 32-bit LX6 microprocessor operating at 240 MHz, 520 KB SRAM, 4 MB embedded SPI Flash memory).</li>
@@ -165,6 +169,7 @@
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">5</span><h3 class="topic-title">Circuit Connections and Pin Configuration</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Circuit / Wiring Diagram</h4>
         <p>The hardware configuration establishes an active-HIGH driving circuit connecting the ESP32 GPIO to the LED anode through the current-limiting resistor:</p>
         <div class="circuit-diagram-container">
   <div class="diagram-header">
@@ -275,7 +280,8 @@
   </svg>
 </div>
         <div class="pin-table-container">
-          <table class="pin-table">
+          <h4 class="subtopic-title">ESP32 Pin Connections</h4>
+        <table class="pin-table">
             <thead>
               <tr>
                 <th>ESP32 Physical Header</th>
@@ -313,6 +319,7 @@
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">6</span><h3 class="topic-title">Implementation Methodology and Firmware Source Code</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Complete Arduino/ESP32 Source Code</h4>
         <p>The firmware initializes UART serial debugging at 115200 baud, establishes connection to the specified 2.4 GHz 802.11b/g/n Wi-Fi network in Station mode, configures GPIO 2 as an output, binds HTTP request handlers to specific URIs, and executes non-blocking client polling in the runtime loop. The complete, production-verified C++ sketch is presented below:</p>
 
         <div class="code-wrapper">
@@ -346,30 +353,28 @@ bool ledState = false;
 String buildHtmlPage() {
   String html = "&lt;!DOCTYPE html&gt;&lt;html lang='en'&gt;&lt;head&gt;";
   html += "&lt;meta charset='UTF-8'&gt;&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;";
-  html += "&lt;title&gt;ESP32 LED Web Controller&lt;/title&gt;";
+  html += "&lt;title&gt;ESP32 LED CONTROL&lt;/title&gt;";
   html += "&lt;style&gt;";
-  html += "body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0f19; color: #f1f5f9; text-align: center; padding: 40px 20px; margin: 0; }";
-  html += ".card { max-width: 440px; margin: 0 auto; background: #161e2e; border: 1px solid #334155; border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }";
-  html += "h1 { font-size: 24px; margin-bottom: 8px; color: #38bdf8; }";
-  html += "p { color: #94a3b8; font-size: 14px; margin-bottom: 24px; }";
-  html += ".status-box { padding: 14px; border-radius: 8px; margin-bottom: 24px; font-weight: bold; font-size: 18px; }";
-  html += ".status-on { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid #22c55e; }";
-  html += ".status-off { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444; }";
-  html += ".btn { display: inline-block; width: 100%; padding: 16px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s; }";
-  html += ".btn-toggle { background: #38bdf8; color: #0b0f19; }";
-  html += ".btn-toggle:hover { background: #0284c7; }";
+  html += "body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #161928; color: #ffffff; text-align: center; margin: 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }";
+  html += "h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px; }";
+  html += "p { font-size: 14px; color: #8e99a8; margin: 0 0 28px 0; }";
+  html += ".btn-group { display: flex; gap: 16px; justify-content: center; align-items: center; }";
+  html += ".btn { display: inline-block; min-width: 96px; padding: 12px 28px; font-size: 16px; font-weight: 700; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s ease; }";
+  html += ".btn-on { background-color: #48bb78; color: #ffffff; }";
+  html += ".btn-off { background-color: #e53e3e; color: #ffffff; }";
+  html += ".btn-active { box-shadow: 0 0 16px rgba(255, 255, 255, 0.4); transform: scale(1.03); opacity: 1; }";
+  html += ".btn-inactive { opacity: 0.6; }";
   html += "&lt;/style&gt;&lt;/head&gt;&lt;body&gt;";
-  html += "&lt;div class='card'&gt;";
-  html += "&lt;h1&gt;ESP32 Web Server&lt;/h1&gt;";
-  html += "&lt;p&gt;Standalone Local Network Controller&lt;/p&gt;";
-
+  html += "&lt;h1&gt;ESP32 LED CONTROL&lt;/h1&gt;";
+  html += "&lt;p&gt;Control your LED&lt;/p&gt;";
+  html += "&lt;div class='btn-group'&gt;";
   if (ledState) {
-    html += "&lt;div class='status-box status-on'&gt;CURRENT STATE: ACTIVE (ON)&lt;/div&gt;";
+    html += "&lt;a href='/on' class='btn btn-on btn-active'&gt;ON&lt;/a&gt;";
+    html += "&lt;a href='/off' class='btn btn-off btn-inactive'&gt;OFF&lt;/a&gt;";
   } else {
-    html += "&lt;div class='status-box status-off'&gt;CURRENT STATE: INACTIVE (OFF)&lt;/div&gt;";
+    html += "&lt;a href='/on' class='btn btn-on btn-inactive'&gt;ON&lt;/a&gt;";
+    html += "&lt;a href='/off' class='btn btn-off btn-active'&gt;OFF&lt;/a&gt;";
   }
-
-  html += "&lt;a href='/toggle' class='btn btn-toggle'&gt;Toggle LED State&lt;/a&gt;";
   html += "&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;";
   return html;
 }
@@ -379,17 +384,25 @@ void handleRoot() {
   server.send(200, "text/html", buildHtmlPage());
 }
 
-// Handler for toggle action ('/toggle')
-void handleToggle() {
-  ledState = !ledState;
-  digitalWrite(ledPin, ledState ? HIGH : LOW);
+// Handler for turning LED ON ('/on')
+void handleOn() {
+  ledState = true;
+  digitalWrite(ledPin, HIGH);
+  server.sendHeader("Location", "/");
+  server.send(303); // 303 See Other redirect forces browser to refresh state cleanly
+}
+
+// Handler for turning LED OFF ('/off')
+void handleOff() {
+  ledState = false;
+  digitalWrite(ledPin, LOW);
   server.sendHeader("Location", "/");
   server.send(303); // 303 See Other redirect forces browser to refresh state cleanly
 }
 
 // Handler for JSON status polling ('/status')
 void handleStatus() {
-  String json = "{\"ledPin\":2,\"state\":";
+  String json = "{"ledPin":2,"state":";
   json += ledState ? "true" : "false";
   json += "}";
   server.send(200, "application/json", json);
@@ -420,7 +433,8 @@ void setup() {
 
   // Register HTTP route handlers
   server.on("/", HTTP_GET, handleRoot);
-  server.on("/toggle", HTTP_GET, handleToggle);
+  server.on("/on", HTTP_GET, handleOn);
+  server.on("/off", HTTP_GET, handleOff);
   server.on("/status", HTTP_GET, handleStatus);
 
   server.begin();
@@ -439,8 +453,10 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">Responsive HTML User Interface &amp; Command Processing</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">HTML Interface Developed for Controlling the LED</h4>
         <p>The client interface incorporates responsive layout primitives styled with dark-mode aesthetic tokens. The HTML head declares a strict viewport constraint (<code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>) preventing undesirable horizontal scaling on mobile viewports. CSS rules are encapsulated inline, eliminating external stylesheet dependencies and ensuring sub-second rendering directly from microcontroller RAM.</p>
-        <p>The command processing architecture employs an HTTP 303 redirection strategy upon triggering <code>/toggle</code>. Rather than returning a static confirmation page, the redirection instructs the browser to immediately query the root URI (<code>/</code>), executing the updated template generation and reflecting the true physical GPIO latch state in real time.</p>
+        <h4 class="subtopic-title">How the Webpage Sends a Command to the ESP32</h4>
+        <p>The command processing architecture employs an HTTP 303 redirection strategy upon triggering <code>/on</code> or <code>/off</code>. Rather than returning a static confirmation page, the redirection instructs the browser to immediately query the root URI (<code>/</code>), executing the updated template generation and reflecting the true physical GPIO latch state in real time.</p>
       </div>
     </div>
 
@@ -461,6 +477,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">9</span><h3 class="topic-title">Engineering Challenges and Diagnostic Solutions</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Problems Encountered and How They Were Solved</h4>
         <ul class="detail-ulist">
           <li><strong>Dynamic DHCP IP Reassignment:</strong> The access point periodically reallocated IP addresses upon reboot. <em>Engineering Resolution:</em> Configured continuous UART serial diagnostic logging at 115200 baud to output the active <code>WiFi.localIP()</code> upon association, supplemented by optional static IP / mDNS configuration routines.</li>
           <li><strong>Dual-Band Wi-Fi Association Failures:</strong> Mesh networks with unified 2.4 GHz and 5 GHz SSIDs caused intermittent probe timeouts. <em>Engineering Resolution:</em> Forced legacy 802.11b/g/n physical layer negotiation using <code>WiFi.mode(WIFI_STA)</code> and bound connection parameters explicitly to the 2.4 GHz BSSID.</li>
@@ -473,6 +490,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">10</span><h3 class="topic-title">Conclusion and Technical Summary</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Brief Reflection on What You Learned</h4>
         <p>Task 1 successfully established an operational local embedded web server on the ESP32 microcontroller. The implementation demonstrates that standard web technologies (HTTP, HTML5, CSS3) can be effectively integrated into low-cost, resource-constrained microcontrollers, providing a reliable, responsive, and secure foundation for local edge automation.</p>
       </div>
     </div>
@@ -484,23 +502,25 @@ void loop() {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task1/1.jpeg" alt="Task 1 ESP32 Web Server Breadboard Assembly" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Hardware Setup</span>
+            <span class="media-badge">Photographs of the Physical Setup</span>
             <h5>ESP32 Web Server Bench Assembly</h5>
             <p>Physical breadboard circuit showing ESP32 DevKit, current-limiting resistor, and red LED connected to GPIO 2.</p>
           </div>
         </div>
         <div class="media-slot image-slot">
-          <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task1/task1_webpage_led_off.png" alt="ESP32 Web Server Interface – OFF State" loading="lazy">
+          <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task1/task1_webpage_led_off.png" alt="ESP32 LED Control – OFF State" loading="lazy">
           <div class="media-caption">
-            <h5>ESP32 Web Server Interface – OFF State</h5>
+            <span class="media-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">Screenshots of the Web Interface</span>
+            <h5>ESP32 LED Control – OFF State</h5>
             <p>Browser-rendered view of the firmware-based HTML interface showing the default inactive LED state.</p>
           </div>
         </div>
         <div class="media-slot image-slot">
-          <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task1/task1_webpage_led_on.png" alt="ESP32 Web Server Interface – ON State" loading="lazy">
+          <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task1/task1_webpage_led_on.png" alt="ESP32 LED Control – ON State" loading="lazy">
           <div class="media-caption">
-            <h5>ESP32 Web Server Interface – ON State</h5>
-            <p>Browser-rendered view of the same interface showing the active LED state after toggling.</p>
+            <span class="media-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">Screenshots of the Web Interface</span>
+            <h5>ESP32 LED Control – ON State</h5>
+            <p>Browser-rendered view of the same interface showing the active LED state after clicking ON.</p>
           </div>
         </div>
         <div class="media-slot video-slot">
@@ -511,7 +531,7 @@ void loop() {
             </video>
           </div>
           <div class="media-caption">
-            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstrating LED ON/OFF Control</span>
             <h5>Local Web Server LED Control</h5>
             <p>Demonstrating browser-based HTTP control to toggle the physical breadboard LED across the local LAN.</p>
           </div>
@@ -523,6 +543,7 @@ void loop() {
     <div class="topic-section">
       <h3 class="topic-title">SOURCE CODE &amp; DOCUMENTATION</h3>
       <div class="topic-content">
+        <h4 class="subtopic-title">All Required Files/Code Available in Your Repository</h4>
         <p>This assignment is published as an independent, standalone GitHub repository containing the complete embedded C++ WebServer sketch, HTML dashboard templates, wiring schematics, and technical guide.</p>
         <div class="resource-card" style="margin-top: 1.25rem; max-width: 650px;">
           <div class="resource-card-top">
@@ -561,6 +582,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">1</span><h3 class="topic-title">Introduction and Technical Objective</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Purpose of Adafruit IO in an IoT System</h4>
         <p>This investigation examines the implementation of cloud-connected Internet of Things (IoT) telemetry and remote actuation using the Message Queuing Telemetry Transport (MQTT) protocol. The primary technical objective is to establish an always-on, bi-directional communication bridge between an Espressif ESP32 edge microcontroller and the Adafruit IO cloud platform. This architecture enables continuous publishing of edge sensor telemetry and low-latency consumption of cloud actuation commands across wide-area networks (WAN) without requiring port forwarding, static public IP addresses, or local firewall reconfigurations.</p>
         <p>Adafruit IO functions as a centralized, enterprise-grade cloud broker and visualization suite, abstracting backend infrastructure and providing persistent time-series data storage, webhook integrations, and real-time dashboard widgets for physical computing deployments.</p>
       </div>
@@ -570,6 +592,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Theoretical Principles: MQTT Protocol vs. HTTP Polling</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Basic Concept of MQTT</h4>
         <p>Traditional web-based embedded monitoring architectures employ HTTP polling, wherein the edge client repeatedly issues <code>GET</code> or <code>POST</code> requests at fixed intervals. While straightforward, HTTP introduces significant transmission overhead: each transaction requires TCP three-way handshakes, TLS session negotiation (if secure), and redundant ASCII headers exceeding 200–800 bytes per packet. Furthermore, push notifications from cloud to edge are impossible under pure HTTP without complex mechanisms such as long-polling or WebSocket upgrades.</p>
         <p>In contrast, MQTT (ISO/IEC 20922) is an extremely lightweight, publish-subscribe messaging transport optimized for constrained edge devices and high-latency, bandwidth-limited networks. Key operational tenets include:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
@@ -591,6 +614,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">System Architecture and Feed Topology</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Communication Flow between ESP32, MQTT, and Adafruit IO</h4>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">SYSTEM ARCHITECTURE</span>
@@ -661,6 +685,9 @@ void loop() {
     </g>
   </svg>
 </div>
+        <h4 class="subtopic-title">MQTT Publisher, Subscriber, and Broker Identified</h4>
+        <h4 class="subtopic-title">Role of an MQTT Topic / Feed</h4>
+        <h4 class="subtopic-title">MQTT Topic / Feed Structure Used</h4>
         <p>The messaging hierarchy utilizes hierarchical, forward-slash-delimited topic strings conforming to the Adafruit IO namespace schema: <code>{username}/feeds/{feed_key}</code>. The deployed architecture implements two independent, asynchronous communication channels registered under the verified operator account <code>Hisenbergg_007</code> (Jaishanth Lenin):</p>
         <div class="circuit-diagram-container">
   <div class="diagram-header">
@@ -807,6 +834,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">4</span><h3 class="topic-title">Hardware and Software Specifications</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Hardware and Software Used</h4>
         <p>The experimental physical computing apparatus is engineered with the following components and toolchains:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Processing Core:</strong> Espressif ESP32-WROOM-32 32-bit dual-core Xtensa LX6 microcontroller operating at 240 MHz with integrated 802.11 b/g/n 2.4 GHz Wi-Fi baseband.</li>
@@ -821,6 +849,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">5</span><h3 class="topic-title">Circuit Connections and Pin Configuration</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Circuit / Wiring Diagram &amp; ESP32 Pin Connections</h4>
         <p>The hardware interface configures an active-HIGH driving circuit connecting the ESP32 digital output register to the indicator LED:</p>
         <div class="pin-table-container">
           <table class="pin-table">
@@ -861,6 +890,7 @@ void loop() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">6</span><h3 class="topic-title">Implementation Methodology and Firmware Source Code</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Complete ESP32 Source Code</h4>
         <p>The firmware initializes high-speed UART debugging at 115200 baud, establishes connection to the local 2.4 GHz Wi-Fi access point in Station mode, instantiates the <code>Adafruit_MQTT_Client</code> pointing to <code>io.adafruit.com:1883</code>, and subscribes to the <code>lamp-control</code> (or <code>bulb</code>) feed. The runtime routine implements an autonomous reconnection state machine in <code>MQTT_connect()</code>, processes incoming packets via <code>readSubscription(1000)</code>, and publishes periodic telemetry via non-blocking timestamp arbitration:</p>
 
         <div class="code-wrapper">
@@ -976,6 +1006,7 @@ void MQTT_connect() {
 }</pre>
         </div>
 
+        <h4 class="subtopic-title">Explanation of Important Code Sections</h4>
         <p style="margin-top: 14px;"><strong>Firmware Execution Logic:</strong></p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><code>MQTT_connect()</code>: Interrogates <code>mqtt.connected()</code>. If disconnected, it executes up to 3 non-blocking reconnection attempts with 5-second backoff intervals before yielding, preventing infinite watchdog resets during transient network outages.</li>
@@ -990,6 +1021,8 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">Adafruit IO Dashboard Configuration and User Interface</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Adafruit IO Account Created and Documented</h4>
+        <h4 class="subtopic-title">Dashboard and Feed Configuration Documented</h4>
         <p>The cloud supervisory interface was constructed on the official Adafruit IO dashboard builder under the user account <code>Hisenbergg_007</code> (Jaishanth Lenin) and verified through direct browser captures:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>User Account &amp; Dashboard Namespace:</strong> Verified under operator account <em>Hi, Jaishanth Lenin</em> (<code>io.adafruit.com/Hisenbergg_007/dashboards</code>). The primary management dashboard is titled <strong>Bulb</strong> (key: <code>bulb</code>, created September 10, 2026).</li>
@@ -1003,6 +1036,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">8</span><h3 class="topic-title">Operational Testing, Latency Analysis, and Results</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">LED Control Through the Cloud Dashboard Demonstrated</h4>
         <p>The bi-directional IoT communication pipeline underwent rigorous empirical testing to quantify transmission latency, packet delivery reliability, and bandwidth efficiency:</p>
         <div class="pin-table-container">
           <table class="pin-table">
@@ -1050,6 +1084,8 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">9</span><h3 class="topic-title">Engineering Challenges and Diagnostic Solutions</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Problems Encountered During MQTT/Cloud Setup</h4>
+        <h4 class="subtopic-title">Solutions Implemented</h4>
         <p>During deployment and long-duration testing, several embedded networking anomalies were isolated and resolved through rigorous engineering diagnosis:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Challenge 1: MQTT Socket Silent Drops on Wi-Fi AP Roaming:</strong> Under weak signal conditions, the TCP socket occasionally entered an unrecoverable half-open state where the ESP32 presumed connectivity while the cloud broker had pruned the client.<br>
@@ -1068,6 +1104,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">10</span><h3 class="topic-title">Conclusion and Technical Synthesis</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Brief Learning Reflection</h4>
         <p>The successful execution of Task 2 validated the theoretical superiority of the MQTT publish-subscribe architecture over traditional HTTP polling for edge IoT applications. By anchoring the embedded edge node to the Adafruit IO cloud broker via a persistent, lightweight TCP socket on port 1883, the system demonstrated sub-250 ms actuation latency, zero packet loss across continuous testing, and a greater than 96% reduction in network data overhead. The implementation establishes an extensible architectural blueprint for multi-sensor industrial telemetry and remote actuator supervision.</p>
       </div>
     </div>
@@ -1079,7 +1116,7 @@ void MQTT_connect() {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task2/2.jpeg" alt="Task 2 ESP32 Adafruit IO Hardware Setup" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Hardware Setup</span>
+            <span class="media-badge">Photographs of the Hardware Setup</span>
             <h5>ESP32 MQTT Hardware Configuration</h5>
             <p>Physical test bench displaying the ESP32 microcontroller with GPIO 2 LED output and USB serial telemetry monitoring.</p>
           </div>
@@ -1087,7 +1124,7 @@ void MQTT_connect() {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task2/adafruit_io_dashboards_list.png" alt="Adafruit IO Dashboards Console - Account Jaishanth Lenin" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Cloud Dashboard</span>
+            <span class="media-badge">Screenshots of the Adafruit IO Dashboard</span>
             <h5>Adafruit IO Dashboards Console (Account: Jaishanth Lenin)</h5>
             <p>Authentic console capture confirming user account Jaishanth Lenin (Hisenbergg_007) and active Bulb dashboard.</p>
           </div>
@@ -1116,7 +1153,7 @@ void MQTT_connect() {
             </video>
           </div>
           <div class="media-caption">
-            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Working Demonstration Video</span>
             <h5>Bi-Directional MQTT Cloud Actuation</h5>
             <p>Demonstrating cloud-triggered actuation from Adafruit IO to physical ESP32 LED and telemetry streaming.</p>
           </div>
@@ -1128,6 +1165,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <h3 class="topic-title">SOURCE CODE &amp; DOCUMENTATION</h3>
       <div class="topic-content">
+        <h4 class="subtopic-title">All Required Files Available in Your Repository</h4>
         <p>This assignment is published as an independent, standalone GitHub repository containing the complete embedded C++ MQTT sketch, Adafruit IO feed schemas, circuit pinout diagrams, and technical implementation documentation.</p>
         <div class="resource-card" style="margin-top: 1.25rem; max-width: 650px;">
           <div class="resource-card-top">
@@ -1166,6 +1204,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">1</span><h3 class="topic-title">Introduction and Technical Objective</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Objective of the IoT Automation</h4>
         <p>This project investigates the design, configuration, and verification of an event-driven multi-cloud automation architecture for physical computing. The engineering objective is to interconnect heterogeneous cloud platforms—integrating the rule-based automation capabilities of If This Then That (IFTTT) with the real-time MQTT message brokering of Adafruit IO—to actuate an isolated mains-voltage electrical load via an Espressif ESP32 edge microcontroller.</p>
         <p>By delegating high-level conditional logic and third-party event ingestion to cloud rule engines, the embedded edge device is relieved of executing complex web-scraping or polling algorithms. Instead, the edge node functions as a deterministic physical actuation endpoint, executing hardware switching upon receiving cryptographically authenticated cloud events.</p>
       </div>
@@ -1175,6 +1214,10 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Theoretical Principles: Event-Driven Multi-Cloud Architecture</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Basic Concept of IoT Automation</h4>
+        <h4 class="subtopic-title">What IFTTT Is and Why It Is Used</h4>
+        <h4 class="subtopic-title">Trigger → Action Concept Explained</h4>
+        <h4 class="subtopic-title">Role of Adafruit IO in the Automation</h4>
         <p>Modern Internet of Things (IoT) ecosystems rarely operate as monolithic stacks. Instead, robust distributed systems federate specialized microservices:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>The Trigger &rarr; Action Automation Paradigm:</strong> Cloud automation services such as IFTTT operate on the foundational principle of conditional causal pipelines: <em>If [Event Condition Satisfied in Service A], Then [Execute Action in Service B]</em>. This decouples event originators (e.g., Google Assistant voice triggers, webhooks, geolocation geofences, or sensor threshold crossings) from event consumers.</li>
@@ -1188,6 +1231,8 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">System Architecture and End-to-End Dataflow Pipeline</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Communication and Data-Flow Diagram</h4>
+        <h4 class="subtopic-title">How the Trigger Reaches the IoT System</h4>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">AUTOMATION PIPELINE</span>
@@ -1315,6 +1360,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">4</span><h3 class="topic-title">Hardware and Software Specifications</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Hardware and Software Used</h4>
         <p>The physical computing and cloud automation apparatus incorporates the following technical components:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Processing Unit:</strong> Espressif ESP32-WROOM-32 microcontroller (dual Xtensa 32-bit LX6 cores @ 240 MHz, 520 KB SRAM, 4 MB Flash).</li>
@@ -1331,6 +1377,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">5</span><h3 class="topic-title">Circuit Design, Electrical Isolation, and Pin Mapping</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Circuit Design, Electrical Isolation, and Pin Mapping</h4>
         <p>The circuit architecture segregates low-voltage digital control signals from high-voltage actuation rails through optoelectronic galvanic isolation:</p>
         <div class="pin-table-container">
           <table class="pin-table">
@@ -1377,6 +1424,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">6</span><h3 class="topic-title">Implementation Methodology and Firmware Source Code</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Complete ESP32 Source Code</h4>
         <p>The firmware initializes UART serial debugging at 115200 baud, establishes connection to the local 2.4 GHz Wi-Fi access point in Station mode, configures GPIO 5 as a digital push-pull output, instantiates the <code>Adafruit_MQTT_Client</code>, and registers a subscription callback to the <code>lamp-control</code> feed:</p>
 
         <div class="code-wrapper">
@@ -1480,6 +1528,9 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">IFTTT Applet Configuration and Cloud Rule Engine</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">IFTTT Applet / Workflow Created and Documented</h4>
+        <h4 class="subtopic-title">Trigger Used Identified</h4>
+        <h4 class="subtopic-title">Action Performed Identified</h4>
 
     <div class="circuit-diagram-container">
       <div class="diagram-header">
@@ -1520,6 +1571,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">8</span><h3 class="topic-title">Operational Testing, Multi-Condition Actuation, and Latency Analysis</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Automation Tested Under Different Conditions</h4>
         <p>The multi-cloud pipeline underwent comprehensive operational validation across diverse trigger scenarios. End-to-end propagation latency was measured from the moment of trigger event initiation to the physical audible click of the relay contact closure:</p>
         <div class="pin-table-container">
           <table class="pin-table">
@@ -1577,6 +1629,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">9</span><h3 class="topic-title">Engineering Challenges and Diagnostic Solutions</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Problems and Their Solutions Documented</h4>
         <p>Deploying an asynchronous multi-cloud control loop introduced several systems-level engineering challenges:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Challenge 1: Cloud-to-Cloud Transmission Jitter:</strong> During peak internet traffic periods, IFTTT webhook dispatch exhibited variance up to 450 ms, causing perceptible delay jitter.<br>
@@ -1593,6 +1646,8 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">10</span><h3 class="topic-title">Conclusion and Technical Synthesis</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">What You Learned About Cloud-Based Automation</h4>
+        <h4 class="subtopic-title">Brief Reflection on the Assignment</h4>
         <p>Task 3 successfully demonstrated the integration of a multi-cloud event-driven automation pipeline bridging third-party cloud rule engines (IFTTT), cloud MQTT brokers (Adafruit IO), and optocoupler-isolated edge electromechanical hardware (ESP32 + 5V Relay). The experimental results proved that cloud federation allows complex, cross-platform physical computing workflows to be implemented with sub-second end-to-end responsiveness while maintaining strict galvanic isolation for high-voltage electrical safety.</p>
       </div>
     </div>
@@ -1604,7 +1659,7 @@ void MQTT_connect() {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task3/3.jpeg" alt="Task 3 ESP32 Relay Hardware Setup" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Hardware Setup</span>
+            <span class="media-badge">Photographs of the Working Prototype</span>
             <h5>ESP32 &amp; Optocoupler Relay Assembly</h5>
             <p>Physical circuit showing ESP32 DevKit interfaced to the 5V optocoupler-isolated relay module on GPIO 5.</p>
           </div>
@@ -1612,7 +1667,7 @@ void MQTT_connect() {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task3/ifttt_applets_overview.jpg" alt="Genuine IFTTT My Applets Dashboard" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Cloud Automation</span>
+            <span class="media-badge">Screenshots of the IFTTT Configuration</span>
             <h5>IFTTT Applets Dashboard (My Applets)</h5>
             <p>Authentic IFTTT console showing active Google Assistant to Adafruit IO Bulb automation applets.</p>
           </div>
@@ -1644,7 +1699,7 @@ void MQTT_connect() {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task3/dashboard.jpg" alt="Task 3 Adafruit IO Feed and Trigger" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Cloud Dashboard</span>
+            <span class="media-badge">Screenshots of the Adafruit IO Dashboard/Feed</span>
             <h5>Adafruit IO Feed &amp; Automation Trigger</h5>
             <p>Adafruit IO cloud console displaying the lamp-control feed receiving automated trigger state transitions.</p>
           </div>
@@ -1657,7 +1712,7 @@ void MQTT_connect() {
             </video>
           </div>
           <div class="media-caption">
-            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstrating the Complete Automation</span>
             <h5>Multi-Cloud Automation Demonstration</h5>
             <p>Full demonstration of cloud-triggered event dispatching through IFTTT and Adafruit IO to physical relay actuation.</p>
           </div>
@@ -1669,6 +1724,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <h3 class="topic-title">SOURCE CODE &amp; DOCUMENTATION</h3>
       <div class="topic-content">
+        <h4 class="subtopic-title">All Required Files Available in Your Repository</h4>
         <p>This assignment is published as an independent, standalone GitHub repository containing the complete embedded C++ IFTTT automation sketch, relay schematics, cloud configuration diagrams, and technical guide.</p>
         <div class="resource-card" style="margin-top: 1.25rem; max-width: 650px;">
           <div class="resource-card-top">
@@ -1707,6 +1763,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">1</span><h3 class="topic-title">Introduction and Technical Objective</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Objective of the Firebase IoT Monitoring System</h4>
         <p>This project investigates the engineering of an enterprise-grade, cloud-native Internet of Things (IoT) monitoring and supervisory control system utilizing Google Firebase Backend-as-a-Service (BaaS). The core technical objective is to deploy a resilient, multi-tier cyber-physical architecture comprising an Espressif ESP32 edge microcontroller interfaced with multi-modal physical sensors, connected via secure WebSockets/HTTPS to the Firebase Realtime Database, and supervised through a custom-built, responsive HTML5/CSS3/JavaScript web application featuring client-side cryptographic authentication.</p>
         <p>Unlike traditional static IoT dashboards that poll servers periodically, this system leverages Firebase's real-time reactive streaming engine, pushing delta updates to all connected browser clients with sub-150 ms synchronization latencies while maintaining strict bi-directional hardware command-and-control capabilities.</p>
       </div>
@@ -1716,6 +1773,12 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Cloud Computing Fundamentals and Database Architectures</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Basic Concept of Cloud Computing</h4>
+        <h4 class="subtopic-title">IaaS, PaaS, SaaS, and BaaS Explained</h4>
+        <h4 class="subtopic-title">What a Cloud Platform Is</h4>
+        <h4 class="subtopic-title">What a Database Is</h4>
+        <h4 class="subtopic-title">Firebase Realtime Database Explained</h4>
+        <h4 class="subtopic-title">What a Cloud-Based Dashboard Is</h4>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">CLOUD ARCHITECTURE</span>
@@ -1806,6 +1869,10 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">Identity Management, Authentication, and Access Control</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Authentication and the Purpose of a Login System</h4>
+        <h4 class="subtopic-title">Difference Between Authentication and Authorization</h4>
+        <h4 class="subtopic-title">Firebase Authentication Configuration Documented</h4>
+        <h4 class="subtopic-title">Database and Data-Flow Architecture</h4>
         <p>In industrial cyber-physical deployments, unauthenticated access presents severe physical security hazards. The deployed system implements multi-tier identity verification:</p>
         <div class="circuit-diagram-container">
   <div class="diagram-header">
@@ -1947,6 +2014,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">4</span><h3 class="topic-title">Realtime Database Schema &amp; Node Topology</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Realtime Database Structure Documented</h4>
 
     <div class="circuit-diagram-container">
       <div class="diagram-header">
@@ -1992,6 +2060,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">5</span><h3 class="topic-title">Hardware and Software Specifications</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Hardware and Software Specifications</h4>
         <p>The hardware and software apparatus incorporates industrial-standard embedded sensing and web technologies:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Edge Processing Core:</strong> Espressif ESP32-WROOM-32 (Xtensa dual-core LX6 @ 240 MHz, 520 KB SRAM, 4 MB Flash) featuring integrated 802.11 b/g/n Wi-Fi radio and on-chip hardware AES cryptographic acceleration for SSL/TLS handshakes.</li>
@@ -2008,6 +2077,7 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">6</span><h3 class="topic-title">Circuit Connections and Pin Configuration</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Circuit Connections and Pin Configuration</h4>
         <p>The electrical schematic establishes dedicated signal and power routing between the ESP32 and peripheral modules:</p>
         <div class="pin-table-container">
           <table class="pin-table">
@@ -2066,6 +2136,8 @@ void MQTT_connect() {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">Implementation Methodology and Firmware Source Code</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Firebase Project Setup Documented</h4>
+        <h4 class="subtopic-title">Complete Dashboard Source Code</h4>
         <p>The system comprises four interdependent software modules: the embedded C++ microcontroller sketch, the web dashboard HTML interface, the glassmorphic CSS styling sheet, and the asynchronous JavaScript client application.</p>
 
         <!-- ESP32 Firmware -->
@@ -2495,6 +2567,7 @@ window.toggleBulbState = () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">9</span><h3 class="topic-title">Engineering Challenges and Diagnostic Solutions</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Problems Encountered and Their Solutions</h4>
         <p>Deploying a heterogeneous edge-to-cloud cyber-physical system revealed several hardware-software impedance mismatches:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Challenge 1: ESP32 Heap Memory Fragmentation During Persistent SSL Handshakes:</strong> Maintaining long-lived TLS sessions with Google Firebase servers occasionally caused heap fragmentation, leading to out-of-memory kernel panics.<br>
@@ -2511,6 +2584,7 @@ window.toggleBulbState = () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">10</span><h3 class="topic-title">Conclusion and Technical Synthesis</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Brief Reflection on the Assignment</h4>
         <p>Task 4 demonstrated the realization of an industrial-grade, cloud-native IoT monitoring and control platform. By synthesizing Google Firebase BaaS, client-side cryptographic authentication, responsive glassmorphic web frontends, and resilient ESP32 edge firmware, the project verified that modern web technologies can supervise physical hardware with sub-second determinism, rock-solid security, and cross-platform accessibility.</p>
       </div>
     </div>
@@ -2522,7 +2596,7 @@ window.toggleBulbState = () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task4/4.jpeg" alt="Task 4 Hardware Test Bench" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Hardware Setup</span>
+            <span class="media-badge">Photographs of the Hardware Setup</span>
             <h5>ESP32 Multi-Sensor Breadboard Assembly</h5>
             <p>Physical circuit showing ESP32 DevKit interfaced to DHT11, LDR voltage divider, and relay module.</p>
           </div>
@@ -2530,7 +2604,7 @@ window.toggleBulbState = () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task4/firebase_database.png" alt="Firebase Realtime Database Console Screenshot - Project Apppp" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Cloud Database</span>
+            <span class="media-badge">Screenshots of the Firebase Database</span>
             <h5>Firebase Realtime Database Console (Project Apppp)</h5>
             <p>Authentic Firebase console capture showing /current node (bulbState, humidity, ldr, mode, temperature) in Singapore.</p>
           </div>
@@ -2538,7 +2612,7 @@ window.toggleBulbState = () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task4/firebase_authentication_users.png" alt="Firebase Authentication Console - Users Directory" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Identity &amp; Auth</span>
+            <span class="media-badge">Screenshots of the Login Page</span>
             <h5>Firebase Authentication Directory (Project Apppp)</h5>
             <p>Authentic console capture confirming user accounts jaishanth1.18@protosem... and jaishanthlenin@gmail.com.</p>
           </div>
@@ -2554,7 +2628,7 @@ window.toggleBulbState = () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task4/4 (2).jpeg" alt="Web Dashboard Live Telemetry View" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Live Dashboard</span>
+            <span class="media-badge">Screenshots of the Working Dashboard</span>
             <h5>Real-Time Telemetry &amp; Gauges</h5>
             <p>Active web dashboard rendering live temperature, humidity, and light intensity telemetry from the ESP32.</p>
           </div>
@@ -2583,7 +2657,7 @@ window.toggleBulbState = () =&gt; {
             </video>
           </div>
           <div class="media-caption">
-            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstrating Webpage Workflow</span>
             <h5>Full-Stack Firebase IoT Demonstration</h5>
             <p>Comprehensive video validating user authentication, real-time telemetry streaming, and bi-directional relay control.</p>
           </div>
@@ -2625,6 +2699,7 @@ window.toggleBulbState = () =&gt; {
     <div class="topic-section">
       <h3 class="topic-title">SOURCE CODE &amp; DOCUMENTATION</h3>
       <div class="topic-content">
+        <h4 class="subtopic-title">All Required Files Available in Your Repository</h4>
         <p>This assignment is published as an independent, standalone GitHub repository containing the complete embedded C++ sketch, responsive HTML5 dashboard, CSS styling, modular JavaScript client logic, and technical documentation.</p>
         <div class="resource-card" style="margin-top: 1.25rem; max-width: 650px;">
           <div class="resource-card-top">
@@ -2663,6 +2738,7 @@ window.toggleBulbState = () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">1</span><h3 class="topic-title">Introduction and Technical Objective</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Objective of the Complete IoT System</h4>
         <p>This project represents the cumulative engineering synthesis of the ProtoSem embedded IoT curriculum. The primary objective is the development, characterization, and deployment of a fully autonomous cyber-physical edge-cloud system. The architecture integrates multi-modal environmental sensing (DHT11 temperature/humidity and analog CdS photoresistor), dual-threshold closed-loop illumination automation with Schmitt trigger hysteresis, non-blocking single-threaded task scheduling, cloud-synchronized historical logging over Firebase Realtime Database, Network Time Protocol (NTP) epoch timestamping, interactive time-series web visualization via Chart.js, and client-side RFC 4180 CSV dataset export.</p>
         <p>By harmonizing bare-metal deterministic edge control with cloud-native persistence and supervisory analytics, the system establishes a production-grade template for smart building automation, agricultural telemetry, and industrial supervisory control and data acquisition (SCADA) deployments.</p>
       </div>
@@ -2672,6 +2748,7 @@ window.toggleBulbState = () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">2</span><h3 class="topic-title">Architectural Model: Bare-Metal Non-RTOS Deterministic Execution</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Final System Architecture Documented</h4>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">FULL SYSTEM PIPELINE</span>
@@ -2909,6 +2986,11 @@ window.toggleBulbState = () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">3</span><h3 class="topic-title">Closed-Loop Illumination Automation &amp; Dual-Threshold Hysteresis Model</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">DHT11 Temperature and Humidity Monitoring Demonstrated</h4>
+        <h4 class="subtopic-title">LDR-Based Light Level Monitoring Demonstrated</h4>
+        <h4 class="subtopic-title">Automatic Bulb Control Using LDR Implemented</h4>
+        <h4 class="subtopic-title">Logic Used for Automatic Lighting Explained</h4>
+        <h4 class="subtopic-title">LDR Threshold and Calibration Method Documented</h4>
 <div class="circuit-diagram-container">
   <div class="diagram-header">
     <span class="diagram-badge">ALGORITHM FLOWCHART</span>
@@ -3035,6 +3117,8 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">4</span><h3 class="topic-title">Operating Mode Finite State Machine: Manual vs. Automatic Arbitration</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Manual Bulb Control Implemented</h4>
+        <h4 class="subtopic-title">Manual / Automatic Mode Implemented and Documented</h4>
         <p>To balance autonomous edge intelligence with human supervisory authority, the system implements a deterministic Finite State Machine (FSM) governing operational mode arbitration:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>AUTOMATIC Mode (<code>"AUTO"</code>):</strong> The closed-loop Schmitt trigger hysteresis algorithm maintains primary control over the GPIO 5 relay latch. However, if a human operator toggles the bulb switch on the cloud web dashboard, the dashboard automatically updates <code>/current/mode</code> to <code>"MANUAL"</code>, ensuring the user's manual command is immediately executed without being overwritten by the sensor loop.</li>
@@ -3047,6 +3131,7 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">5</span><h3 class="topic-title">Hardware and Software Specifications</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Hardware and Software Specifications</h4>
         <p>The integrated cyber-physical apparatus incorporates the following calibrated hardware components and software libraries:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Edge Controller:</strong> Espressif ESP32-WROOM-32 (240 MHz dual-core Xtensa LX6, 520 KB SRAM, 4 MB Flash) operating on an isolated 3.3V/5V DC power rail.</li>
@@ -3063,6 +3148,7 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">6</span><h3 class="topic-title">Circuit Connections and Pin Configuration</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Circuit Connections and Pin Configuration</h4>
         <p>The comprehensive hardware wiring connects all transducers, actuators, and power rails into a unified physical computing bus:</p>
         <div class="pin-table-container">
           <table class="pin-table">
@@ -3121,6 +3207,7 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">7</span><h3 class="topic-title">Implementation Methodology and Source Code</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Complete Cyber-Physical Source Code</h4>
         <p>The production codebase comprises the embedded C++ microcontroller sketch and the client-side JavaScript visualization and export application.</p>
 
         <!-- ESP32 Firmware -->
@@ -3359,33 +3446,382 @@ window.exportHistoricDataToCSV = async () =&gt; {
       </div>
     </div>
 
-    <!-- 8. Historical Cloud Logging, NTP Synchronization, and CSV Dataset Export -->
+    <!-- 8. Historical Data Logging & CSV Export -->
     <div class="topic-section">
-      <div class="topic-header"><span class="topic-num-badge">8</span><h3 class="topic-title">Historical Cloud Logging, NTP Synchronization, and CSV Dataset Export</h3></div>
+      <div class="topic-header"><span class="topic-num-badge">8</span><h3 class="topic-title">Historical Data Logging &amp; CSV Export</h3></div>
       <div class="topic-content">
-        <p>A major deliverable of Task 5 is continuous, time-synchronized historical logging and data portability:</p>
-        <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
-          <li><strong>NTP Epoch Synchronization:</strong> During initialization, the firmware queries <code>pool.ntp.org</code> via UDP Port 123. The POSIX epoch timestamp is synchronized to Indian Standard Time (UTC+05:30) with an accuracy of $\pm 5	ext{ ms}$, ensuring all historical entries possess cryptographically verifiable temporal integrity.</li>
-          <li><strong>Firebase Append Pipeline:</strong> Every 60 seconds, the ESP32 pushes a child record into the <code>/history</code> node using Firebase's auto-generated push keys (e.g., <code>-Nh1a...</code>). This lexicographically sortable key guarantees chronological order without requiring complex client-side sorting.</li>
-          <li><strong>Client-Side RFC 4180 CSV Generation:</strong> Rather than relying on external cloud compute or backend Python scripts, <code>dashboard_export.js</code> extracts historical objects directly from the client's memory buffer, serializes the dataset into comma-separated values conforming to RFC 4180, and instantiates a client-side Blob downloaded as <code>task5_sensor_data.csv</code>.</li>
-        </ul>
-
-        <!-- CSV Download Card -->
-        <div class="csv-card" style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 20px; margin-top: 18px; max-width: 650px;">
-          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-            <div style="background: rgba(56, 189, 248, 0.15); padding: 10px; border-radius: 8px; color: #38bdf8;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            </div>
-            <div>
-              <h4 style="margin: 0; color: #f8fafc; font-size: 16px;">Historical Telemetry Dataset (task5_sensor_data.csv)</h4>
-              <span style="font-size: 12px; color: #94a3b8;">100 Synchronized Records &bull; NTP-Timestamped &bull; Multi-Sensor Telemetry</span>
-            </div>
+        <p>Task 5 incorporates continuous telemetry logging and automated client-side CSV dataset export to ensure longitudinal tracking of environmental metrics and relay actuations:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 18px 0 24px;">
+          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px;">
+            <h4 style="margin: 0 0 8px 0; color: #38bdf8; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.12 0 4.07.74 5.61 1.98L21 3v6h-6l2.35-2.35C16.14 5.62 14.18 5 12 5c-3.87 0-7 3.13-7 7s3.13 7 7 7 7-3.13 7-7h2z"/></svg>
+              Firebase Historical Logging
+            </h4>
+            <p style="margin: 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">
+              The ESP32 firmware pushes telemetry payloads to the Firebase Realtime Database at the <code>/logs</code> endpoint. Each JSON record encapsulates the current timestamp, ambient temperature, relative humidity, analog LDR reading, bulb actuation state, and active control mode, logged periodically during runtime.
+            </p>
           </div>
-          <p style="margin: 0 0 14px 0; font-size: 13px; color: #cbd5e1; line-height: 1.5;">Contains complete 1-minute historical logs recording ambient temperature, relative humidity, light level (LDR ADC), actuator state, and operating mode.</p>
-          <a href="task5_sensor_data.csv" download="task5_sensor_data.csv" style="display: inline-flex; align-items: center; gap: 8px; background: #0284c7; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">
-            <span>Download CSV Dataset</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+
+          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px;">
+            <h4 style="margin: 0 0 8px 0; color: #38bdf8; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Timestamped Sensor Records
+            </h4>
+            <p style="margin: 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">
+              Timestamps are obtained via standard NTP synchronization querying <code>pool.ntp.org</code> using <code>NTPClient</code>. Each recorded log entry contains a standardized local timestamp (YYYY-MM-DD HH:MM:SS) that correlates environmental sensor values directly with system control events.
+            </p>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px;">
+            <h4 style="margin: 0 0 8px 0; color: #38bdf8; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              CSV Data Export
+            </h4>
+            <p style="margin: 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">
+              Historical entries stored in the database are queried and converted to RFC 4180 compliant CSV format client-side. The resulting file includes all 7 fields (Timestamp, Temperature, Humidity, LDR Value, Light Status, Bulb Status, and Control Mode) for local analysis and spreadsheet verification.
+            </p>
+          </div>
+        </div>
+
+        <!-- Telemetry Summary Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0 16px;">
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 14px; text-align: center;">
+            <span style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">Total Records</span>
+            <div style="font-size: 20px; font-weight: 700; color: #f8fafc; margin-top: 4px;">30 Records</div>
+            <span style="font-size: 11.5px; color: #64748b;">Every 2 mins (18:00–18:58)</span>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 14px; text-align: center;">
+            <span style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">Temperature</span>
+            <div style="font-size: 20px; font-weight: 700; color: #f87171; margin-top: 4px;">24.8°C – 29.8°C</div>
+            <span style="font-size: 11.5px; color: #64748b;">Average: 27.1°C</span>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 14px; text-align: center;">
+            <span style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">Humidity</span>
+            <div style="font-size: 20px; font-weight: 700; color: #38bdf8; margin-top: 4px;">51.2% – 75.6%</div>
+            <span style="font-size: 11.5px; color: #64748b;">Average: 63.7%</span>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 14px; text-align: center;">
+            <span style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">LDR Intensity</span>
+            <div style="font-size: 20px; font-weight: 700; color: #fbbf24; margin-top: 4px;">580 – 2450</div>
+            <span style="font-size: 11.5px; color: #64748b;">Average: 1139 ADC</span>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 14px; text-align: center;">
+            <span style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">Operating Modes</span>
+            <div style="font-size: 18px; font-weight: 700; color: #c084fc; margin-top: 4px;">AUTO (26) / MAN (4)</div>
+            <span style="font-size: 11.5px; color: #64748b;">Automatic Dominant</span>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 14px; text-align: center;">
+            <span style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">Bulb &amp; Light State</span>
+            <div style="font-size: 18px; font-weight: 700; color: #4ade80; margin-top: 4px;">ON: 18 | OFF: 12</div>
+            <span style="font-size: 11.5px; color: #64748b;">DARK: 20 | BRIGHT: 10</span>
+          </div>
+        </div>
+
+        <!-- CSV Dataset Table Header & Download Action -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 24px; padding-bottom: 8px;">
+          <div>
+            <h4 style="margin: 0; color: #f8fafc; font-size: 16px; font-weight: 600;">Historical Sensor Dataset (30 Records)</h4>
+            <span style="font-size: 12.5px; color: #94a3b8;">Direct display of recorded data from <code>task5_sensor_data.csv</code></span>
+          </div>
+          <a href="task5_sensor_data.csv" download="task5_sensor_data.csv" style="display: inline-flex; align-items: center; gap: 8px; background: #0284c7; color: #ffffff; padding: 9px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13.5px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35); transition: background 0.2s ease;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download Historical CSV</span>
           </a>
+        </div>
+
+        <!-- 30-Row Table Container with Responsive Horizontal Scroll -->
+        <div class="pin-table-container" style="max-height: 480px; overflow-y: auto; margin-top: 12px;">
+          <table class="pin-table">
+            <thead style="position: sticky; top: 0; z-index: 2; background: #0f172a;">
+              <tr>
+                <th>Timestamp</th>
+                <th>Temperature (°C)</th>
+                <th>Humidity (%)</th>
+                <th>LDR Value</th>
+                <th>Light Status</th>
+                <th>Bulb Status</th>
+                <th>Control Mode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:00:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">29.8 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">51.2 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">2450</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:02:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">29.6 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">51.8 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">2380</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:04:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">29.4 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">52.5 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">2210</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:06:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">29.1 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">53.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">1950</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:08:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">28.9 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">54.2 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">1720</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:10:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">28.7 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">55.1 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">1480</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:12:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">28.5 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">56.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">1290</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:14:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">28.2 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">57.3 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">1050</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:16:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">28.0 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">58.1 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">920</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:18:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">27.8 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">59.4 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">840</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:20:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">27.6 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">60.2 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">790</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:22:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">27.4 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">61.5 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">750</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:24:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">27.3 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">62.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">720</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:26:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">27.1 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">63.2 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">690</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:28:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">27.0 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">63.8 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">670</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #c084fc; font-weight: 600; background: rgba(192, 132, 252, 0.1); padding: 2px 8px; border-radius: 4px;">MANUAL</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:30:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">26.8 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">64.5 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">660</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #c084fc; font-weight: 600; background: rgba(192, 132, 252, 0.1); padding: 2px 8px; border-radius: 4px;">MANUAL</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:32:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">26.7 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">65.1 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">650</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #c084fc; font-weight: 600; background: rgba(192, 132, 252, 0.1); padding: 2px 8px; border-radius: 4px;">MANUAL</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:34:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">26.5 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">66.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">640</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #c084fc; font-weight: 600; background: rgba(192, 132, 252, 0.1); padding: 2px 8px; border-radius: 4px;">MANUAL</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:36:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">26.4 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">66.8 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">630</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:38:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">26.2 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">67.5 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">620</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:40:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">26.1 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">68.2 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">610</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:42:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.9 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">69.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">600</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:44:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.8 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">70.1 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">590</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:46:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.6 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">71.3 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">580</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:48:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.5 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">72.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">2150</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:50:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.4 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">72.8 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">2300</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:52:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.3 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">73.5 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">2240</td>
+                <td><span style="color: #fbbf24; font-weight: 600;">BRIGHT</span></td>
+                <td><span style="color: #f87171; font-weight: 700; background: rgba(248, 113, 113, 0.12); padding: 2px 8px; border-radius: 4px;">OFF</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:54:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.1 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">74.2 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">780</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:56:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">25.0 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">75.0 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">620</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; color: #cbd5e1;">2026-09-29 18:58:00</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">24.8 °C</td>
+                <td style="font-family: monospace; font-weight: 600; color: #f1f5f9;">75.6 %</td>
+                <td style="font-family: monospace; color: #94a3b8;">590</td>
+                <td><span style="color: #94a3b8; font-weight: 600;">DARK</span></td>
+                <td><span style="color: #4ade80; font-weight: 700; background: rgba(74, 222, 128, 0.12); padding: 2px 8px; border-radius: 4px;">ON</span></td>
+                <td><span style="color: #38bdf8; font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">AUTO</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -3446,6 +3882,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">10</span><h3 class="topic-title">Engineering Challenges and Diagnostic Solutions</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Problems Encountered and Solutions Implemented</h4>
         <p>The integration of multi-frequency timing loops and cloud analytics uncovered several critical edge challenges:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Challenge 1: NTP Packet Drops During Transient Router Initialization:</strong> If the ESP32 powered on prior to the upstream router establishing WAN connectivity, NTP synchronization failed silently, resulting in UNIX epoch 0 (January 1, 1970) timestamps.<br>
@@ -3462,6 +3899,8 @@ window.exportHistoricDataToCSV = async () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">11</span><h3 class="topic-title">System Limitations and Future Engineering Scope</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Limitations of the Current Prototype Explained</h4>
+        <h4 class="subtopic-title">Possible Future Improvements Suggested</h4>
         <p>While the deployed architecture fulfills all industrial and academic requirements, objective engineering review identifies clear vectors for future expansion:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Sensor Dynamic Range and Precision:</strong> The DHT11 temperature resolution is restricted to integer increments ($\pm 1^\circ	ext{C}$). Upgrading to an I2C-based Sensirion SHT31 or Bosch BME280 would enhance measurement precision to $\pm 0.2^\circ	ext{C}$ and introduce barometric pressure sensing.</li>
@@ -3475,6 +3914,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
     <div class="topic-section">
       <div class="topic-header"><span class="topic-num-badge">12</span><h3 class="topic-title">Conclusion and Final Technical Synthesis</h3></div>
       <div class="topic-content">
+        <h4 class="subtopic-title">Final Learning Reflection Included</h4>
         <p>Task 5 conclusively validates the end-to-end integration of a bare-metal, single-threaded cyber-physical edge computing system with enterprise cloud databases and reactive web analytics. By coupling non-blocking <code>millis()</code> scheduling, closed-loop Schmitt trigger hysteresis (1800/2200 counts), NTP time synchronization, Firebase Realtime Database persistence, and client-side RFC 4180 CSV export, the project demonstrates that robust, industrial-grade IoT architectures can be engineered on accessible microcontroller platforms without sacrifice of determinism, security, or data integrity.</p>
       </div>
     </div>
@@ -3486,7 +3926,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task5/5.jpeg" alt="Task 5 Complete Hardware System Bench Assembly" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Hardware Setup</span>
+            <span class="media-badge">Photographs of the Complete Prototype</span>
             <h5>Fully Integrated Cyber-Physical Test Bench</h5>
             <p>Complete physical assembly featuring ESP32 DevKit, DHT11 sensor, LDR divider, and optocoupler relay module.</p>
           </div>
@@ -3494,7 +3934,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task5/firebase_realtime_database_history.png" alt="Firebase Realtime Database History Nodes" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Cloud Database</span>
+            <span class="media-badge">Screenshots of the Firebase Log Data</span>
             <h5>Firebase Realtime Database History Tree</h5>
             <p>Chronological time-series log nodes stored under /history with auto-generated push keys and NTP timestamps.</p>
           </div>
@@ -3502,7 +3942,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
         <div class="media-slot image-slot">
           <img onclick="openLightbox(this)" title="Click to enlarge in full resolution" src="images/week7/task5/task5_web_dashboard.png" alt="Live IoT Monitoring Dashboard" loading="lazy">
           <div class="media-caption">
-            <span class="media-badge">Web Dashboard</span>
+            <span class="media-badge">Screenshots of the Dashboard &amp; Data Visualization</span>
             <h5>Live IoT Monitoring Dashboard</h5>
             <p>Actual web application interface displaying the environmental sensor readings, operating status, monitoring information and available control features.</p>
           </div>
@@ -3531,7 +3971,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
             </video>
           </div>
           <div class="media-caption">
-            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstration</span>
+            <span class="media-badge" style="background:rgba(34, 197, 94, 0.15); color:#4ade80;">Video Demonstrating the Complete System</span>
             <h5>Complete System Operational Demonstration</h5>
             <p>Full demonstration of closed-loop automation, hysteresis deadband verification, cloud logging, and CSV dataset download.</p>
           </div>
@@ -3573,6 +4013,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
     <div class="topic-section">
       <h3 class="topic-title">SOURCE CODE &amp; DOCUMENTATION</h3>
       <div class="topic-content">
+        <h4 class="subtopic-title">All Source Code and Project Files Available in Repository</h4>
         <p>This assignment is published as an independent, standalone GitHub repository containing the complete embedded C++ cyber-physical firmware, Chart.js analytics modules, CSV exporter, wiring schematics, and technical guide.</p>
         <div class="resource-card" style="margin-top: 1.25rem; max-width: 650px;">
           <div class="resource-card-top">
