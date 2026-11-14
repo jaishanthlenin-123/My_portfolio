@@ -3055,14 +3055,10 @@ window.toggleBulbState = () =&gt; {
     </g>
   </svg>
 </div>
-        <p>Autonomous switching of high-power illumination loads in proximity to optical sensors presents a classic closed-loop feedback stability dilemma. If a single static threshold ($V_{thresh}$) is utilized, optical feedback from the activated lamp, coupled with ambient sensor noise, induces rapid contact oscillation known as <em>relay chatter</em>:</p>
+        <p>Autonomous switching of high-power illumination loads in proximity to optical sensors presents a classic closed-loop feedback stability dilemma. If a single static threshold (V<sub>thresh</sub>) is utilized, optical feedback from the activated lamp, coupled with ambient sensor noise, induces rapid contact oscillation known as <em>relay chatter</em>:</p>
 
-        <p style="text-align: center; font-style: italic; color: #94a3b8; margin: 12px 0;">
-          Single Threshold Failure Mode: Ambient light drops below $V_{thresh}
-ightarrow$ Bulb turns ON $
-ightarrow$ Reflected bulb light raises sensor reading above $V_{thresh}
-ightarrow$ Bulb turns OFF $
-ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contacts.
+        <p style="text-align: center; font-style: italic; color: #94a3b8; margin: 12px 0; line-height: 1.6;">
+          Single Threshold Failure Mode: Ambient light drops below V<sub>thresh</sub> &rarr; Bulb turns ON &rarr; Reflected bulb light raises sensor reading above V<sub>thresh</sub> &rarr; Bulb turns OFF &rarr; Cycle repeats indefinitely at high frequency, destroying relay contacts.
         </p>
 
         <p>To establish unconditional asymptotic stability, the system incorporates a <strong>dual-threshold Schmitt trigger hysteresis model</strong> parameterized by two distinct analog switching boundaries:</p>
@@ -3079,20 +3075,20 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
             </thead>
             <tbody>
               <tr>
-                <td><strong>Lower Switching Threshold ($V_{low}$)</strong></td>
+                <td><strong>Lower Switching Threshold (V<sub>low</sub>)</strong></td>
                 <td><strong>1,800 counts</strong></td>
                 <td>Low Ambient Light (Dusk / Shadow)</td>
                 <td>Transitions Relay state from <code>OFF &rarr; ON</code></td>
               </tr>
               <tr>
-                <td><strong>Upper Switching Threshold ($V_{high}$)</strong></td>
+                <td><strong>Upper Switching Threshold (V<sub>high</sub>)</strong></td>
                 <td><strong>2,200 counts</strong></td>
                 <td>High Ambient Light (Daylight / Direct Lamp)</td>
                 <td>Transitions Relay state from <code>ON &rarr; OFF</code></td>
               </tr>
               <tr>
-                <td><strong>Hysteresis Deadband ($\Delta V$)</strong></td>
-                <td><strong>400 counts</strong> ($\Delta V = 2200 - 1800$)</td>
+                <td><strong>Hysteresis Deadband (ΔV)</strong></td>
+                <td><strong>400 counts</strong> (ΔV = 2200 − 1800)</td>
                 <td>Noise Margin / Optical Feedback Margin</td>
                 <td>Prevents any state transition; preserves previous latch state</td>
               </tr>
@@ -3101,7 +3097,7 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
         </div>
 
         <p style="margin-top: 14px;"><strong>Mathematical Proof of Stability:</strong><br>
-        Let $S_t \in \{0, 1\}$ represent the relay state at time $t$, and $V_t$ represent the 12-bit ADC reading of ambient light intensity. The deterministic state update function is formulated as:
+        Let S<sub>t</sub> &isin; {0, 1} represent the relay state at time t, and V<sub>t</sub> represent the 12-bit ADC reading of ambient light intensity. The deterministic state update function is formulated as:
         </p>
         <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 6px; padding: 12px 18px; font-family: monospace; color: #38bdf8; font-size: 14px; margin: 10px 0;">
           S_{t+1} = <br>
@@ -3109,7 +3105,7 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
           &nbsp;&nbsp;0 (OFF), if V_t &gt; 2200<br>
           &nbsp;&nbsp;S_t,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 1800 &le; V_t &le; 2200 (Deadband Hysteresis Region)
         </div>
-        <p>Because the 400-count deadband significantly exceeds the worst-case optical reflection delta ($\Delta V_{optical} pprox 160	ext{ counts}$) and peak-to-peak ADC thermal noise ($\Delta V_{noise} pprox 35	ext{ counts}$), relay chatter is mathematically eliminated.</p>
+        <p>Because the 400-count deadband significantly exceeds the worst-case optical reflection delta (ΔV<sub>optical</sub> ≈ 160 counts) and peak-to-peak ADC thermal noise (ΔV<sub>noise</sub> ≈ 35 counts), relay chatter is mathematically eliminated.</p>
       </div>
     </div>
 
@@ -3136,7 +3132,7 @@ ightarrow$ Cycle repeats indefinitely at high frequency, destroying relay contac
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
           <li><strong>Edge Controller:</strong> Espressif ESP32-WROOM-32 (240 MHz dual-core Xtensa LX6, 520 KB SRAM, 4 MB Flash) operating on an isolated 3.3V/5V DC power rail.</li>
           <li><strong>Hygrometric / Temperature Transducer:</strong> Aosong DHT11 digital sensor operating over a calibrated 0–50°C and 20–90% RH range with dedicated timing-critical protocol reading.</li>
-          <li><strong>Photometric Transducer:</strong> 5mm Cadmium-Sulfide (CdS) photoresistor in a calibrated voltage divider circuit with a $10\,\text{k}\Omega$ precision resistor, interfaced to the low-noise ADC1 peripheral (GPIO 34).</li>
+          <li><strong>Photometric Transducer:</strong> 5mm Cadmium-Sulfide (CdS) photoresistor in a calibrated voltage divider circuit with a 10 kΩ precision resistor, interfaced to the low-noise ADC1 peripheral (GPIO 34).</li>
           <li><strong>Electromechanical Actuator:</strong> 5V SPDT Relay Module with EL817 optocoupler galvanic isolation, driving an external 230V AC / 10A incandescent or LED load.</li>
           <li><strong>NTP Clock Synchronization:</strong> Standard C <code>time.h</code> library synchronized via SNTP with <code>pool.ntp.org</code>, configured for Indian Standard Time (IST, UTC+05:30) with zero drift.</li>
           <li><strong>Cloud &amp; Visualization Stack:</strong> Google Firebase Realtime Database (REST API &amp; WebSockets), Chart.js v4.4.x for multi-axis canvas charting, and client-side RFC 4180 CSV blob synthesis.</li>
@@ -3903,7 +3899,7 @@ window.exportHistoricDataToCSV = async () =&gt; {
         <h4 class="subtopic-title">Possible Future Improvements Suggested</h4>
         <p>While the deployed architecture fulfills all industrial and academic requirements, objective engineering review identifies clear vectors for future expansion:</p>
         <ul style="margin-bottom: 16px; padding-left: 20px; line-height: 1.7;">
-          <li><strong>Sensor Dynamic Range and Precision:</strong> The DHT11 temperature resolution is restricted to integer increments ($\pm 1^\circ	ext{C}$). Upgrading to an I2C-based Sensirion SHT31 or Bosch BME280 would enhance measurement precision to $\pm 0.2^\circ	ext{C}$ and introduce barometric pressure sensing.</li>
+          <li><strong>Sensor Dynamic Range and Precision:</strong> The DHT11 temperature resolution is restricted to integer increments (±1 °C). Upgrading to an I2C-based Sensirion SHT31 or Bosch BME280 would enhance measurement precision to ±0.2 °C and introduce barometric pressure sensing.</li>
           <li><strong>Local Flash Ring-Buffer Logging:</strong> If Wi-Fi connectivity is lost for extended durations, historical records are dropped. Future iterations should incorporate SPIFFS or LittleFS ring-buffered flash logging to store offline data and batch-upload entries upon network reconnection.</li>
           <li><strong>Edge Machine Learning Integration:</strong> Rather than hardcoding fixed 1800/2200 hysteresis thresholds, an on-device TinyML model running TensorFlow Lite for Microcontrollers could dynamically adapt switching setpoints based on learned occupant behavioral patterns and seasonal sunlight profiles.</li>
         </ul>
